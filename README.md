@@ -1,4 +1,4 @@
-## <span style="color:blue">First Homework for Stat 545A Course </span>
+## First Homework for Stat 545A Course 
 
 ### Introduction: 
 
@@ -6,7 +6,8 @@ I am *Arun Rajendran* , 1<sup>st</sup> year **Master of Science** graduate stude
 
 Here is a picture of me:    
 
-![test image size](https://scontent-sea1-1.xx.fbcdn.net/v/t1.0-9/19731902_643866702474532_7771855317205421459_n.jpg?oh=858aadb47965de8c264a8ea08ee15013&oe=5A4504B6){:height="50%" width="50%"}
+<img src="https://scontent-sea1-1.xx.fbcdn.net/v/t1.0-9/19731902_643866702474532_7771855317205421459_n.jpg?oh=858aadb47965de8c264a8ea08ee15013&oe=5A4504B6" alt="test image size" height="25%" width="25%">
+
 <br/>
 
 You can also find me in the [maths department website](https://www.math.ubc.ca/People/gallery.shtml?group=Graduate+Students)
