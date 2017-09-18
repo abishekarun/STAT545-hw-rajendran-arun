@@ -1,4 +1,4 @@
-## <span style="color:blue">First Homework for Stat 545A Course </span>
+##<span style="color:blue"> First Homework for Stat 545A Course </span>
 
 ### Introduction: 
 
