@@ -1,0 +1,90 @@
+---
+title: "hw01_gapminder.Rmd"
+output: github_document
+---
+
+First install and load packages gapminder and tidyverse
+```{r}
+#install.packages("gapminder")
+#install.packages("tidyverse")
+library(gapminder)
+library(tidyverse)
+```
+
+Check the gapminder data
+
+```{r}
+str(gapminder)
+head(gapminder)
+tail(gapminder)
+```
+
+Run basic queries on gapminder data frame
+```{r}
+names(gapminder)
+ncol(gapminder)
+length(gapminder)
+dim(gapminder)
+nrow(gapminder)
+```
+
+Overview of gapminder data using summary() function
+```{r}
+summary(gapminder)
+```
+
+Few basic plots
+
+Plot of Life Experience against Year
+```{r}
+plot(lifeExp ~ year, gapminder)
+```
+
+Plot of Life Experience against Gdp per capta
+```{r}
+plot(lifeExp ~ gdpPercap, gapminder)
+```
+
+Lets do little transformation on Gdp Per cap
+
+Here's a plot of Life Experience against log of Gdp per capta
+```{r}
+plot(lifeExp ~ log(gdpPercap), gapminder)
+```
+
+Now, lets look at specific variables inside the gapminder data frame.
+
+First lets expore the numeric variable for life Expectancy (lifeExp)
+```{r}
+head(gapminder$lifeExp)
+summary(gapminder$lifeExp)
+hist(gapminder$lifeExp)
+```
+
+Secondly, lets know more about the Integer variable year
+```{r}
+summary(gapminder$year)
+table(gapminder$year)
+```
+
+Categorical variables are stored as factor in R. 
+Now, Lets expore the continent factor variable from gapminder data.
+```{r}
+class(gapminder$continent)
+summary(gapminder$continent)
+levels(gapminder$continent)
+nlevels(gapminder$continent)
+```
+
+But R is really storing integer codes for the different levels of factor variables.
+This can be seen from result of str() function.
+```{r}
+str(gapminder$continent)
+```
+
+Visual portrayal of continent data using table and barplot function
+```{r}
+table(gapminder$continent)
+barplot(table(gapminder$continent))
+```
+
