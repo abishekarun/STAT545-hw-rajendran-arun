@@ -6,7 +6,7 @@ I am *Arun Rajendran* , 1<sup>st</sup> year **Master of Science** graduate stude
 
 Here is a picture of me:    
 
-![]<https://drive.google.com/file/d/0B_921tpf63aTenZrQ1J3MElocWM/view?usp=sharing>
+![That's me](https://drive.google.com/file/d/0B_921tpf63aTenZrQ1J3MElocWM/view?usp=sharing)
 
 <br/>
 
