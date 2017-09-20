@@ -22,7 +22,7 @@ library(tidyverse)
     ## filter(): dplyr, stats
     ## lag():    dplyr, stats
 
-Check the gapminder data
+Check the nature of gapminder data using str()
 
 ``` r
 str(gapminder)
@@ -35,6 +35,8 @@ str(gapminder)
     ##  $ lifeExp  : num  28.8 30.3 32 34 36.1 ...
     ##  $ pop      : int  8425333 9240934 10267083 11537966 13079460 14880372 12881816 13867957 16317921 22227415 ...
     ##  $ gdpPercap: num  779 821 853 836 740 ...
+
+Check first few rows using head() and and last few rows using tail()
 
 ``` r
 head(gapminder)
@@ -96,7 +98,7 @@ nrow(gapminder)
 
     ## [1] 1704
 
-Overview of gapminder data using summary() function
+Get an overview of gapminder data using summary() function
 
 ``` r
 summary(gapminder)
@@ -119,7 +121,7 @@ summary(gapminder)
     ##  Max.   :1.319e+09   Max.   :113523.1  
     ## 
 
-Few basic plots
+##### Few basic plots
 
 Plot of Life Experience against Year
 
@@ -127,7 +129,7 @@ Plot of Life Experience against Year
 plot(lifeExp ~ year, gapminder)
 ```
 
-![](hw01_gapminder_files/figure-markdown_github/unnamed-chunk-5-1.png)
+![](hw01_gapminder_files/figure-markdown_github/unnamed-chunk-6-1.png)
 
 Plot of Life Experience against Gdp per capta
 
@@ -135,9 +137,9 @@ Plot of Life Experience against Gdp per capta
 plot(lifeExp ~ gdpPercap, gapminder)
 ```
 
-![](hw01_gapminder_files/figure-markdown_github/unnamed-chunk-6-1.png)
+![](hw01_gapminder_files/figure-markdown_github/unnamed-chunk-7-1.png)
 
-Lets do little transformation on Gdp Per cap
+###### Lets do little transformation on Gdp Per cap
 
 Here's a plot of Life Experience against log of Gdp per capta
 
@@ -145,9 +147,9 @@ Here's a plot of Life Experience against log of Gdp per capta
 plot(lifeExp ~ log(gdpPercap), gapminder)
 ```
 
-![](hw01_gapminder_files/figure-markdown_github/unnamed-chunk-7-1.png)
+![](hw01_gapminder_files/figure-markdown_github/unnamed-chunk-8-1.png)
 
-Now, lets look at specific variables inside the gapminder data frame.
+###### Now, lets look at specific variables inside the gapminder data frame.
 
 First lets expore the numeric variable for life Expectancy (lifeExp)
 
@@ -168,7 +170,7 @@ summary(gapminder$lifeExp)
 hist(gapminder$lifeExp)
 ```
 
-![](hw01_gapminder_files/figure-markdown_github/unnamed-chunk-8-1.png)
+![](hw01_gapminder_files/figure-markdown_github/unnamed-chunk-9-1.png)
 
 Secondly, lets know more about the Integer variable year
 
@@ -187,7 +189,9 @@ table(gapminder$year)
     ## 1952 1957 1962 1967 1972 1977 1982 1987 1992 1997 2002 2007 
     ##  142  142  142  142  142  142  142  142  142  142  142  142
 
-Categorical variables are stored as factor in R. Now, Lets expore the continent factor variable from gapminder data.
+###### Categorical variables are stored as factor in R.
+
+Now, Lets expore the continent factor variable from gapminder data.
 
 ``` r
 class(gapminder$continent)
@@ -214,7 +218,7 @@ nlevels(gapminder$continent)
 
     ## [1] 5
 
-But R is really storing integer codes for the different levels of factor variables. This can be seen from result of str() function.
+*But R is really storing integer codes for the different levels of factor variables.* This can be seen from result of str() function.
 
 ``` r
 str(gapminder$continent)
@@ -236,4 +240,4 @@ table(gapminder$continent)
 barplot(table(gapminder$continent))
 ```
 
-![](hw01_gapminder_files/figure-markdown_github/unnamed-chunk-12-1.png)
+![](hw01_gapminder_files/figure-markdown_github/unnamed-chunk-13-1.png)
