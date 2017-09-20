@@ -121,7 +121,7 @@ summary(gapminder)
     ##  Max.   :1.319e+09   Max.   :113523.1  
     ## 
 
-##### Few basic plots
+### Few basic plots
 
 Plot of Life Experience against Year
 
@@ -139,7 +139,7 @@ plot(lifeExp ~ gdpPercap, gapminder)
 
 ![](hw01_gapminder_files/figure-markdown_github/unnamed-chunk-7-1.png)
 
-###### Lets do little transformation on Gdp Per cap
+### Lets do little transformation on Gdp Per cap
 
 Here's a plot of Life Experience against log of Gdp per capta
 
@@ -149,7 +149,7 @@ plot(lifeExp ~ log(gdpPercap), gapminder)
 
 ![](hw01_gapminder_files/figure-markdown_github/unnamed-chunk-8-1.png)
 
-###### Now, lets look at specific variables inside the gapminder data frame.
+### Now, lets look at specific variables inside the gapminder data frame.
 
 First lets expore the numeric variable for life Expectancy (lifeExp)
 
@@ -189,7 +189,7 @@ table(gapminder$year)
     ## 1952 1957 1962 1967 1972 1977 1982 1987 1992 1997 2002 2007 
     ##  142  142  142  142  142  142  142  142  142  142  142  142
 
-###### Categorical variables are stored as factor in R.
+### Categorical variables are stored as factor in R.
 
 Now, Lets expore the continent factor variable from gapminder data.
 

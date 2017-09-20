@@ -36,7 +36,7 @@ Get an overview of gapminder data using summary() function
 summary(gapminder)
 ```
 
-#####Few basic plots
+###Few basic plots
 
 Plot of Life Experience against Year
 ```{r}
@@ -48,14 +48,14 @@ Plot of Life Experience against Gdp per capta
 plot(lifeExp ~ gdpPercap, gapminder)
 ```
 
-######Lets do little transformation on Gdp Per cap
+###Lets do little transformation on Gdp Per cap
 
 Here's a plot of Life Experience against log of Gdp per capta
 ```{r}
 plot(lifeExp ~ log(gdpPercap), gapminder)
 ```
 
-######Now, lets look at specific variables inside the gapminder data frame.
+###Now, lets look at specific variables inside the gapminder data frame.
 
 First lets expore the numeric variable for life Expectancy (lifeExp)
 ```{r}
@@ -70,7 +70,7 @@ summary(gapminder$year)
 table(gapminder$year)
 ```
 
-######Categorical variables are stored as factor in R. 
+###Categorical variables are stored as factor in R. 
 Now, Lets expore the continent factor variable from gapminder data.
 ```{r}
 class(gapminder$continent)
