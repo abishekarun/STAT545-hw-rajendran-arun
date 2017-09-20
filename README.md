@@ -6,12 +6,13 @@ I am *Arun Rajendran* , 1<sup>st</sup> year **Master of Science** graduate stude
 
 Here is a picture of me:    
 
-<img src="https://scontent-sea1-1.xx.fbcdn.net/v/t1.0-9/19731902_643866702474532_7771855317205421459_n.jpg?oh=858aadb47965de8c264a8ea08ee15013&oe=5A4504B6" alt="test image size" height="25%" width="25%">
+![]<https://drive.google.com/file/d/0B_921tpf63aTenZrQ1J3MElocWM/view?usp=sharing>
 
 <br/>
 
-You can also find me in the [maths department website](https://www.math.ubc.ca/People/gallery.shtml?group=Graduate+Students)
-This is [My Github profile](https://github.com/abishekarun) 
+You can also find me in the [maths department website](https://www.math.ubc.ca/People/gallery.shtml?group=Graduate+Students)  
+
+Here is a link to [My Github profile](https://github.com/abishekarun) 
 
 The steps I performed to make changes to **Readme.md** file  are:
 
