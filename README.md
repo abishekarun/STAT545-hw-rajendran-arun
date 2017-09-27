@@ -23,8 +23,7 @@ The steps I performed to make changes to **Readme.md** file  are:
 4. Committed the changes to the repo.
 5. Performed the pull request and then pushed the commit to the Github.
 
-I have also submitted the [R markdown document](https://github.com/abishekarun/STAT545-hw-rajendran-arun/blob/master/hw01/hw01_gapminder.Rmd) and the [Rendered Markdown 
-File](https://github.com/abishekarun/STAT545-hw-rajendran-arun/blob/master/hw01/hw01_gapminder.md) for __gapminder data__.
+You can find my [1st assignemt rendered markdown file ](https://github.com/abishekarun/STAT545-hw-rajendran-arun/blob/master/hw01/hw01_gapminder.md) and the [2nd assignemt rendered markdown file](https://github.com/abishekarun/STAT545-hw-rajendran-arun/blob/master/hw02/hw02_gapminder.md) for __gapminder data__.
 
 I have already had experience with github using git bash. But, using Rstudio as a client was a new experience. It was a lot easier than using git commands but Rstudio offers less flexibility than git bash. 
 
