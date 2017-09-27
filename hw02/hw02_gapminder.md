@@ -628,6 +628,8 @@ m + geom_boxplot() + scale_y_log10()
 
 Some commands using filter(),select() and arrange() function
 
+First example
+
 ``` r
 gapminder %>%
     filter(continent=="Oceania" & year %in% c(1973:1979))%>%
@@ -640,6 +642,8 @@ gapminder %>%
     ##        <fctr>    <fctr> <int>    <int>     <dbl>
     ## 1   Australia   Oceania  1977 14074100  18334.20
     ## 2 New Zealand   Oceania  1977  3164900  16233.72
+
+Second example
 
 ``` r
 gapminder %>%
@@ -722,6 +726,8 @@ China
 </tr>
 </tbody>
 </table>
+Third example
+
 ``` r
 m <- gapminder %>%
         filter(country %in% country_list & lifeExp>45)%>%
@@ -733,7 +739,7 @@ m + geom_point()
 
 ![](hw02_gapminder_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-27-1.png)
 
-Some commands using summarize() and group\_by()
+command using summarize()
 
 ``` r
 gapminder %>%
@@ -765,6 +771,8 @@ sdLifeExp
 </tr>
 </tbody>
 </table>
+COmmand using group\_by()
+
 ``` r
 gapminder %>% 
   filter(country %in% country_list) %>%

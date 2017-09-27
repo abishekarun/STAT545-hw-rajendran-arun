@@ -217,6 +217,7 @@ m + geom_boxplot() + scale_y_log10()
 
 Some commands using filter(),select() and arrange() function
 
+First example
 ```{r}
 gapminder %>%
     filter(continent=="Oceania" & year %in% c(1973:1979))%>%
@@ -224,6 +225,7 @@ gapminder %>%
     arrange(year,desc(pop))
 ```
 
+Second example
 ```{r}
 gapminder %>%
         filter(country %in% country_list & gdpPercap <=600)%>%
@@ -233,6 +235,7 @@ gapminder %>%
         kable_styling()
 ```
 
+Third example
 ```{r}
 m <- gapminder %>%
         filter(country %in% country_list & lifeExp>45)%>%
@@ -242,7 +245,7 @@ m <- gapminder %>%
 m + geom_point()  
 ```
 
-Some commands using summarize() and group_by()
+command using summarize()
 
 ```{r}
 gapminder %>%
@@ -251,6 +254,8 @@ gapminder %>%
     kable("html") %>%
     kable_styling()
 ```
+
+COmmand using group_by()
 
 ```{r}
 gapminder %>% 
