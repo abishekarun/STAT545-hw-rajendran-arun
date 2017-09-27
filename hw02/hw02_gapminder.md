@@ -1497,7 +1497,7 @@ Pakistan
 </tr>
 </tbody>
 </table>
-### want to do more part
+### Want To Do More Part
 
 ``` r
 filter(gapminder, country == c("Rwanda", "Afghanistan"))%>%
