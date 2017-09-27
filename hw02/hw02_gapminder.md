@@ -963,7 +963,7 @@ Asia
 </tr>
 </tbody>
 </table>
-Some commands using mutate() and rename() function
+Command using mutate() function
 
 ``` r
 gapminder %>%
@@ -1255,6 +1255,8 @@ Sri Lanka
 </tr>
 </tbody>
 </table>
+Command using rename() function
+
 ``` r
 gapminder %>%
   filter(country %in% country_list & lifeExp<=45) %>%
@@ -1495,7 +1497,7 @@ Pakistan
 </tr>
 </tbody>
 </table>
-###### want to do more part
+### want to do more part
 
 ``` r
 filter(gapminder, country == c("Rwanda", "Afghanistan"))%>%
