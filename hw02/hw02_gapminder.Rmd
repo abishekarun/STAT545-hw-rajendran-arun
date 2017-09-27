@@ -1,0 +1,302 @@
+---
+title: "hw02_gapminder.Rmd"
+output: github_document
+---
+
+First install and load the package gapminder 
+```{r}
+#install.packages("tidyverse")
+library(gapminder)
+```
+
+Lets install and load dplyr via the tidyverse meta-package.
+```{r}
+#install.packages("gapminder")
+library(tidyverse)
+```
+
+Also lets install and load ggplot2 for graphs
+```{r}
+#install.packages("ggplot2")
+library(ggplot2)
+```
+
+Lets install kableExtra and load knitr,kableExtra for piping kable to create nice tables
+```{r}
+#install.packages("kableExtra")
+library(knitr)
+library(kableExtra)
+options(knitr.table.format = "html")
+```
+
+Lets explore the gapminder dataset...
+
+
+```{r}
+class(gapminder)
+str(gapminder)
+```
+This shows that gapminder dataset is data.frame, specifically its class is tibble.
+
+Lets check for the number of variables/columns using ncol() function and number of rows/observations using nrow() function.
+
+```{r}
+nrow(gapminder)
+ncol(gapminder)
+```
+
+This shows that gapminder dataset has 1704 rows/observations and 6 columns/variables. This can also be obtained using dim() function as below.
+
+```{r}
+dim(gapminder)
+```
+
+Some functions for size or extent of the data. 
+
+1) dim() - Retrieves all the dimensions of an R object such as array,matrix or a data frame. It returns null for a vector.
+```{r}
+# Matrix
+m <- matrix(1:15, 3, 5)
+dim(m)
+
+# Array
+a <- array(1:12, dim = 2:4)
+dim(a) 
+
+#data frame
+dim(gapminder)
+
+# Vector
+v <- 1:9
+dim(v)
+```
+
+2)nrow() and ncol() returns the number of rows and columns of an array or data frame. NROW() and NCOL() does the same thing by treating the vector as a 1 column matrix.
+
+```{r}
+#Matrix
+nrow(m)
+ncol(m)
+
+#Vector
+NCOL(v)
+NROW(v)
+```
+
+3)The length() function can be used to get length of a list or vector. For matrix or dataframe it returns the number of variables.
+```{r}
+#Vector
+length(v)
+
+#Matrix
+length(m)
+
+#Data frame
+length(gapminder)
+```
+
+4)summary() function can also be used to understand the extent and size of a variable.  
+
+```{r}
+kable(summary(gapminder))
+```
+
+5)range() function can be used to get the range(minimum and maximum value) of continuous variables.
+
+```{r}
+range(gapminder$gdpPercap)
+range(gapminder$lifeExp)
+```
+
+Lets find the Data type of each variable/column in gapminder dataset
+```{r}
+kable(sapply(gapminder, class))
+```
+
+###Lets take a factor variable, say continent. 
+FInd the levels and the names of each level
+```{r}
+nlevels(gapminder$continent) # to get the number of different levels/values
+levels(gapminder$continent) # to get the possible values
+```
+
+SOme plots to analyze the continent variable
+```{r}
+summary(gapminder$continent)
+# table(gapminder$continent) does the same thing.
+plot(gapminder$continent)
+
+counts = table(gapminder$continent)  ## get counts
+labs=levels(gapminder$continent)
+pct <- round(counts/sum(counts)*100)
+labs <- paste(labs, pct) # add percents to labels 
+labs <- paste(labs,"%",sep="") # ad % to labels 
+pie(counts, labels = labs,col=rainbow(length(labs)),
+  	main="Pie Chart of Continents")  ## plot
+```
+
+This shows that Africa is the typical value since it is observed maximum number of times. This also shows that there is very less data for Oceania. 
+
+Lets look at another factor variable say country. Take a subset of data for this plot.
+```{r}
+a<-subset(gapminder,gapminder$country %in% c("Afghanistan","Bangladesh","China","Sri Lanka","Indonesia","Pakistan"))
+plot(a$country)
+```
+
+ 
+###Lets take a continous variable, say population.
+
+Analyze range and summary. Also plot few graphs to know the distribution.
+```{r}
+range(gapminder$pop) # to get the range of the values for population
+summary(gapminder$pop) # to get the summary of the values.
+#table(gapminder$pop)
+
+plot(density(gapminder$pop))   # density plot
+plot(density(log10(gapminder$pop)))  # transformed density plot
+```
+
+The range of the population shows the minimum and maximum value. The summary function gives the mean,median and other details. The transformed density graph show the Gaussian distribution present in the population variable. 
+
+Lets explore another continuous variable, say lifeExp by plotting histogram.
+```{r}
+hist(gapminder$lifeExp)   # histogram plot
+hist(log10(gapminder$lifeExp))   #transformed histogram plot
+```
+
+Lets explore another continuous variable, say gdpPercap by plotting box plot and scatter plot.
+```{r}
+boxplot(log10(gapminder$gdpPercap)) # Box plot
+plot(type='p',gapminder$gdpPercap)   # scatter plot
+plot(type='p',log10(gapminder$gdpPercap))  # transformed scatter plot
+
+```
+
+
+###Lets explore various plot types.
+
+Plot between year and pop (two quantitative variables )
+```{r}
+ggplot(gapminder,aes(year,pop))+
+  geom_point()
+```
+
+Different Plots of pop variable
+```{r}
+m<-ggplot(gapminder,aes(pop))
+m + geom_histogram(binwdith=0.5) + scale_x_log10() #histogram plot
+m + scale_x_log10() + geom_density(kernel="gaussian") #density plot
+m + scale_x_log10() + geom_freqpoly() #freq poly plot
+```
+
+Plot between continent and pop (one factor variable and one quantitative variable)
+```{r}
+n<-ggplot(gapminder,aes(continent,pop))
+n+geom_boxplot() +scale_y_log10() # box plot
+```
+
+
+Some plots using filter() function
+```{r}
+m<- gapminder %>%
+    filter(continent=="Oceania")%>%
+    ggplot(aes(country,pop))
+
+m + geom_boxplot() + scale_y_log10()
+```
+
+```{r}
+country_list<- c("Afghanistan","Bangladesh","China","Sri Lanka","Indonesia","Pakistan","Nepal","Mauritius")
+m<- gapminder %>%
+    filter(continent=="Asia" & 
+          country %in% country_list)%>%
+    ggplot(aes(country,pop))
+
+m + geom_boxplot() + scale_y_log10()
+```
+
+Some commands using filter(),select() and arrange() function
+
+```{r}
+gapminder %>%
+    filter(continent=="Oceania" & year %in% c(1973:1979))%>%
+    select(-lifeExp) %>%
+    arrange(year,desc(pop))
+```
+
+```{r}
+gapminder %>%
+        filter(country %in% country_list & gdpPercap <=600)%>%
+        select(country,year,gdpPercap) %>%
+        arrange(year,desc(gdpPercap))%>%
+        kable("html") %>%
+        kable_styling()
+```
+
+```{r}
+m <- gapminder %>%
+        filter(country %in% country_list & lifeExp>45)%>%
+        select(year,lifeExp) %>%
+        arrange(year,desc(lifeExp))%>%
+     ggplot(aes(year,lifeExp))
+m + geom_point()  
+```
+
+Some commands using summarize() and group_by()
+
+```{r}
+gapminder %>%
+    filter(country %in% country_list & pop>1000) %>%
+    summarize(meanLifeExp=mean(lifeExp), sdLifeExp=sd(lifeExp))%>%
+    kable("html") %>%
+    kable_styling()
+```
+
+```{r}
+gapminder %>% 
+  filter(country %in% country_list) %>%
+  group_by(country,continent,lifeExp>40) %>%
+  summarize(meanGdpPercap =mean(gdpPercap),sdGdpPercap =sd(gdpPercap)) %>%
+  select(country,continent,meanGdpPercap,sdGdpPercap)%>%
+  kable("html") %>%
+  kable_styling()
+```
+
+Some commands using mutate() and rename() function
+```{r}
+gapminder %>%
+  filter(country %in% country_list& year<=1965) %>%
+  mutate(gdp = pop * gdpPercap)%>%
+  select(country,year,gdp)%>%
+  kable("html") %>%
+  kable_styling()
+```
+
+```{r}
+gapminder %>%
+  filter(country %in% country_list & lifeExp<=45) %>%
+  mutate(gdpPercapRel = gdpPercap/max(gapminder$gdpPercap))%>%
+  rename(gdpRel = gdpPercapRel)%>%
+  select(country,gdpRel)%>%
+  kable("html") %>%
+  kable_styling()
+```
+
+
+###### want to do more part 
+```{r}
+filter(gapminder, country == c("Rwanda", "Afghanistan"))%>%
+  kable("html") %>%
+  kable_styling()
+```
+The user doesnt succeed in getting all the entries of rwanda and afghanistan.The correct way to do this is as below using %in% operator.
+
+```{r}
+filter(gapminder, country %in% c("Rwanda", "Afghanistan"))%>%
+  kable("html") %>%
+  kable_styling()
+```
+
+The difference is %in% checks whether or not the object is contained in the other object. Whereas == is a logical operator that checks for identity properties.
+
+
