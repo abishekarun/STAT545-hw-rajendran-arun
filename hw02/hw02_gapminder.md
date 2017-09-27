@@ -570,12 +570,8 @@ Different Plots of pop variable
 
 ``` r
 m<-ggplot(gapminder,aes(pop))
-m + geom_histogram(binwdith=0.5) + scale_x_log10() #histogram plot
+m + geom_histogram(binwidth=0.5) + scale_x_log10() #histogram plot
 ```
-
-    ## Warning: Ignoring unknown parameters: binwdith
-
-    ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 
 ![](hw02_gapminder_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-21-1.png)
 
@@ -586,10 +582,8 @@ m + scale_x_log10() + geom_density(kernel="gaussian") #density plot
 ![](hw02_gapminder_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-21-2.png)
 
 ``` r
-m + scale_x_log10() + geom_freqpoly() #freq poly plot
+m + scale_x_log10() + geom_freqpoly(binwidth=0.5) #freq poly plot
 ```
-
-    ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 
 ![](hw02_gapminder_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-21-3.png)
 
