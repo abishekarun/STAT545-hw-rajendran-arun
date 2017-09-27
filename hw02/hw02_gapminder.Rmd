@@ -263,6 +263,7 @@ gapminder %>%
 ```
 
 Some commands using mutate() and rename() function
+
 ```{r}
 gapminder %>%
   filter(country %in% country_list& year<=1965) %>%
@@ -271,6 +272,7 @@ gapminder %>%
   kable("html") %>%
   kable_styling()
 ```
+
 
 ```{r}
 gapminder %>%
@@ -284,6 +286,7 @@ gapminder %>%
 
 
 ### want to do more part 
+
 ```{r}
 filter(gapminder, country == c("Rwanda", "Afghanistan"))%>%
   kable("html") %>%
