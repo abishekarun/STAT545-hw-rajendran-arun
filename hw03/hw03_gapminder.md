@@ -73,7 +73,7 @@ table %>%
 <i>Plot of minimum and maximum for each continent.</i>
 
 ```r
-a%>%  
+gdpPercapta_data%>%  
   ggplot(aes(continent,min_gdpPercap))+
   geom_col()+
   ggtitle("Minimum gdpPercap for each continent")
@@ -82,7 +82,7 @@ a%>%
 ![](hw03_gapminder_files/figure-html/unnamed-chunk-5-1.png)<!-- -->
 
 ```r
-a%>%  
+gdpPercapta_data%>%  
   ggplot(aes(continent,max_gdpPercap))+
   geom_col()+
   ggtitle("Maximum gdpPercap for each continent")
@@ -101,18 +101,18 @@ for Oceania and lowest for Africa. Similarly, the maximum gdpPercap is highest f
 ```r
 grouped<- gapminder%>%  
         group_by(continent)
-b1<- grouped%>%
+spread1<- grouped%>%
         summarize(min=quantile(gdpPercap,0),
                   Q1=quantile(gdpPercap,0.25),      # First quartile
                   median=quantile(gdpPercap,0.50), 
                   Q3=quantile(gdpPercap,0.75),      # Third quartile
                   max=quantile(gdpPercap,1),
                   Interquartile=IQR(gdpPercap))
-b2<-grouped%>%
+spread2<-grouped%>%
       summarize(variance=var(gdpPercap),
                   std_dev=sd(gdpPercap))
 
-pandoc.table(b1,style = "grid", caption = "Quantiles spread of GDP",justify="center", plain.ascii = TRUE, split.table = Inf)
+pandoc.table(spread1,style = "grid", caption = "Quantiles spread of GDP",justify="center", plain.ascii = TRUE, split.table = Inf)  #plain.ascii to keep output in plain ascii format
 ```
 
 ```
@@ -136,7 +136,7 @@ pandoc.table(b1,style = "grid", caption = "Quantiles spread of GDP",justify="cen
 ```
 
 ```r
-pandoc.table(b2,style = "grid", caption = "Variance & Std Dev of GDP",justify="center", plain.ascii = TRUE, split.table = Inf)
+pandoc.table(spread2,style = "grid", caption = "Variance & Std Dev of GDP",justify="center", plain.ascii = TRUE, split.table = Inf)
 ```
 
 ```
@@ -616,13 +616,13 @@ pandoc.table(b2,style = "grid", caption = "Variance & Std Dev of GDP",justify="c
 
 
 ```r
-f<- gapminder %>%
+list_of_countries<- gapminder %>%
         group_by(year)%>%
         mutate(dev_lifeExp=lifeExp-weighted.mean(lifeExp,pop))%>%
         filter(dev_lifeExp<0)%>%
         group_by(continent,year)%>%
         summarize(no_of_countries=length(country))
-tableFormat(f)
+tableFormat(list_of_countries)
 ```
 
 <table class="table table-striped table-hover table-condensed table-responsive" style="font-size: 14px; margin-left: auto; margin-right: auto;">
@@ -857,7 +857,7 @@ tableFormat(f)
 </table>
 
 ```r
-f%>%
+list_of_countries%>%
   ggplot(aes(year,no_of_countries,color=continent))+
   geom_line()
 ```
@@ -865,14 +865,14 @@ f%>%
 ![](hw03_gapminder_files/figure-html/unnamed-chunk-13-1.png)<!-- -->
 
 ```r
-g<-gapminder %>%
+europe_list<-gapminder %>%
         group_by(year)%>%
         mutate(dev_lifeExp=lifeExp-weighted.mean(lifeExp,pop))%>%
         filter(dev_lifeExp<0)%>%
         group_by(continent,year)%>%
         filter(continent=="Europe")%>%
         select(year,country,continent,lifeExp,dev_lifeExp)
-tableFormat(g)
+tableFormat(europe_list)
 ```
 
 <table class="table table-striped table-hover table-condensed table-responsive" style="font-size: 14px; margin-left: auto; margin-right: auto;">
@@ -948,13 +948,18 @@ tableFormat(g)
 
 <h3>Story of Turkey</h3>
 
+**Note**:
+- aes_string() should be used inside function for ggplot and the column names should be passed as strings. 
+- plots is user defined function() containing ggplot()
+
+
 ```r
 turkey_data<-gapminder %>%
                   filter(country=="Turkey")
-country_list<-subset(gapminder,continent=="Europe")
+europe_country_list<-subset(gapminder,continent=="Europe")
               
 plots<-function(dataset,x,y,dataset2,z){
-  ggplot(data=dataset,aes_string(dataset[[x]],dataset[[y]]))+
+  ggplot(data=dataset,aes_string(dataset[[x]],dataset[[y]]))+    
   geom_line(aes(color="red"))+
   geom_point()+ 
   geom_line(data=dataset2,aes_string(dataset2[[x]],dataset2[[y]],
@@ -963,19 +968,19 @@ plots<-function(dataset,x,y,dataset2,z){
   ylab(y)
 }
 
-plots(turkey_data,"year","lifeExp",country_list,"country")
+plots(turkey_data,"year","lifeExp",europe_country_list,"country")
 ```
 
 ![](hw03_gapminder_files/figure-html/unnamed-chunk-14-1.png)<!-- -->
 
 ```r
-plots(turkey_data,"year","gdpPercap",country_list,"country")
+plots(turkey_data,"year","gdpPercap",europe_country_list,"country")
 ```
 
 ![](hw03_gapminder_files/figure-html/unnamed-chunk-14-2.png)<!-- -->
 
 ```r
-plots(turkey_data,"year","pop",country_list,"country")
+plots(turkey_data,"year","pop",europe_country_list,"country")
 ```
 
 ![](hw03_gapminder_files/figure-html/unnamed-chunk-14-3.png)<!-- -->

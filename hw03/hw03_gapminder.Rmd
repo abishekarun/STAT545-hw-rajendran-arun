@@ -36,11 +36,11 @@ table %>%
 
 <div class="twoC">
 ```{r results = 'asis', echo=FALSE}
-a<- gapminder %>%
+gdpPercapta_data<- gapminder %>%
       group_by(continent)%>%
       summarize(min_gdpPercap=min(gdpPercap),
                 max_gdpPercap=max(gdpPercap))
-tableFormat(a) 
+tableFormat(gdpPercapta_data) 
 ```
 
 ```{r echo=FALSE}
@@ -54,12 +54,12 @@ gapminder%>%
 
 <i>Plot of minimum and maximum for each continent.</i>
 ```{r}
-a%>%  
+gdpPercapta_data%>%  
   ggplot(aes(continent,min_gdpPercap))+
   geom_col()+
   ggtitle("Minimum gdpPercap for each continent")
 
-a%>%  
+gdpPercapta_data%>%  
   ggplot(aes(continent,max_gdpPercap))+
   geom_col()+
   ggtitle("Maximum gdpPercap for each continent")
@@ -75,19 +75,19 @@ for Oceania and lowest for Africa. Similarly, the maximum gdpPercap is highest f
 ```{r}
 grouped<- gapminder%>%  
         group_by(continent)
-b1<- grouped%>%
+spread1<- grouped%>%
         summarize(min=quantile(gdpPercap,0),
                   Q1=quantile(gdpPercap,0.25),      # First quartile
                   median=quantile(gdpPercap,0.50), 
                   Q3=quantile(gdpPercap,0.75),      # Third quartile
                   max=quantile(gdpPercap,1),
                   Interquartile=IQR(gdpPercap))
-b2<-grouped%>%
+spread2<-grouped%>%
       summarize(variance=var(gdpPercap),
                   std_dev=sd(gdpPercap))
 
-pandoc.table(b1,style = "grid", caption = "Quantiles spread of GDP",justify="center", plain.ascii = TRUE, split.table = Inf)
-pandoc.table(b2,style = "grid", caption = "Variance & Std Dev of GDP",justify="center", plain.ascii = TRUE, split.table = Inf)
+pandoc.table(spread1,style = "grid", caption = "Quantiles spread of GDP",justify="center", plain.ascii = TRUE, split.table = Inf)  #plain.ascii to keep output in plain ascii format
+pandoc.table(spread2,style = "grid", caption = "Variance & Std Dev of GDP",justify="center", plain.ascii = TRUE, split.table = Inf)
 
 
 ```
@@ -97,15 +97,15 @@ pandoc.table(b2,style = "grid", caption = "Variance & Std Dev of GDP",justify="c
 <h3>Trimmed mean of life Expectancy</h3>
 <div class="twoC">
 ```{r results = 'asis', echo=FALSE}
-c<- gapminder %>%
+trimmed_lifeExp<- gapminder %>%
       group_by(year)%>%
       summarize(mean_life_exp=mean(lifeExp,0.10))
-tableFormat(c) 
+tableFormat(trimmed_lifeExp) 
 ```
 
 <i>Plot of the trimmed mean over the years.</i>
 ```{r echo=FALSE}
-c%>%  
+trimmed_lifeExp%>%  
   ggplot(aes(year,mean_life_exp))+
   geom_line()+
   ggtitle("Plot of the trimmed mean vs year")
@@ -117,15 +117,15 @@ c%>%
 
 <div class="twoC">
 ```{r results = 'asis', echo=FALSE}
-d<- gapminder %>%
+weighted_lifeExp<- gapminder %>%
       group_by(year)%>%
       summarize(mean_life_exp=weighted.mean(lifeExp,pop))
-tableFormat(d) 
+tableFormat(weighted_lifeExp) 
 ```
 
 <i>Plot of the weighted mean over the years.</i>
 ```{r echo=FALSE}
-d%>%  
+weighted_lifeExp%>%  
   ggplot(aes(year,mean_life_exp))+
   geom_line()+
   ggtitle("Plot of the weighted mean vs year")
@@ -138,15 +138,15 @@ d%>%
 <h3>Life Expectancy changing over years for different continents</h3>
 <div class="center">
 ```{r results = 'asis', echo=FALSE}
-e<- gapminder %>%
+change_lifeExp<- gapminder %>%
       group_by(continent,year)%>%
       summarize(mean_life_exp=weighted.mean(lifeExp,pop))
-tableFormat(e) 
+tableFormat(change_lifeExp) 
 ```
 
 <i>Plot of the mean lifeExp over the years for different continents.</i>
 ```{r echo=FALSE}
-e%>%  
+change_lifeExp%>%  
   ggplot(aes(year,mean_life_exp,color=continent))+
   geom_line()+
   ggtitle("Plot of mean lifeExp vs year for different continents")
@@ -157,38 +157,43 @@ e%>%
 <h3>Countries with low life expectancy each year</h3>
 
 ```{r}
-f<- gapminder %>%
+list_of_countries<- gapminder %>%
         group_by(year)%>%
         mutate(dev_lifeExp=lifeExp-weighted.mean(lifeExp,pop))%>%
         filter(dev_lifeExp<0)%>%
         group_by(continent,year)%>%
         summarize(no_of_countries=length(country))
-tableFormat(f)
+tableFormat(list_of_countries)
 
-f%>%
+list_of_countries%>%
   ggplot(aes(year,no_of_countries,color=continent))+
   geom_line()
 
-g<-gapminder %>%
+europe_list<-gapminder %>%
         group_by(year)%>%
         mutate(dev_lifeExp=lifeExp-weighted.mean(lifeExp,pop))%>%
         filter(dev_lifeExp<0)%>%
         group_by(continent,year)%>%
         filter(continent=="Europe")%>%
         select(year,country,continent,lifeExp,dev_lifeExp)
-tableFormat(g)
+tableFormat(europe_list)
 ```
 
 <i> The only country in Europe that has low life expectancy over the years is turkey. Lets take a look at the story of turkey.</i>
 
 <h3>Story of Turkey</h3>
+
+**Note**:
+- aes_string() should be used inside function for ggplot and the column names should be passed as strings. 
+- plots is user defined function() containing ggplot()
+
 ```{r}
 turkey_data<-gapminder %>%
                   filter(country=="Turkey")
-country_list<-subset(gapminder,continent=="Europe")
+europe_country_list<-subset(gapminder,continent=="Europe")
               
 plots<-function(dataset,x,y,dataset2,z){
-  ggplot(data=dataset,aes_string(dataset[[x]],dataset[[y]]))+
+  ggplot(data=dataset,aes_string(dataset[[x]],dataset[[y]]))+    
   geom_line(aes(color="red"))+
   geom_point()+ 
   geom_line(data=dataset2,aes_string(dataset2[[x]],dataset2[[y]],
@@ -197,11 +202,11 @@ plots<-function(dataset,x,y,dataset2,z){
   ylab(y)
 }
 
-plots(turkey_data,"year","lifeExp",country_list,"country")
+plots(turkey_data,"year","lifeExp",europe_country_list,"country")
 
-plots(turkey_data,"year","gdpPercap",country_list,"country")
+plots(turkey_data,"year","gdpPercap",europe_country_list,"country")
 
-plots(turkey_data,"year","pop",country_list,"country")
+plots(turkey_data,"year","pop",europe_country_list,"country")
 
 gapminder %>%
   filter(continent=="Europe" & pop>60000000)%>%
