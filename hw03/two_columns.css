@@ -1,0 +1,8 @@
+.twoC {width: 100%}
+.clearer {clear: both}
+.twoC .table {max-width: 50%; float: right;vertical-align:top;}
+.twoC img {max-width: 50%; float: left;vertical-align:top;}
+.center {
+    margin: auto;
+    width: 100%;
+}

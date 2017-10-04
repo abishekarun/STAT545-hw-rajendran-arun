@@ -1,0 +1,285 @@
+---
+title: "hw03_gapminder.Rmd"
+output: 
+  html_document:
+    css: two_columns.css
+---
+
+First install and load the required packages tidyverse(for loading dplyr &its  functions),gapminder(dataset),ggplot2(for visualizations and plotting quality graphs), knitr and kableExtra (these two packages for styling tables) and pander for better looking tables.  
+```{r}
+suppressPackageStartupMessages(library(tidyverse))
+suppressPackageStartupMessages(library(gapminder))
+suppressPackageStartupMessages(library(ggplot2))
+suppressPackageStartupMessages(library(knitr))
+suppressPackageStartupMessages(library(kableExtra))
+suppressPackageStartupMessages(library(pander))
+options(knitr.table.format = "html")
+
+```
+
+Let us define a function for formatting the tables that can be used in this file. It is using kable function from knitr package and kable_styling() from kableExtra package for advanced formatting options.
+```{r}
+tableFormat<-function(table,title=""){
+table %>%      
+  kable("html",caption=title, align=c(rep('c', 5))) %>%
+      kable_styling(bootstrap_options = 
+                      c("striped", "hover", "condensed",  "responsive"),
+                    position="center",font_size=14)
+}
+```
+
+
+<h2>First Task</h2>
+<h3>Get the maximum and minimum of GDP per capita for all continents.</h3>
+<i>Let us find the min and max value and plot a box plot of GDP per capita for all continents.</i>
+
+<div class="twoC">
+```{r results = 'asis', echo=FALSE}
+a<- gapminder %>%
+      group_by(continent)%>%
+      summarize(min_gdpPercap=min(gdpPercap),
+                max_gdpPercap=max(gdpPercap))
+tableFormat(a) 
+```
+
+```{r echo=FALSE}
+gapminder%>%  
+  ggplot(aes(continent,gdpPercap))+
+  geom_boxplot()+
+  ggtitle("Boxplot of gdpPercap for continents")
+```
+</div>
+<div class="clearer"></div>
+
+<i>Plot of minimum and maximum for each continent.</i>
+```{r}
+a%>%  
+  ggplot(aes(continent,min_gdpPercap))+
+  geom_col()+
+  ggtitle("Minimum gdpPercap for each continent")
+
+a%>%  
+  ggplot(aes(continent,max_gdpPercap))+
+  geom_col()+
+  ggtitle("Maximum gdpPercap for each continent")
+```
+
+Insights from the plots and table:<br/>
+- The plot and the table clearly indicate that the minimum gdpPercap is highest
+for Oceania and lowest for Africa. Similarly, the maximum gdpPercap is highest for Asia and lowest for Africa.
+
+<h2>Second Task</h2>
+
+<h3>Spread of GDP per capita within the continents</h3>
+```{r}
+grouped<- gapminder%>%  
+        group_by(continent)
+b1<- grouped%>%
+        summarize(min=quantile(gdpPercap,0),
+                  Q1=quantile(gdpPercap,0.25),      # First quartile
+                  median=quantile(gdpPercap,0.50), 
+                  Q3=quantile(gdpPercap,0.75),      # Third quartile
+                  max=quantile(gdpPercap,1),
+                  Interquartile=IQR(gdpPercap))
+b2<-grouped%>%
+      summarize(variance=var(gdpPercap),
+                  std_dev=sd(gdpPercap))
+
+pandoc.table(b1,style = "grid", caption = "Quantiles spread of GDP",justify="center", plain.ascii = TRUE, split.table = Inf)
+pandoc.table(b2,style = "grid", caption = "Variance & Std Dev of GDP",justify="center", plain.ascii = TRUE, split.table = Inf)
+
+
+```
+
+<h2>Third Task</h2>
+
+<h3>Trimmed mean of life Expectancy</h3>
+<div class="twoC">
+```{r results = 'asis', echo=FALSE}
+c<- gapminder %>%
+      group_by(year)%>%
+      summarize(mean_life_exp=mean(lifeExp,0.10))
+tableFormat(c) 
+```
+
+<i>Plot of the trimmed mean over the years.</i>
+```{r echo=FALSE}
+c%>%  
+  ggplot(aes(year,mean_life_exp))+
+  geom_line()+
+  ggtitle("Plot of the trimmed mean vs year")
+```
+</div> 
+<div class="clearer"></div>
+
+<h3>Now weighted mean using population</h3>
+
+<div class="twoC">
+```{r results = 'asis', echo=FALSE}
+d<- gapminder %>%
+      group_by(year)%>%
+      summarize(mean_life_exp=weighted.mean(lifeExp,pop))
+tableFormat(d) 
+```
+
+<i>Plot of the weighted mean over the years.</i>
+```{r echo=FALSE}
+d%>%  
+  ggplot(aes(year,mean_life_exp))+
+  geom_line()+
+  ggtitle("Plot of the weighted mean vs year")
+```
+</div> 
+<div class="clearer"></div>
+
+<h2>Fourth task</h2>
+
+<h3>Life Expectancy changing over years for different continents</h3>
+<div class="center">
+```{r results = 'asis', echo=FALSE}
+e<- gapminder %>%
+      group_by(continent,year)%>%
+      summarize(mean_life_exp=weighted.mean(lifeExp,pop))
+tableFormat(e) 
+```
+
+<i>Plot of the mean lifeExp over the years for different continents.</i>
+```{r echo=FALSE}
+e%>%  
+  ggplot(aes(year,mean_life_exp,color=continent))+
+  geom_line()+
+  ggtitle("Plot of mean lifeExp vs year for different continents")
+```
+
+<h2>Fifth task</h2>
+
+<h3>Countries with low life expectancy each year</h3>
+
+```{r}
+f<- gapminder %>%
+        group_by(year)%>%
+        mutate(dev_lifeExp=lifeExp-weighted.mean(lifeExp,pop))%>%
+        filter(dev_lifeExp<0)%>%
+        group_by(continent,year)%>%
+        summarize(no_of_countries=length(country))
+tableFormat(f)
+
+f%>%
+  ggplot(aes(year,no_of_countries,color=continent))+
+  geom_line()
+
+g<-gapminder %>%
+        group_by(year)%>%
+        mutate(dev_lifeExp=lifeExp-weighted.mean(lifeExp,pop))%>%
+        filter(dev_lifeExp<0)%>%
+        group_by(continent,year)%>%
+        filter(continent=="Europe")%>%
+        select(year,country,continent,lifeExp,dev_lifeExp)
+tableFormat(g)
+```
+
+<i> The only country in Europe that has low life expectancy over the years is turkey. Lets take a look at the story of turkey.</i>
+
+<h3>Story of Turkey</h3>
+```{r}
+turkey_data<-gapminder %>%
+                  filter(country=="Turkey")
+country_list<-subset(gapminder,continent=="Europe")
+              
+plots<-function(dataset,x,y,dataset2,z){
+  ggplot(data=dataset,aes_string(dataset[[x]],dataset[[y]]))+
+  geom_line(aes(color="red"))+
+  geom_point()+ 
+  geom_line(data=dataset2,aes_string(dataset2[[x]],dataset2[[y]],
+                                     group=dataset2[[z]]),alpha=0.5)+  
+  xlab(x)+
+  ylab(y)
+}
+
+plots(turkey_data,"year","lifeExp",country_list,"country")
+
+plots(turkey_data,"year","gdpPercap",country_list,"country")
+
+plots(turkey_data,"year","pop",country_list,"country")
+
+gapminder %>%
+  filter(continent=="Europe" & pop>60000000)%>%
+  distinct(country)
+
+gapminder %>%
+  group_by(year)%>%
+  filter(continent=="Europe" & gdpPercap<gdpPercap[country=="Turkey"])%>%
+  distinct(country)
+```
+
+<h4>Observations:</h4>
+1. The life expectancy of turkey is lowest in europe over all the years. <br/>
+2. The population is increasing and is only second most to germany in Europe in the year 2007.<br/>
+3. Only four countries have more than 60 million population in 2007 in Europe.<br/>
+4. The gdpPercap is also low for turkey with just two countries(Albania,Bosnia and Herzegovina) having lower gdpPercap for all years. <br/>
+
+
+<h3>Countries with interesting stories..</h3>
+
+<i>Lets first look with respect to lifeExp</i>
+```{r}
+ggplot(gapminder,aes(year,lifeExp,group=country))+
+  geom_line()+
+  facet_wrap(~continent)
+
+gapminder%>%
+  group_by(continent,country)%>%
+  mutate(change = ifelse(year==1952,0,lifeExp-lag(lifeExp)))%>%
+  select(country,continent,year,lifeExp,change)%>%
+  filter(change< -5)%>%
+  arrange(change)
+
+```
+
+<h4>Observations:</h4>
+1. Rwanda has a huge drop from 44(in 1987) to 23(in 1992) and it again increased to 36(in 1997). This is due to the rwandan genocide that took place in 1990s.<br/>
+2. Cambodia has a drop from 40(in 1972) to 31(in 1977) and it again increased to 50(in 1982). This is due to the Cambodian genocide that took place between 1975 to 1979.<br/>
+3. China has a decrease in 1962 due to Sino Indian war.<br/>
+4. Iraq has a decrease in 1992 due to Gulf war. <br/>
+5. Liberia has a decrease in 1992 due to Liberian civil war(1989-1996).<br/>
+6. HIV/AIDS epidemic caused the decrease of lifeExp in countries in Africa during late 1990s and early 2000s such as Botswana,zimbabwe,Swaziland,South Africa,Namibia and Lestho.<br/>
+
+<i>Now lets look with respect to population</i>
+
+```{r}
+ggplot(gapminder,aes(year,pop,group=country))+
+  geom_line()+
+  facet_wrap(~continent)
+
+gapminder%>%
+  group_by(continent,country)%>%
+  mutate(change = ifelse(year==1952,0,pop-lag(pop)))%>%
+  select(country,continent,year,pop,change)%>%
+  filter(change< -500000)%>%   # 500k chosen to look at major changes only. 
+  arrange(change)
+```
+<h4>Observations:</h4>
+1. Afghanistan had a major decrease of population in 1982 due to Soviet-Afghan war(1979-1989)<br/>
+2. Somalia had a major decrease of population in 1982 due to the Somali famine.<br/>
+3. Germany has a decrease during 1970s and 1980s due to low birth rates,low fertility rates and higher deaths as compared to births.<br/>
+4. Bulgaria has a decrease due to financial crisis in 1996-1997 which might have led to immigration.<br/>
+5. Bosnia and Herzegovina has a decrease due to bosnian war(1997-1998).<br/>
+
+<i>Next,lets look with respect to gdpPercap</i>
+```{r}
+ggplot(gapminder,aes(year,gdpPercap,group=country))+
+  geom_line()+
+  facet_wrap(~continent)
+
+gapminder%>%
+  group_by(continent,country)%>%
+  mutate(change = ifelse(year==1952,0,gdpPercap-lag(gdpPercap)))%>%
+  select(country,continent,year,gdpPercap,change)%>%
+  filter(change< -10000)%>%   # 10k chosen to look at major changes only. 
+  arrange(year)
+```
+<h4>Observations:</h4>
+- Kuwait and Saudi Arabia are economies heavily dependent on oil prices. Their gdpPercap fall can be attributed to fluctuating oil price per barrell and [1986 oil price collapse](https://www.brookings.edu/wp-content/uploads/1986/06/1986b_bpea_gately_adelman_griffin.pdf).<br/>
+</div>
+<div class="clearer"></div>
+
