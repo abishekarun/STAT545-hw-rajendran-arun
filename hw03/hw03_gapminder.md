@@ -1052,7 +1052,7 @@ gapminder %>%
 1. The life expectancy of turkey is lowest in europe over all the years. <br/>
 2. The population is increasing and is only second most to germany in Europe in the year 2007.<br/>
 3. Only four countries have more than 60 million population in 2007 in Europe.<br/>
-4. The gdpPercap is also low for turkey with just two countries(Albania,Bosnia and Herzegovina) having lower gdpPercap for all years. <br/>
+4. The gdpPercap is also low for turkey with just two countries(Albania,Bosnia and Herzegovina) having lower gdpPercap for all years. Bulgaria and Montenegro has less gdpPercap than turkey only in 1997. <br/>
 
 
 <h3>Countries with interesting stories..</h3>
