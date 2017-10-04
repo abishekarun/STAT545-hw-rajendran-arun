@@ -224,7 +224,8 @@ gapminder %>%
 gapminder %>%
   group_by(year)%>%
   filter(continent=="Europe" & gdpPercap<gdpPercap[country=="Turkey"])%>%
-  distinct(country)
+  select(country,continent,year,gdpPercap)%>%
+  arrange(desc(year))
 ```
 
 <h4>Observations:</h4>

@@ -1025,25 +1025,26 @@ gapminder %>%
 gapminder %>%
   group_by(year)%>%
   filter(continent=="Europe" & gdpPercap<gdpPercap[country=="Turkey"])%>%
-  distinct(country)
+  select(country,continent,year,gdpPercap)%>%
+  arrange(desc(year))
 ```
 
 ```
-## Source: local data frame [26 x 2]
+## Source: local data frame [26 x 4]
 ## Groups: year [12]
 ## 
-##    country  year
-##     <fctr> <int>
-## 1  Albania  1952
-## 2  Albania  1957
-## 3  Albania  1962
-## 4  Albania  1967
-## 5  Albania  1972
-## 6  Albania  1977
-## 7  Albania  1982
-## 8  Albania  1987
-## 9  Albania  1992
-## 10 Albania  1997
+##                   country continent  year gdpPercap
+##                    <fctr>    <fctr> <int>     <dbl>
+## 1                 Albania    Europe  2007  5937.030
+## 2  Bosnia and Herzegovina    Europe  2007  7446.299
+## 3                 Albania    Europe  2002  4604.212
+## 4  Bosnia and Herzegovina    Europe  2002  6018.975
+## 5                 Albania    Europe  1997  3193.055
+## 6  Bosnia and Herzegovina    Europe  1997  4766.356
+## 7                Bulgaria    Europe  1997  5970.389
+## 8              Montenegro    Europe  1997  6465.613
+## 9                 Albania    Europe  1992  2497.438
+## 10 Bosnia and Herzegovina    Europe  1992  2546.781
 ## # ... with 16 more rows
 ```
 
