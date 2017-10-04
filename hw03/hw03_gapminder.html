@@ -1947,6 +1947,20 @@ plots(turkey_data,&quot;year&quot;,&quot;lifeExp&quot;,europe_country_list,&quot
 ## 2        Germany
 ## 3         Turkey
 ## 4 United Kingdom</code></pre>
+<pre class="r"><code>#distinct countries that have had lower gdpPercap than Turkey at some point of time
+gapminder %&gt;%
+  group_by(year)%&gt;%
+  filter(continent==&quot;Europe&quot; &amp; gdpPercap&lt;gdpPercap[country==&quot;Turkey&quot;])%&gt;%
+  subset(!duplicated(country))%&gt;%
+  ungroup(year)%&gt;%
+  select(country)</code></pre>
+<pre><code>## # A tibble: 4 × 1
+##                  country
+##                   &lt;fctr&gt;
+## 1                Albania
+## 2 Bosnia and Herzegovina
+## 3               Bulgaria
+## 4             Montenegro</code></pre>
 <pre class="r"><code>gapminder %&gt;%
   group_by(year)%&gt;%
   filter(continent==&quot;Europe&quot; &amp; gdpPercap&lt;gdpPercap[country==&quot;Turkey&quot;])%&gt;%

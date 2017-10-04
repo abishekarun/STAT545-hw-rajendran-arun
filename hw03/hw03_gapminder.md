@@ -1002,6 +1002,26 @@ gapminder %>%
 ```
 
 ```r
+#distinct countries that have had lower gdpPercap than Turkey at some point of time
+gapminder %>%
+  group_by(year)%>%
+  filter(continent=="Europe" & gdpPercap<gdpPercap[country=="Turkey"])%>%
+  subset(!duplicated(country))%>%
+  ungroup(year)%>%
+  select(country)
+```
+
+```
+## # A tibble: 4 × 1
+##                  country
+##                   <fctr>
+## 1                Albania
+## 2 Bosnia and Herzegovina
+## 3               Bulgaria
+## 4             Montenegro
+```
+
+```r
 gapminder %>%
   group_by(year)%>%
   filter(continent=="Europe" & gdpPercap<gdpPercap[country=="Turkey"])%>%
