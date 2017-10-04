@@ -3,6 +3,7 @@ title: "hw03_gapminder.Rmd"
 output: 
   html_document:
     css: two_columns.css
+    keep_md: yes
 ---
 
 First install and load the required packages tidyverse(for loading dplyr &its  functions),gapminder(dataset),ggplot2(for visualizations and plotting quality graphs), knitr and kableExtra (these two packages for styling tables) and pander for better looking tables.  
