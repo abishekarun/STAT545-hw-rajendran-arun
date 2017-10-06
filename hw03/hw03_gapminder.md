@@ -1179,7 +1179,7 @@ gapminder%>%
 ## 5 Saudi Arabia      Asia  1987  21198.26 -12494.91
 ```
 <h4>Observations:</h4>
-- Kuwait and Saudi Arabia are economies heavily dependent on oil prices. Their gdpPercap fall can be attributed to fluctuating oil price per barrell and [1986 oil price collapse](https://www.brookings.edu/wp-content/uploads/1986/06/1986b_bpea_gately_adelman_griffin.pdf).<br/>
+- Kuwait and Saudi Arabia are economies heavily dependent on oil prices. Their gdpPercap fall can be attributed to fluctuating oil price per barrell and <a href="https://www.brookings.edu/wp-content/uploads/1986/06/1986b_bpea_gately_adelman_griffin.pdf">1986 oil price collapse</a>.<br/>
 </div>
 <div class="clearer"></div>
 
