@@ -73,6 +73,8 @@ a%>%
   geom_line(aes(y = Europe, colour = "Europe"))+ 
   geom_line(aes(y = Oceania, colour = "Oceania"))+
   ylab("Mean Life Expectancy")
+
+
 ```
 
 With this reshaping it is easier to plot and compare the mean life expectancy of different continents over the years than with the actual dataset and it can be seen in the above plot.
@@ -121,8 +123,8 @@ company<-c(rep("Marvel",5),rep("DC",5),"Star wars")
 movies<-data.frame(names,release_year,directors,company)
 
 company<-c("Marvel","DC","Star trek")
-yr_founded<-c(1934,1939,1966)
-studios<-data.frame(company,yr_founded)
+yrFounded<-c(1934,1939,1966)
+studios<-data.frame(company,yrFounded)
 ```
 
 Lets view the datasets movies
@@ -181,19 +183,19 @@ It just returns the first match of company marvel in movies which is Iron Man mo
 tableFormat(movies[which(!is.na(match(movies$company,studios$company))),])
 ```
 
-anti_join(movies,studios)
+**anti_join(movies,studios)**
 ```{r}
 #Next is anti_join(movies,studios)
 tableFormat(movies[which(is.na(match(movies$company,studios$company))),])
 ```
 
-semi_join(studios,movies)
+**semi_join(studios,movies)**
 ```{r}
 #semi_join(studios,movies)
 tableFormat(studios[which(!is.na(match(studios$company,movies$company))),])
 ```
 
-anti_join(studios,movies)
+**anti_join(studios,movies)**
 ```{r}
 #anti_join(studios,movies)
 tableFormat(studios[which(is.na(match(studios$company,movies$company))),])

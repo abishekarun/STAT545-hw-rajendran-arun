@@ -768,8 +768,8 @@ company<-c(rep("Marvel",5),rep("DC",5),"Star wars")
 movies<-data.frame(names,release_year,directors,company)
 
 company<-c("Marvel","DC","Star trek")
-yr_founded<-c(1934,1939,1966)
-studios<-data.frame(company,yr_founded)
+yrFounded<-c(1934,1939,1966)
+studios<-data.frame(company,yrFounded)
 ```
 
 Lets view the datasets movies
@@ -969,7 +969,7 @@ tableFormat(studios)
 company
 </th>
 <th style="text-align:center;">
-yr\_founded
+yrFounded
 </th>
 </tr>
 </thead>
@@ -1028,7 +1028,7 @@ release\_year
 directors
 </th>
 <th style="text-align:center;">
-yr\_founded
+yrFounded
 </th>
 </tr>
 </thead>
@@ -1229,7 +1229,7 @@ release\_year
 directors
 </th>
 <th style="text-align:center;">
-yr\_founded
+yrFounded
 </th>
 </tr>
 </thead>
@@ -1447,7 +1447,7 @@ release\_year
 directors
 </th>
 <th style="text-align:center;">
-yr\_founded
+yrFounded
 </th>
 </tr>
 </thead>
@@ -1665,7 +1665,7 @@ release\_year
 directors
 </th>
 <th style="text-align:center;">
-yr\_founded
+yrFounded
 </th>
 </tr>
 </thead>
@@ -2117,7 +2117,7 @@ DC
 </tr>
 </tbody>
 </table>
-anti\_join(movies,studios)
+**anti\_join(movies,studios)**
 
 ``` r
 #Next is anti_join(movies,studios)
@@ -2165,7 +2165,7 @@ Star wars
 </tr>
 </tbody>
 </table>
-semi\_join(studios,movies)
+**semi\_join(studios,movies)**
 
 ``` r
 #semi_join(studios,movies)
@@ -2181,7 +2181,7 @@ tableFormat(studios[which(!is.na(match(studios$company,movies$company))),])
 company
 </th>
 <th style="text-align:center;">
-yr\_founded
+yrFounded
 </th>
 </tr>
 </thead>
@@ -2204,7 +2204,7 @@ DC
 </tr>
 </tbody>
 </table>
-anti\_join(studios,movies)
+**anti\_join(studios,movies)**
 
 ``` r
 #anti_join(studios,movies)
@@ -2222,7 +2222,7 @@ tableFormat(studios[which(is.na(match(studios$company,movies$company))),])
 company
 </th>
 <th style="text-align:center;">
-yr\_founded
+yrFounded
 </th>
 </tr>
 </thead>
