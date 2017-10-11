@@ -251,7 +251,7 @@ Lets explore the different ways of joining these two dataframes.
 
 ### Different types of join
 
-##### inner\_join(movies,studios)
+#### inner\_join(movies,studios)
 
 > inner\_join(x, y): Return all rows from x where there are matching values in y, and all columns from x and y. If there are multiple matches between x and y, all combination of the matches are returned. This is a mutating join.
 
@@ -459,7 +459,7 @@ DC
 </table>
 We lose Force Awakens in the join because, although they appear in x = movies, their corrosponding company "Star wars" doesn't not appear in y = studios. The join result has all variables from x = movies plus yr\_founded, from y.
 
-##### semi\_join(movies,studios)
+#### semi\_join(movies,studios)
 
 > semi\_join(x, y): Return all rows from x where there are matching values in y, keeping just columns from x. A semi join differs from an inner join because an inner join will return one row of x for each matching row of y, where a semi join will never duplicate rows of x. This is a filtering join.
 
@@ -634,7 +634,7 @@ DC
 </table>
 We get a similar result as with inner\_join() but the join result contains only the variables originally found in x = movies. But note the row order has changed.
 
-##### left\_join(movies,studios)
+#### left\_join(movies,studios)
 
 > left\_join(x, y): Return all rows from x, and all columns from x and y. If there are multiple matches between x and y, all combination of the matches are returned. This is a mutating join.
 
@@ -859,7 +859,7 @@ NA
 </table>
 We basically get x = movies back, but with the addition of variable yr\_founded, which is unique to y = studios. Force Awakens, whose company don't appear in y = studios, has an NA for company.
 
-##### anti\_join(movies,studios)
+#### anti\_join(movies,studios)
 
 > anti\_join(x, y): Return all rows from x where there are not matching values in y, keeping just columns from x. This is a filtering join.
 
@@ -908,7 +908,7 @@ Star wars
 </table>
 We keep only Force Awakens now (and do not get company).
 
-##### inner\_join(studios,movies)
+#### inner\_join(studios,movies)
 
 > inner\_join(x, y): Return all rows from x where there are matching values in y, and all columns from x and y. If there are multiple matches between x and y, all combination of the matches are returned. This is a mutating join.
 
@@ -1116,7 +1116,7 @@ Zack Snyder
 </table>
 In a way, this does illustrate multiple matches, if you think about it from the x = studios direction. Every company that has a match in y = movies appears multiple times in the result, once for each match. In fact, we’re getting the same result as with inner\_join(movies,studios), up to variable order (which you should also never rely on in an analysis).
 
-##### semi\_join(studios,movies)
+#### semi\_join(studios,movies)
 
 > semi\_join(x, y): Return all rows from x where there are matching values in y, keeping just columns from x. A semi join differs from an inner join because an inner join will return one row of x for each matching row of y, where a semi join will never duplicate rows of x. This is a filtering join.
 
@@ -1161,7 +1161,7 @@ DC
 </table>
 Now the effects of switching the x and y roles is more clear. The result resembles x = studios, but the company star wars is lost, because there are no observations where company == "star wars" in y = movies.
 
-##### left\_join(studios,movies)
+#### left\_join(studios,movies)
 
 > left\_join(x, y): Return all rows from x, and all columns from x and y. If there are multiple matches between x and y, all combination of the matches are returned. This is a mutating join.
 
@@ -1187,7 +1187,7 @@ suppressWarnings(suppressMessages(
 
 We get a similar result as with inner\_join() but the company star wars survives in the join, even though no moveis from star wars that appear in y = movies. As a result, star wars has NA in names,release\_year and directors.
 
-##### anti\_join(studios,moviess)
+#### anti\_join(studios,moviess)
 
 > anti\_join(x, y): Return all rows from x where there are not matching values in y, keeping just columns from x. This is a filtering join.
 
@@ -1224,7 +1224,7 @@ Star trek
 </table>
 We keep only company star wars now (and the variables found in x = studios).
 
-##### full\_join
+#### full\_join
 
 > full\_join(x, y): Return all rows and all columns from both x and y. Where there are not matching values, returns NA for the one missing. This is a mutating join.
 

@@ -192,7 +192,7 @@ Lets explore the different ways of joining these two dataframes.
 
 ### Different types of join
 
-##### inner\_join(data1,my\_gap)
+#### inner\_join(data1,my\_gap)
 
 ``` r
 #inner_join
@@ -279,7 +279,7 @@ OC
 </tr>
 </tbody>
 </table>
-##### inner\_join(my\_Gap,data1)
+#### inner\_join(my\_Gap,data1)
 
 ``` r
 suppressWarnings(suppressMessages(
@@ -367,7 +367,7 @@ OC
 </table>
 Both the inner join commands give the same output. This operation returns the common rows from both datasets along with all columns from both datasets.(It is intersection of both datasets) Here the number of common rows is four continents and total number of columns is 4.
 
-##### left\_join
+#### left\_join
 
 ``` r
 #left join
@@ -498,7 +498,7 @@ NA
 </table>
 This operation returns all rows from the first dataset(data1 in this case) and all columns from both datasets. When a row from first dataset has no match, NA values will be present. This happens in the above case for North America,South America and Antarctica as these are not present in my\_gap dataset. So the mean\_lifeExp values are filled with NA.
 
-##### right\_join
+#### right\_join
 
 ``` r
 #right join
@@ -601,7 +601,7 @@ OC
 </table>
 right\_join does the same thing as left\_join but on the second dataset. Here the rows from second dataset are returned. Hence, americas has code and hemisphere value as NA since it is not found in data1 dataset.
 
-##### full\_join
+#### full\_join
 
 ``` r
 #full join
@@ -746,7 +746,7 @@ NA
 </table>
 Returns all rows and columns from both datasets. Missing values are filled with NAs.Therefore it returns eight columns(it is similar to union of both dataframes).
 
-##### semi\_join
+#### semi\_join
 
 ``` r
 #semi join
@@ -820,7 +820,7 @@ OC
 </table>
 Returns rows of first dataset that are common with second dataset keeping only the columns of first dataset. (similar to intersection of two datasets with only columns from first dataset). So only three columns of data1 is returned with only four rows(the ones corrosponding to common continents)
 
-##### anti\_join
+#### anti\_join
 
 ``` r
 #anti join
