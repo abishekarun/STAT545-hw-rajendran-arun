@@ -27,31 +27,165 @@ my_gap<- gapminder%>%
 Lets view the two datasets
 
 ``` r
-data1
+tableFormat(data1)
 ```
 
-    ##       continent hemisphere codes
-    ## 1          Asia   Northern    AS
-    ## 2        Africa   Northern    AF
-    ## 3 North America   Southern   NOA
-    ## 4 South America         NS   SOA
-    ## 5        Europe   Northern    EU
-    ## 6       Oceania   Southern    OC
-    ## 7    Antarctica   Southern    AN
-
+<table class="table table-striped table-hover table-responsive" style="font-size: 14px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;">
+continent
+</th>
+<th style="text-align:center;">
+hemisphere
+</th>
+<th style="text-align:center;">
+codes
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">
+Asia
+</td>
+<td style="text-align:center;">
+Northern
+</td>
+<td style="text-align:center;">
+AS
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Africa
+</td>
+<td style="text-align:center;">
+Northern
+</td>
+<td style="text-align:center;">
+AF
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+North America
+</td>
+<td style="text-align:center;">
+Southern
+</td>
+<td style="text-align:center;">
+NOA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+South America
+</td>
+<td style="text-align:center;">
+NS
+</td>
+<td style="text-align:center;">
+SOA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Europe
+</td>
+<td style="text-align:center;">
+Northern
+</td>
+<td style="text-align:center;">
+EU
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Oceania
+</td>
+<td style="text-align:center;">
+Southern
+</td>
+<td style="text-align:center;">
+OC
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Antarctica
+</td>
+<td style="text-align:center;">
+Southern
+</td>
+<td style="text-align:center;">
+AN
+</td>
+</tr>
+</tbody>
+</table>
 ``` r
-my_gap
+tableFormat(my_gap)
 ```
 
-    ## # A tibble: 5 × 2
-    ##   continent mean_lifeExp
-    ##      <fctr>        <dbl>
-    ## 1    Africa     48.86533
-    ## 2  Americas     64.65874
-    ## 3      Asia     60.06490
-    ## 4    Europe     71.90369
-    ## 5   Oceania     74.32621
-
+<table class="table table-striped table-hover table-responsive" style="font-size: 14px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;">
+continent
+</th>
+<th style="text-align:center;">
+mean\_lifeExp
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">
+Africa
+</td>
+<td style="text-align:center;">
+48.86533
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Americas
+</td>
+<td style="text-align:center;">
+64.65874
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Asia
+</td>
+<td style="text-align:center;">
+60.06490
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Europe
+</td>
+<td style="text-align:center;">
+71.90369
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Oceania
+</td>
+<td style="text-align:center;">
+74.32621
+</td>
+</tr>
+</tbody>
+</table>
 ### Different types of join
 
 ##### inner\_join
@@ -59,30 +193,172 @@ my_gap
 ``` r
 #inner_join
 suppressWarnings(suppressMessages(
-  inner_join(data1,my_gap,by="continent")
+  tableFormat(inner_join(data1,my_gap,by="continent"))
 ))
 ```
 
-    ##   continent hemisphere codes mean_lifeExp
-    ## 1      Asia   Northern    AS     60.06490
-    ## 2    Africa   Northern    AF     48.86533
-    ## 3    Europe   Northern    EU     71.90369
-    ## 4   Oceania   Southern    OC     74.32621
-
+<table class="table table-striped table-hover table-responsive" style="font-size: 14px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;">
+continent
+</th>
+<th style="text-align:center;">
+hemisphere
+</th>
+<th style="text-align:center;">
+codes
+</th>
+<th style="text-align:center;">
+mean\_lifeExp
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">
+Asia
+</td>
+<td style="text-align:center;">
+Northern
+</td>
+<td style="text-align:center;">
+AS
+</td>
+<td style="text-align:center;">
+60.06490
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Africa
+</td>
+<td style="text-align:center;">
+Northern
+</td>
+<td style="text-align:center;">
+AF
+</td>
+<td style="text-align:center;">
+48.86533
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Europe
+</td>
+<td style="text-align:center;">
+Northern
+</td>
+<td style="text-align:center;">
+EU
+</td>
+<td style="text-align:center;">
+71.90369
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Oceania
+</td>
+<td style="text-align:center;">
+Southern
+</td>
+<td style="text-align:center;">
+OC
+</td>
+<td style="text-align:center;">
+74.32621
+</td>
+</tr>
+</tbody>
+</table>
 ``` r
 suppressWarnings(suppressMessages(
-  inner_join(my_gap,data1,by="continent")
+  tableFormat(inner_join(my_gap,data1,by="continent"))
 ))
 ```
 
-    ## # A tibble: 4 × 4
-    ##   continent mean_lifeExp hemisphere  codes
-    ##       <chr>        <dbl>     <fctr> <fctr>
-    ## 1    Africa     48.86533   Northern     AF
-    ## 2      Asia     60.06490   Northern     AS
-    ## 3    Europe     71.90369   Northern     EU
-    ## 4   Oceania     74.32621   Southern     OC
-
+<table class="table table-striped table-hover table-responsive" style="font-size: 14px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;">
+continent
+</th>
+<th style="text-align:center;">
+mean\_lifeExp
+</th>
+<th style="text-align:center;">
+hemisphere
+</th>
+<th style="text-align:center;">
+codes
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">
+Africa
+</td>
+<td style="text-align:center;">
+48.86533
+</td>
+<td style="text-align:center;">
+Northern
+</td>
+<td style="text-align:center;">
+AF
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Asia
+</td>
+<td style="text-align:center;">
+60.06490
+</td>
+<td style="text-align:center;">
+Northern
+</td>
+<td style="text-align:center;">
+AS
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Europe
+</td>
+<td style="text-align:center;">
+71.90369
+</td>
+<td style="text-align:center;">
+Northern
+</td>
+<td style="text-align:center;">
+EU
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Oceania
+</td>
+<td style="text-align:center;">
+74.32621
+</td>
+<td style="text-align:center;">
+Southern
+</td>
+<td style="text-align:center;">
+OC
+</td>
+</tr>
+</tbody>
+</table>
 Both the inner join commands give the same output. This operation returns the common rows from both datasets along with all columns from both datasets.(It is intersection of both datasets) Here the number of common rows is four continents and total number of columns is 4.
 
 ##### left\_join
@@ -90,19 +366,130 @@ Both the inner join commands give the same output. This operation returns the co
 ``` r
 #left join
 suppressWarnings(suppressMessages(
-  left_join(data1,my_gap)
+  tableFormat(left_join(data1,my_gap))
 ))
 ```
 
-    ##       continent hemisphere codes mean_lifeExp
-    ## 1          Asia   Northern    AS     60.06490
-    ## 2        Africa   Northern    AF     48.86533
-    ## 3 North America   Southern   NOA           NA
-    ## 4 South America         NS   SOA           NA
-    ## 5        Europe   Northern    EU     71.90369
-    ## 6       Oceania   Southern    OC     74.32621
-    ## 7    Antarctica   Southern    AN           NA
-
+<table class="table table-striped table-hover table-responsive" style="font-size: 14px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;">
+continent
+</th>
+<th style="text-align:center;">
+hemisphere
+</th>
+<th style="text-align:center;">
+codes
+</th>
+<th style="text-align:center;">
+mean\_lifeExp
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">
+Asia
+</td>
+<td style="text-align:center;">
+Northern
+</td>
+<td style="text-align:center;">
+AS
+</td>
+<td style="text-align:center;">
+60.06490
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Africa
+</td>
+<td style="text-align:center;">
+Northern
+</td>
+<td style="text-align:center;">
+AF
+</td>
+<td style="text-align:center;">
+48.86533
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+North America
+</td>
+<td style="text-align:center;">
+Southern
+</td>
+<td style="text-align:center;">
+NOA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+South America
+</td>
+<td style="text-align:center;">
+NS
+</td>
+<td style="text-align:center;">
+SOA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Europe
+</td>
+<td style="text-align:center;">
+Northern
+</td>
+<td style="text-align:center;">
+EU
+</td>
+<td style="text-align:center;">
+71.90369
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Oceania
+</td>
+<td style="text-align:center;">
+Southern
+</td>
+<td style="text-align:center;">
+OC
+</td>
+<td style="text-align:center;">
+74.32621
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Antarctica
+</td>
+<td style="text-align:center;">
+Southern
+</td>
+<td style="text-align:center;">
+AN
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
 This operation returns all rows from the first dataset(data1 in this case) and all columns from both datasets. When a row from first dataset has no match, NA values will be present. This happens in the above case for North America,South America and Antarctica as these are not present in my\_gap dataset. So the mean\_lifeExp values are filled with NA.
 
 ##### right\_join
@@ -110,17 +497,102 @@ This operation returns all rows from the first dataset(data1 in this case) and a
 ``` r
 #right join
 suppressWarnings(suppressMessages(
-  right_join(data1,my_gap)
+  tableFormat(right_join(data1,my_gap))
 ))
 ```
 
-    ##   continent hemisphere codes mean_lifeExp
-    ## 1    Africa   Northern    AF     48.86533
-    ## 2  Americas       <NA>  <NA>     64.65874
-    ## 3      Asia   Northern    AS     60.06490
-    ## 4    Europe   Northern    EU     71.90369
-    ## 5   Oceania   Southern    OC     74.32621
-
+<table class="table table-striped table-hover table-responsive" style="font-size: 14px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;">
+continent
+</th>
+<th style="text-align:center;">
+hemisphere
+</th>
+<th style="text-align:center;">
+codes
+</th>
+<th style="text-align:center;">
+mean\_lifeExp
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">
+Africa
+</td>
+<td style="text-align:center;">
+Northern
+</td>
+<td style="text-align:center;">
+AF
+</td>
+<td style="text-align:center;">
+48.86533
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Americas
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+64.65874
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Asia
+</td>
+<td style="text-align:center;">
+Northern
+</td>
+<td style="text-align:center;">
+AS
+</td>
+<td style="text-align:center;">
+60.06490
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Europe
+</td>
+<td style="text-align:center;">
+Northern
+</td>
+<td style="text-align:center;">
+EU
+</td>
+<td style="text-align:center;">
+71.90369
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Oceania
+</td>
+<td style="text-align:center;">
+Southern
+</td>
+<td style="text-align:center;">
+OC
+</td>
+<td style="text-align:center;">
+74.32621
+</td>
+</tr>
+</tbody>
+</table>
 right\_join does the same thing as left\_join but on the second dataset. Here the rows from second dataset are returned. Hence, americas has code and hemisphere value as NA since it is not found in data1 dataset.
 
 ##### full\_join
@@ -128,20 +600,144 @@ right\_join does the same thing as left\_join but on the second dataset. Here th
 ``` r
 #full join
 suppressWarnings(suppressMessages(
-  full_join(data1,my_gap)
+  tableFormat(full_join(data1,my_gap))
 ))
 ```
 
-    ##       continent hemisphere codes mean_lifeExp
-    ## 1          Asia   Northern    AS     60.06490
-    ## 2        Africa   Northern    AF     48.86533
-    ## 3 North America   Southern   NOA           NA
-    ## 4 South America         NS   SOA           NA
-    ## 5        Europe   Northern    EU     71.90369
-    ## 6       Oceania   Southern    OC     74.32621
-    ## 7    Antarctica   Southern    AN           NA
-    ## 8      Americas       <NA>  <NA>     64.65874
-
+<table class="table table-striped table-hover table-responsive" style="font-size: 14px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;">
+continent
+</th>
+<th style="text-align:center;">
+hemisphere
+</th>
+<th style="text-align:center;">
+codes
+</th>
+<th style="text-align:center;">
+mean\_lifeExp
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">
+Asia
+</td>
+<td style="text-align:center;">
+Northern
+</td>
+<td style="text-align:center;">
+AS
+</td>
+<td style="text-align:center;">
+60.06490
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Africa
+</td>
+<td style="text-align:center;">
+Northern
+</td>
+<td style="text-align:center;">
+AF
+</td>
+<td style="text-align:center;">
+48.86533
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+North America
+</td>
+<td style="text-align:center;">
+Southern
+</td>
+<td style="text-align:center;">
+NOA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+South America
+</td>
+<td style="text-align:center;">
+NS
+</td>
+<td style="text-align:center;">
+SOA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Europe
+</td>
+<td style="text-align:center;">
+Northern
+</td>
+<td style="text-align:center;">
+EU
+</td>
+<td style="text-align:center;">
+71.90369
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Oceania
+</td>
+<td style="text-align:center;">
+Southern
+</td>
+<td style="text-align:center;">
+OC
+</td>
+<td style="text-align:center;">
+74.32621
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Antarctica
+</td>
+<td style="text-align:center;">
+Southern
+</td>
+<td style="text-align:center;">
+AN
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Americas
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+64.65874
+</td>
+</tr>
+</tbody>
+</table>
 Returns all rows and columns from both datasets. Missing values are filled with NAs.Therefore it returns eight columns(it is similar to union of both dataframes).
 
 ##### semi\_join
@@ -149,16 +745,73 @@ Returns all rows and columns from both datasets. Missing values are filled with 
 ``` r
 #semi join
 suppressWarnings(suppressMessages(
-  semi_join(data1,my_gap)
+  tableFormat(semi_join(data1,my_gap))
 ))
 ```
 
-    ##   continent hemisphere codes
-    ## 1    Africa   Northern    AF
-    ## 2      Asia   Northern    AS
-    ## 3    Europe   Northern    EU
-    ## 4   Oceania   Southern    OC
-
+<table class="table table-striped table-hover table-responsive" style="font-size: 14px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;">
+continent
+</th>
+<th style="text-align:center;">
+hemisphere
+</th>
+<th style="text-align:center;">
+codes
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">
+Africa
+</td>
+<td style="text-align:center;">
+Northern
+</td>
+<td style="text-align:center;">
+AF
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Asia
+</td>
+<td style="text-align:center;">
+Northern
+</td>
+<td style="text-align:center;">
+AS
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Europe
+</td>
+<td style="text-align:center;">
+Northern
+</td>
+<td style="text-align:center;">
+EU
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Oceania
+</td>
+<td style="text-align:center;">
+Southern
+</td>
+<td style="text-align:center;">
+OC
+</td>
+</tr>
+</tbody>
+</table>
 Returns rows of first dataset that are common with second dataset keeping only the columns of first dataset. (similar to intersection of two datasets with only columns from first dataset). So only three columns of data1 is returned with only four rows(the ones corrosponding to common continents)
 
 ##### anti\_join
@@ -166,13 +819,60 @@ Returns rows of first dataset that are common with second dataset keeping only t
 ``` r
 #anti join
 suppressWarnings(suppressMessages(
-  anti_join(data1,my_gap)
+  tableFormat(anti_join(data1,my_gap))
 ))
 ```
 
-    ##       continent hemisphere codes
-    ## 1 North America   Southern   NOA
-    ## 2 South America         NS   SOA
-    ## 3    Antarctica   Southern    AN
-
+<table class="table table-striped table-hover table-responsive" style="font-size: 14px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;">
+continent
+</th>
+<th style="text-align:center;">
+hemisphere
+</th>
+<th style="text-align:center;">
+codes
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">
+North America
+</td>
+<td style="text-align:center;">
+Southern
+</td>
+<td style="text-align:center;">
+NOA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+South America
+</td>
+<td style="text-align:center;">
+NS
+</td>
+<td style="text-align:center;">
+SOA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Antarctica
+</td>
+<td style="text-align:center;">
+Southern
+</td>
+<td style="text-align:center;">
+AN
+</td>
+</tr>
+</tbody>
+</table>
 Returns all rows from first dataset that are not matching with second dataset keeping only the columns of first dataset.Returns only the three rows in first dataset that are not there in second dataset.(similar to first dataset - second dataset)

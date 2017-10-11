@@ -127,8 +127,8 @@ studios<-data.frame(company,yr_founded)
 
 Lets view the datasets movies and studios
 ```{r}
-movies
-studios
+tableFormat(movies)
+tableFormat(studios)
 ```
 
 
@@ -137,13 +137,13 @@ studios
 > Merge two data frames by common columns or row names, or do other versions of database join operations.
 
 ```{r}
-merge(movies,studios,by="company") #similar to inner_join 
+tableFormat(merge(movies,studios,by="company")) #similar to inner_join 
 
-merge(movies,studios,by="company",all.x=TRUE) #similar to left_join
+tableFormat(merge(movies,studios,by="company",all.x=TRUE)) #similar to left_join
 
-merge(movies,studios,by="company",all.y=TRUE) #similar to right_join
+tableFormat(merge(movies,studios,by="company",all.y=TRUE)) #similar to right_join
 
-merge(movies,studios,all=TRUE) #similar to full_join
+tableFormat(merge(movies,studios,all=TRUE)) #similar to full_join
 ```
 
 _base R merge() and equivalent package-based merge functions, which always allocate a new table to return the merged result, and thus are not suitable for an in-place assignment-based solution. Filtering joins cannot be done using merge_
@@ -153,7 +153,7 @@ _base R merge() and equivalent package-based merge functions, which always alloc
 > match returns a vector of the positions of (first) matches of its first argument in its second.
 
 ```{r}
-movies[match(studios$company,movies$company,nomatch = 0),]
+tableFormat(movies[match(studios$company,movies$company,nomatch = 0),])
 ```
 
 It just returns the first match of company marvel in movies which is Iron Man movie and first match of company DC in movies which is Man of Steel movie.
@@ -164,15 +164,15 @@ It just returns the first match of company marvel in movies which is Iron Man mo
 # this just finds the values in movies that are matching with studios$company
 #that is, it is semi_join(movies,studios)
 
-movies[which(!is.na(match(movies$company,studios$company))),]
+tableFormat(movies[which(!is.na(match(movies$company,studios$company))),])
 
 #Next is anti_join(movies,studios)
-movies[which(is.na(match(movies$company,studios$company))),]
+tableFormat(movies[which(is.na(match(movies$company,studios$company))),])
 
 #semi_join(studios,movies)
-studios[which(!is.na(match(studios$company,movies$company))),]
+tableFormat(studios[which(!is.na(match(studios$company,movies$company))),])
 
 #anit_join(studios,movies)
-studios[which(is.na(match(studios$company,movies$company))),]
+tableFormat(studios[which(is.na(match(studios$company,movies$company))),])
 ```
 The above shows that match can be used to perform the filtering joins but cannot perform the mutating joins. 

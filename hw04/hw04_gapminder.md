@@ -775,103 +775,1097 @@ studios<-data.frame(company,yr_founded)
 Lets view the datasets movies and studios
 
 ``` r
-movies
+tableFormat(movies)
 ```
 
-    ##              names release_year        directors   company
-    ## 1         Iron Man         2008      Jon Favreau    Marvel
-    ## 2             Thor         2008  Kenneth Branagh    Marvel
-    ## 3     The Avengers         2011      Joss Whedon    Marvel
-    ## 4          Ant Man         2015      Peyton Reed    Marvel
-    ## 5   Doctor Strange         2016 Scott Derrickson    Marvel
-    ## 6     Man of steel         2013      Zack Snyder        DC
-    ## 7  Dawn of Justice         2016      Zack Snyder        DC
-    ## 8    Suicide squad         2016       David Ayer        DC
-    ## 9     Wonder woman         2017    Patty Jenkins        DC
-    ## 10  Justice league         2017      Zack Snyder        DC
-    ## 11   Force awakens         2015      J.J. Abrams Star wars
-
+<table class="table table-striped table-hover table-responsive" style="font-size: 14px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;">
+names
+</th>
+<th style="text-align:center;">
+release\_year
+</th>
+<th style="text-align:center;">
+directors
+</th>
+<th style="text-align:center;">
+company
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">
+Iron Man
+</td>
+<td style="text-align:center;">
+2008
+</td>
+<td style="text-align:center;">
+Jon Favreau
+</td>
+<td style="text-align:center;">
+Marvel
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Thor
+</td>
+<td style="text-align:center;">
+2008
+</td>
+<td style="text-align:center;">
+Kenneth Branagh
+</td>
+<td style="text-align:center;">
+Marvel
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+The Avengers
+</td>
+<td style="text-align:center;">
+2011
+</td>
+<td style="text-align:center;">
+Joss Whedon
+</td>
+<td style="text-align:center;">
+Marvel
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Ant Man
+</td>
+<td style="text-align:center;">
+2015
+</td>
+<td style="text-align:center;">
+Peyton Reed
+</td>
+<td style="text-align:center;">
+Marvel
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Doctor Strange
+</td>
+<td style="text-align:center;">
+2016
+</td>
+<td style="text-align:center;">
+Scott Derrickson
+</td>
+<td style="text-align:center;">
+Marvel
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Man of steel
+</td>
+<td style="text-align:center;">
+2013
+</td>
+<td style="text-align:center;">
+Zack Snyder
+</td>
+<td style="text-align:center;">
+DC
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Dawn of Justice
+</td>
+<td style="text-align:center;">
+2016
+</td>
+<td style="text-align:center;">
+Zack Snyder
+</td>
+<td style="text-align:center;">
+DC
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Suicide squad
+</td>
+<td style="text-align:center;">
+2016
+</td>
+<td style="text-align:center;">
+David Ayer
+</td>
+<td style="text-align:center;">
+DC
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Wonder woman
+</td>
+<td style="text-align:center;">
+2017
+</td>
+<td style="text-align:center;">
+Patty Jenkins
+</td>
+<td style="text-align:center;">
+DC
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Justice league
+</td>
+<td style="text-align:center;">
+2017
+</td>
+<td style="text-align:center;">
+Zack Snyder
+</td>
+<td style="text-align:center;">
+DC
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Force awakens
+</td>
+<td style="text-align:center;">
+2015
+</td>
+<td style="text-align:center;">
+J.J. Abrams
+</td>
+<td style="text-align:center;">
+Star wars
+</td>
+</tr>
+</tbody>
+</table>
 ``` r
-studios
+tableFormat(studios)
 ```
 
-    ##     company yr_founded
-    ## 1    Marvel       1934
-    ## 2        DC       1939
-    ## 3 Star trek       1966
-
+<table class="table table-striped table-hover table-responsive" style="font-size: 14px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;">
+company
+</th>
+<th style="text-align:center;">
+yr\_founded
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">
+Marvel
+</td>
+<td style="text-align:center;">
+1934
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+DC
+</td>
+<td style="text-align:center;">
+1939
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Star trek
+</td>
+<td style="text-align:center;">
+1966
+</td>
+</tr>
+</tbody>
+</table>
 ##### Merge function
 
 > Merge two data frames by common columns or row names, or do other versions of database join operations.
 
 ``` r
-merge(movies,studios,by="company") #similar to inner_join 
+tableFormat(merge(movies,studios,by="company")) #similar to inner_join 
 ```
 
-    ##    company           names release_year        directors yr_founded
-    ## 1       DC    Man of steel         2013      Zack Snyder       1939
-    ## 2       DC   Suicide squad         2016       David Ayer       1939
-    ## 3       DC    Wonder woman         2017    Patty Jenkins       1939
-    ## 4       DC  Justice league         2017      Zack Snyder       1939
-    ## 5       DC Dawn of Justice         2016      Zack Snyder       1939
-    ## 6   Marvel        Iron Man         2008      Jon Favreau       1934
-    ## 7   Marvel            Thor         2008  Kenneth Branagh       1934
-    ## 8   Marvel         Ant Man         2015      Peyton Reed       1934
-    ## 9   Marvel  Doctor Strange         2016 Scott Derrickson       1934
-    ## 10  Marvel    The Avengers         2011      Joss Whedon       1934
-
+<table class="table table-striped table-hover table-responsive" style="font-size: 14px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;">
+company
+</th>
+<th style="text-align:center;">
+names
+</th>
+<th style="text-align:center;">
+release\_year
+</th>
+<th style="text-align:center;">
+directors
+</th>
+<th style="text-align:center;">
+yr\_founded
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">
+DC
+</td>
+<td style="text-align:center;">
+Man of steel
+</td>
+<td style="text-align:center;">
+2013
+</td>
+<td style="text-align:center;">
+Zack Snyder
+</td>
+<td style="text-align:center;">
+1939
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+DC
+</td>
+<td style="text-align:center;">
+Suicide squad
+</td>
+<td style="text-align:center;">
+2016
+</td>
+<td style="text-align:center;">
+David Ayer
+</td>
+<td style="text-align:center;">
+1939
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+DC
+</td>
+<td style="text-align:center;">
+Wonder woman
+</td>
+<td style="text-align:center;">
+2017
+</td>
+<td style="text-align:center;">
+Patty Jenkins
+</td>
+<td style="text-align:center;">
+1939
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+DC
+</td>
+<td style="text-align:center;">
+Justice league
+</td>
+<td style="text-align:center;">
+2017
+</td>
+<td style="text-align:center;">
+Zack Snyder
+</td>
+<td style="text-align:center;">
+1939
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+DC
+</td>
+<td style="text-align:center;">
+Dawn of Justice
+</td>
+<td style="text-align:center;">
+2016
+</td>
+<td style="text-align:center;">
+Zack Snyder
+</td>
+<td style="text-align:center;">
+1939
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Marvel
+</td>
+<td style="text-align:center;">
+Iron Man
+</td>
+<td style="text-align:center;">
+2008
+</td>
+<td style="text-align:center;">
+Jon Favreau
+</td>
+<td style="text-align:center;">
+1934
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Marvel
+</td>
+<td style="text-align:center;">
+Thor
+</td>
+<td style="text-align:center;">
+2008
+</td>
+<td style="text-align:center;">
+Kenneth Branagh
+</td>
+<td style="text-align:center;">
+1934
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Marvel
+</td>
+<td style="text-align:center;">
+Ant Man
+</td>
+<td style="text-align:center;">
+2015
+</td>
+<td style="text-align:center;">
+Peyton Reed
+</td>
+<td style="text-align:center;">
+1934
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Marvel
+</td>
+<td style="text-align:center;">
+Doctor Strange
+</td>
+<td style="text-align:center;">
+2016
+</td>
+<td style="text-align:center;">
+Scott Derrickson
+</td>
+<td style="text-align:center;">
+1934
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Marvel
+</td>
+<td style="text-align:center;">
+The Avengers
+</td>
+<td style="text-align:center;">
+2011
+</td>
+<td style="text-align:center;">
+Joss Whedon
+</td>
+<td style="text-align:center;">
+1934
+</td>
+</tr>
+</tbody>
+</table>
 ``` r
-merge(movies,studios,by="company",all.x=TRUE) #similar to left_join
+tableFormat(merge(movies,studios,by="company",all.x=TRUE)) #similar to left_join
 ```
 
-    ##      company           names release_year        directors yr_founded
-    ## 1         DC    Man of steel         2013      Zack Snyder       1939
-    ## 2         DC   Suicide squad         2016       David Ayer       1939
-    ## 3         DC    Wonder woman         2017    Patty Jenkins       1939
-    ## 4         DC  Justice league         2017      Zack Snyder       1939
-    ## 5         DC Dawn of Justice         2016      Zack Snyder       1939
-    ## 6     Marvel        Iron Man         2008      Jon Favreau       1934
-    ## 7     Marvel            Thor         2008  Kenneth Branagh       1934
-    ## 8     Marvel         Ant Man         2015      Peyton Reed       1934
-    ## 9     Marvel  Doctor Strange         2016 Scott Derrickson       1934
-    ## 10    Marvel    The Avengers         2011      Joss Whedon       1934
-    ## 11 Star wars   Force awakens         2015      J.J. Abrams         NA
-
+<table class="table table-striped table-hover table-responsive" style="font-size: 14px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;">
+company
+</th>
+<th style="text-align:center;">
+names
+</th>
+<th style="text-align:center;">
+release\_year
+</th>
+<th style="text-align:center;">
+directors
+</th>
+<th style="text-align:center;">
+yr\_founded
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">
+DC
+</td>
+<td style="text-align:center;">
+Man of steel
+</td>
+<td style="text-align:center;">
+2013
+</td>
+<td style="text-align:center;">
+Zack Snyder
+</td>
+<td style="text-align:center;">
+1939
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+DC
+</td>
+<td style="text-align:center;">
+Suicide squad
+</td>
+<td style="text-align:center;">
+2016
+</td>
+<td style="text-align:center;">
+David Ayer
+</td>
+<td style="text-align:center;">
+1939
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+DC
+</td>
+<td style="text-align:center;">
+Wonder woman
+</td>
+<td style="text-align:center;">
+2017
+</td>
+<td style="text-align:center;">
+Patty Jenkins
+</td>
+<td style="text-align:center;">
+1939
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+DC
+</td>
+<td style="text-align:center;">
+Justice league
+</td>
+<td style="text-align:center;">
+2017
+</td>
+<td style="text-align:center;">
+Zack Snyder
+</td>
+<td style="text-align:center;">
+1939
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+DC
+</td>
+<td style="text-align:center;">
+Dawn of Justice
+</td>
+<td style="text-align:center;">
+2016
+</td>
+<td style="text-align:center;">
+Zack Snyder
+</td>
+<td style="text-align:center;">
+1939
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Marvel
+</td>
+<td style="text-align:center;">
+Iron Man
+</td>
+<td style="text-align:center;">
+2008
+</td>
+<td style="text-align:center;">
+Jon Favreau
+</td>
+<td style="text-align:center;">
+1934
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Marvel
+</td>
+<td style="text-align:center;">
+Thor
+</td>
+<td style="text-align:center;">
+2008
+</td>
+<td style="text-align:center;">
+Kenneth Branagh
+</td>
+<td style="text-align:center;">
+1934
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Marvel
+</td>
+<td style="text-align:center;">
+Ant Man
+</td>
+<td style="text-align:center;">
+2015
+</td>
+<td style="text-align:center;">
+Peyton Reed
+</td>
+<td style="text-align:center;">
+1934
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Marvel
+</td>
+<td style="text-align:center;">
+Doctor Strange
+</td>
+<td style="text-align:center;">
+2016
+</td>
+<td style="text-align:center;">
+Scott Derrickson
+</td>
+<td style="text-align:center;">
+1934
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Marvel
+</td>
+<td style="text-align:center;">
+The Avengers
+</td>
+<td style="text-align:center;">
+2011
+</td>
+<td style="text-align:center;">
+Joss Whedon
+</td>
+<td style="text-align:center;">
+1934
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Star wars
+</td>
+<td style="text-align:center;">
+Force awakens
+</td>
+<td style="text-align:center;">
+2015
+</td>
+<td style="text-align:center;">
+J.J. Abrams
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
 ``` r
-merge(movies,studios,by="company",all.y=TRUE) #similar to right_join
+tableFormat(merge(movies,studios,by="company",all.y=TRUE)) #similar to right_join
 ```
 
-    ##      company           names release_year        directors yr_founded
-    ## 1         DC    Man of steel         2013      Zack Snyder       1939
-    ## 2         DC   Suicide squad         2016       David Ayer       1939
-    ## 3         DC    Wonder woman         2017    Patty Jenkins       1939
-    ## 4         DC  Justice league         2017      Zack Snyder       1939
-    ## 5         DC Dawn of Justice         2016      Zack Snyder       1939
-    ## 6     Marvel        Iron Man         2008      Jon Favreau       1934
-    ## 7     Marvel            Thor         2008  Kenneth Branagh       1934
-    ## 8     Marvel         Ant Man         2015      Peyton Reed       1934
-    ## 9     Marvel  Doctor Strange         2016 Scott Derrickson       1934
-    ## 10    Marvel    The Avengers         2011      Joss Whedon       1934
-    ## 11 Star trek            <NA>         <NA>             <NA>       1966
-
+<table class="table table-striped table-hover table-responsive" style="font-size: 14px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;">
+company
+</th>
+<th style="text-align:center;">
+names
+</th>
+<th style="text-align:center;">
+release\_year
+</th>
+<th style="text-align:center;">
+directors
+</th>
+<th style="text-align:center;">
+yr\_founded
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">
+DC
+</td>
+<td style="text-align:center;">
+Man of steel
+</td>
+<td style="text-align:center;">
+2013
+</td>
+<td style="text-align:center;">
+Zack Snyder
+</td>
+<td style="text-align:center;">
+1939
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+DC
+</td>
+<td style="text-align:center;">
+Suicide squad
+</td>
+<td style="text-align:center;">
+2016
+</td>
+<td style="text-align:center;">
+David Ayer
+</td>
+<td style="text-align:center;">
+1939
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+DC
+</td>
+<td style="text-align:center;">
+Wonder woman
+</td>
+<td style="text-align:center;">
+2017
+</td>
+<td style="text-align:center;">
+Patty Jenkins
+</td>
+<td style="text-align:center;">
+1939
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+DC
+</td>
+<td style="text-align:center;">
+Justice league
+</td>
+<td style="text-align:center;">
+2017
+</td>
+<td style="text-align:center;">
+Zack Snyder
+</td>
+<td style="text-align:center;">
+1939
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+DC
+</td>
+<td style="text-align:center;">
+Dawn of Justice
+</td>
+<td style="text-align:center;">
+2016
+</td>
+<td style="text-align:center;">
+Zack Snyder
+</td>
+<td style="text-align:center;">
+1939
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Marvel
+</td>
+<td style="text-align:center;">
+Iron Man
+</td>
+<td style="text-align:center;">
+2008
+</td>
+<td style="text-align:center;">
+Jon Favreau
+</td>
+<td style="text-align:center;">
+1934
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Marvel
+</td>
+<td style="text-align:center;">
+Thor
+</td>
+<td style="text-align:center;">
+2008
+</td>
+<td style="text-align:center;">
+Kenneth Branagh
+</td>
+<td style="text-align:center;">
+1934
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Marvel
+</td>
+<td style="text-align:center;">
+Ant Man
+</td>
+<td style="text-align:center;">
+2015
+</td>
+<td style="text-align:center;">
+Peyton Reed
+</td>
+<td style="text-align:center;">
+1934
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Marvel
+</td>
+<td style="text-align:center;">
+Doctor Strange
+</td>
+<td style="text-align:center;">
+2016
+</td>
+<td style="text-align:center;">
+Scott Derrickson
+</td>
+<td style="text-align:center;">
+1934
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Marvel
+</td>
+<td style="text-align:center;">
+The Avengers
+</td>
+<td style="text-align:center;">
+2011
+</td>
+<td style="text-align:center;">
+Joss Whedon
+</td>
+<td style="text-align:center;">
+1934
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Star trek
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+1966
+</td>
+</tr>
+</tbody>
+</table>
 ``` r
-merge(movies,studios,all=TRUE) #similar to full_join
+tableFormat(merge(movies,studios,all=TRUE)) #similar to full_join
 ```
 
-    ##      company           names release_year        directors yr_founded
-    ## 1         DC    Man of steel         2013      Zack Snyder       1939
-    ## 2         DC   Suicide squad         2016       David Ayer       1939
-    ## 3         DC    Wonder woman         2017    Patty Jenkins       1939
-    ## 4         DC  Justice league         2017      Zack Snyder       1939
-    ## 5         DC Dawn of Justice         2016      Zack Snyder       1939
-    ## 6     Marvel        Iron Man         2008      Jon Favreau       1934
-    ## 7     Marvel            Thor         2008  Kenneth Branagh       1934
-    ## 8     Marvel         Ant Man         2015      Peyton Reed       1934
-    ## 9     Marvel  Doctor Strange         2016 Scott Derrickson       1934
-    ## 10    Marvel    The Avengers         2011      Joss Whedon       1934
-    ## 11 Star wars   Force awakens         2015      J.J. Abrams         NA
-    ## 12 Star trek            <NA>         <NA>             <NA>       1966
-
+<table class="table table-striped table-hover table-responsive" style="font-size: 14px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;">
+company
+</th>
+<th style="text-align:center;">
+names
+</th>
+<th style="text-align:center;">
+release\_year
+</th>
+<th style="text-align:center;">
+directors
+</th>
+<th style="text-align:center;">
+yr\_founded
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">
+DC
+</td>
+<td style="text-align:center;">
+Man of steel
+</td>
+<td style="text-align:center;">
+2013
+</td>
+<td style="text-align:center;">
+Zack Snyder
+</td>
+<td style="text-align:center;">
+1939
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+DC
+</td>
+<td style="text-align:center;">
+Suicide squad
+</td>
+<td style="text-align:center;">
+2016
+</td>
+<td style="text-align:center;">
+David Ayer
+</td>
+<td style="text-align:center;">
+1939
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+DC
+</td>
+<td style="text-align:center;">
+Wonder woman
+</td>
+<td style="text-align:center;">
+2017
+</td>
+<td style="text-align:center;">
+Patty Jenkins
+</td>
+<td style="text-align:center;">
+1939
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+DC
+</td>
+<td style="text-align:center;">
+Justice league
+</td>
+<td style="text-align:center;">
+2017
+</td>
+<td style="text-align:center;">
+Zack Snyder
+</td>
+<td style="text-align:center;">
+1939
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+DC
+</td>
+<td style="text-align:center;">
+Dawn of Justice
+</td>
+<td style="text-align:center;">
+2016
+</td>
+<td style="text-align:center;">
+Zack Snyder
+</td>
+<td style="text-align:center;">
+1939
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Marvel
+</td>
+<td style="text-align:center;">
+Iron Man
+</td>
+<td style="text-align:center;">
+2008
+</td>
+<td style="text-align:center;">
+Jon Favreau
+</td>
+<td style="text-align:center;">
+1934
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Marvel
+</td>
+<td style="text-align:center;">
+Thor
+</td>
+<td style="text-align:center;">
+2008
+</td>
+<td style="text-align:center;">
+Kenneth Branagh
+</td>
+<td style="text-align:center;">
+1934
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Marvel
+</td>
+<td style="text-align:center;">
+Ant Man
+</td>
+<td style="text-align:center;">
+2015
+</td>
+<td style="text-align:center;">
+Peyton Reed
+</td>
+<td style="text-align:center;">
+1934
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Marvel
+</td>
+<td style="text-align:center;">
+Doctor Strange
+</td>
+<td style="text-align:center;">
+2016
+</td>
+<td style="text-align:center;">
+Scott Derrickson
+</td>
+<td style="text-align:center;">
+1934
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Marvel
+</td>
+<td style="text-align:center;">
+The Avengers
+</td>
+<td style="text-align:center;">
+2011
+</td>
+<td style="text-align:center;">
+Joss Whedon
+</td>
+<td style="text-align:center;">
+1934
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Star wars
+</td>
+<td style="text-align:center;">
+Force awakens
+</td>
+<td style="text-align:center;">
+2015
+</td>
+<td style="text-align:center;">
+J.J. Abrams
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Star trek
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+1966
+</td>
+</tr>
+</tbody>
+</table>
 *base R merge() and equivalent package-based merge functions, which always allocate a new table to return the merged result, and thus are not suitable for an in-place assignment-based solution. Filtering joins cannot be done using merge*
 
 ##### Match function
@@ -879,13 +1873,67 @@ merge(movies,studios,all=TRUE) #similar to full_join
 > match returns a vector of the positions of (first) matches of its first argument in its second.
 
 ``` r
-movies[match(studios$company,movies$company,nomatch = 0),]
+tableFormat(movies[match(studios$company,movies$company,nomatch = 0),])
 ```
 
-    ##          names release_year   directors company
-    ## 1     Iron Man         2008 Jon Favreau  Marvel
-    ## 6 Man of steel         2013 Zack Snyder      DC
-
+<table class="table table-striped table-hover table-responsive" style="font-size: 14px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:center;">
+names
+</th>
+<th style="text-align:center;">
+release\_year
+</th>
+<th style="text-align:center;">
+directors
+</th>
+<th style="text-align:center;">
+company
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:center;">
+Iron Man
+</td>
+<td style="text-align:center;">
+2008
+</td>
+<td style="text-align:center;">
+Jon Favreau
+</td>
+<td style="text-align:center;">
+Marvel
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+6
+</td>
+<td style="text-align:center;">
+Man of steel
+</td>
+<td style="text-align:center;">
+2013
+</td>
+<td style="text-align:center;">
+Zack Snyder
+</td>
+<td style="text-align:center;">
+DC
+</td>
+</tr>
+</tbody>
+</table>
 It just returns the first match of company marvel in movies which is Iron Man movie and first match of company DC in movies which is Man of Steel movie.
 
 **Filtering joins with match**
@@ -894,44 +1942,286 @@ It just returns the first match of company marvel in movies which is Iron Man mo
 # this just finds the values in movies that are matching with studios$company
 #that is, it is semi_join(movies,studios)
 
-movies[which(!is.na(match(movies$company,studios$company))),]
+tableFormat(movies[which(!is.na(match(movies$company,studios$company))),])
 ```
 
-    ##              names release_year        directors company
-    ## 1         Iron Man         2008      Jon Favreau  Marvel
-    ## 2             Thor         2008  Kenneth Branagh  Marvel
-    ## 3     The Avengers         2011      Joss Whedon  Marvel
-    ## 4          Ant Man         2015      Peyton Reed  Marvel
-    ## 5   Doctor Strange         2016 Scott Derrickson  Marvel
-    ## 6     Man of steel         2013      Zack Snyder      DC
-    ## 7  Dawn of Justice         2016      Zack Snyder      DC
-    ## 8    Suicide squad         2016       David Ayer      DC
-    ## 9     Wonder woman         2017    Patty Jenkins      DC
-    ## 10  Justice league         2017      Zack Snyder      DC
-
+<table class="table table-striped table-hover table-responsive" style="font-size: 14px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;">
+names
+</th>
+<th style="text-align:center;">
+release\_year
+</th>
+<th style="text-align:center;">
+directors
+</th>
+<th style="text-align:center;">
+company
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">
+Iron Man
+</td>
+<td style="text-align:center;">
+2008
+</td>
+<td style="text-align:center;">
+Jon Favreau
+</td>
+<td style="text-align:center;">
+Marvel
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Thor
+</td>
+<td style="text-align:center;">
+2008
+</td>
+<td style="text-align:center;">
+Kenneth Branagh
+</td>
+<td style="text-align:center;">
+Marvel
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+The Avengers
+</td>
+<td style="text-align:center;">
+2011
+</td>
+<td style="text-align:center;">
+Joss Whedon
+</td>
+<td style="text-align:center;">
+Marvel
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Ant Man
+</td>
+<td style="text-align:center;">
+2015
+</td>
+<td style="text-align:center;">
+Peyton Reed
+</td>
+<td style="text-align:center;">
+Marvel
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Doctor Strange
+</td>
+<td style="text-align:center;">
+2016
+</td>
+<td style="text-align:center;">
+Scott Derrickson
+</td>
+<td style="text-align:center;">
+Marvel
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Man of steel
+</td>
+<td style="text-align:center;">
+2013
+</td>
+<td style="text-align:center;">
+Zack Snyder
+</td>
+<td style="text-align:center;">
+DC
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Dawn of Justice
+</td>
+<td style="text-align:center;">
+2016
+</td>
+<td style="text-align:center;">
+Zack Snyder
+</td>
+<td style="text-align:center;">
+DC
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Suicide squad
+</td>
+<td style="text-align:center;">
+2016
+</td>
+<td style="text-align:center;">
+David Ayer
+</td>
+<td style="text-align:center;">
+DC
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Wonder woman
+</td>
+<td style="text-align:center;">
+2017
+</td>
+<td style="text-align:center;">
+Patty Jenkins
+</td>
+<td style="text-align:center;">
+DC
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Justice league
+</td>
+<td style="text-align:center;">
+2017
+</td>
+<td style="text-align:center;">
+Zack Snyder
+</td>
+<td style="text-align:center;">
+DC
+</td>
+</tr>
+</tbody>
+</table>
 ``` r
 #Next is anti_join(movies,studios)
-movies[which(is.na(match(movies$company,studios$company))),]
+tableFormat(movies[which(is.na(match(movies$company,studios$company))),])
 ```
 
-    ##            names release_year   directors   company
-    ## 11 Force awakens         2015 J.J. Abrams Star wars
-
+<table class="table table-striped table-hover table-responsive" style="font-size: 14px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:center;">
+names
+</th>
+<th style="text-align:center;">
+release\_year
+</th>
+<th style="text-align:center;">
+directors
+</th>
+<th style="text-align:center;">
+company
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+11
+</td>
+<td style="text-align:center;">
+Force awakens
+</td>
+<td style="text-align:center;">
+2015
+</td>
+<td style="text-align:center;">
+J.J. Abrams
+</td>
+<td style="text-align:center;">
+Star wars
+</td>
+</tr>
+</tbody>
+</table>
 ``` r
 #semi_join(studios,movies)
-studios[which(!is.na(match(studios$company,movies$company))),]
+tableFormat(studios[which(!is.na(match(studios$company,movies$company))),])
 ```
 
-    ##   company yr_founded
-    ## 1  Marvel       1934
-    ## 2      DC       1939
-
+<table class="table table-striped table-hover table-responsive" style="font-size: 14px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;">
+company
+</th>
+<th style="text-align:center;">
+yr\_founded
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">
+Marvel
+</td>
+<td style="text-align:center;">
+1934
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+DC
+</td>
+<td style="text-align:center;">
+1939
+</td>
+</tr>
+</tbody>
+</table>
 ``` r
 #anit_join(studios,movies)
-studios[which(is.na(match(studios$company,movies$company))),]
+tableFormat(studios[which(is.na(match(studios$company,movies$company))),])
 ```
 
-    ##     company yr_founded
-    ## 3 Star trek       1966
-
+<table class="table table-striped table-hover table-responsive" style="font-size: 14px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:center;">
+company
+</th>
+<th style="text-align:center;">
+yr\_founded
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:center;">
+Star trek
+</td>
+<td style="text-align:center;">
+1966
+</td>
+</tr>
+</tbody>
+</table>
 The above shows that match can be used to perform the filtering joins but cannot perform the mutating joins.

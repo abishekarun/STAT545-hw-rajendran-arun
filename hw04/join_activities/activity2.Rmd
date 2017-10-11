@@ -28,8 +28,8 @@ studios<-data.frame(company,yr_founded)
 Lets view the datasets movies and studios
 
 ```{r}
-movies
-studios
+tableFormat(movies)
+tableFormat(studios)
 ```
 
 ###Different types of join
@@ -41,7 +41,7 @@ studios
 ```{r}
 #inner_join
 suppressWarnings(suppressMessages(
-  inner_join(movies,studios)
+  tableFormat(inner_join(movies,studios))
 ))
 ```
 We lose Force Awakens in the join because, although they appear in x = movies, their corrosponding company "Star wars" doesn't not appear in y = studios. The join result has all variables from x = movies plus yr_founded, from y.
@@ -53,7 +53,7 @@ We lose Force Awakens in the join because, although they appear in x = movies, t
 ```{r}
 #semi join
 suppressWarnings(suppressMessages(
-  semi_join(movies,studios)
+  tableFormat(semi_join(movies,studios))
 ))
 ```
 We get a similar result as with inner_join() but the join result contains only the variables originally found in  x = movies. But note the row order has changed.
@@ -65,7 +65,7 @@ We get a similar result as with inner_join() but the join result contains only t
 ```{r}
 #left join
 suppressWarnings(suppressMessages(
-  left_join(movies,studios)
+  tableFormat(left_join(movies,studios))
 ))
 ```
 
@@ -78,7 +78,7 @@ We basically get x = movies back, but with the addition of variable yr_founded, 
 ```{r}
 #anti join
 suppressWarnings(suppressMessages(
-  anti_join(movies,studios)
+  tableFormat(anti_join(movies,studios))
 ))
 ```
 We keep only Force Awakens now (and do not get company).
@@ -90,7 +90,7 @@ We keep only Force Awakens now (and do not get company).
 ```{r}
 #inner_join
 suppressWarnings(suppressMessages(
-  inner_join(studios,movies)
+  tableFormat(inner_join(studios,movies))
 ))
 ```
 In a way, this does illustrate multiple matches, if you think about it from the x = studios direction. Every company that has a match in y = movies appears multiple times in the result, once for each match. In fact, we’re getting the same result as with inner_join(movies,studios), up to variable order (which you should also never rely on in an analysis).
@@ -102,7 +102,7 @@ In a way, this does illustrate multiple matches, if you think about it from the 
 ```{r}
 #semi join
 suppressWarnings(suppressMessages(
-  semi_join(studios,movies)
+  tableFormat(semi_join(studios,movies))
 ))
 ```
 Now the effects of switching the x and y roles is more clear. The result resembles x = studios, but the company star wars is lost, because there are no observations where company == "star wars" in y = movies.
@@ -127,7 +127,7 @@ We get a similar result as with inner_join() but the company star wars survives 
 ```{r}
 #anti join
 suppressWarnings(suppressMessages(
-  anti_join(studios,movies)
+  tableFormat(anti_join(studios,movies))
 ))
 ```
 We keep only company star wars now (and the variables found in x = studios).
@@ -139,7 +139,7 @@ We keep only company star wars now (and the variables found in x = studios).
 ```{r}
 #full join
 suppressWarnings(suppressMessages(
-  full_join(movies,studios)
+  tableFormat(full_join(movies,studios))
 ))
 ```
 

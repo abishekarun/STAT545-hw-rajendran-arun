@@ -37,8 +37,8 @@ my_gap<- gapminder%>%
 Lets view the two datasets
 
 ```{r}
-data1
-my_gap
+tableFormat(data1)
+tableFormat(my_gap)
 ```
 
 ###Different types of join
@@ -47,10 +47,10 @@ my_gap
 ```{r}
 #inner_join
 suppressWarnings(suppressMessages(
-  inner_join(data1,my_gap,by="continent")
+  tableFormat(inner_join(data1,my_gap,by="continent"))
 ))
 suppressWarnings(suppressMessages(
-  inner_join(my_gap,data1,by="continent")
+  tableFormat(inner_join(my_gap,data1,by="continent"))
 ))
 ```
 
@@ -61,7 +61,7 @@ Both the inner join commands give the same output. This operation returns the co
 ```{r}
 #left join
 suppressWarnings(suppressMessages(
-  left_join(data1,my_gap)
+  tableFormat(left_join(data1,my_gap))
 ))
 ```
 This operation returns all rows from the first dataset(data1 in this case) and all columns from both datasets. When a row from first dataset has no match, NA values will be present. This happens in the above case for North America,South America and Antarctica as these are not present in my_gap dataset. So the mean_lifeExp values are filled with NA. 
@@ -71,7 +71,7 @@ This operation returns all rows from the first dataset(data1 in this case) and a
 ```{r}
 #right join
 suppressWarnings(suppressMessages(
-  right_join(data1,my_gap)
+  tableFormat(right_join(data1,my_gap))
 ))
 ```
 right_join does the same thing as left_join but on the second dataset. Here the rows from second dataset are returned. Hence, americas has code and hemisphere value as NA since it is not found in data1 dataset. 
@@ -81,7 +81,7 @@ right_join does the same thing as left_join but on the second dataset. Here the 
 ```{r}
 #full join
 suppressWarnings(suppressMessages(
-  full_join(data1,my_gap)
+  tableFormat(full_join(data1,my_gap))
 ))
 ```
 Returns all rows and columns from both datasets. Missing values are filled with NAs.Therefore it returns eight columns(it is similar to union of both dataframes).
@@ -91,7 +91,7 @@ Returns all rows and columns from both datasets. Missing values are filled with 
 ```{r}
 #semi join
 suppressWarnings(suppressMessages(
-  semi_join(data1,my_gap)
+  tableFormat(semi_join(data1,my_gap))
 ))
 ```
 Returns rows of first dataset that are common with second dataset keeping only the columns of first dataset. (similar to intersection of two datasets with only columns from first dataset). So only three columns of data1 is returned with only four rows(the ones corrosponding to common continents)
@@ -101,7 +101,7 @@ Returns rows of first dataset that are common with second dataset keeping only t
 ```{r}
 #anti join
 suppressWarnings(suppressMessages(
-  anti_join(data1,my_gap)
+  tableFormat(anti_join(data1,my_gap))
 ))
 ```
 Returns all rows from first dataset that are not matching with second dataset keeping only the columns of first dataset.Returns only the three rows in first dataset that are not there in second dataset.(similar to first dataset - second dataset)
