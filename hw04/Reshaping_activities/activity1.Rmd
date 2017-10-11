@@ -3,9 +3,31 @@ title: "activity1.Rmd"
 output: github_document
 ---
 
-```{r echo=FALSE, cache= F}
-#Source.R file has package installation and tableFormat function 
-source('source.R')
+Install all the packages
+
+```{r}
+suppressPackageStartupMessages(library(tidyverse))
+suppressPackageStartupMessages(library(gapminder))
+suppressPackageStartupMessages(library(ggplot2))
+suppressPackageStartupMessages(library(knitr))
+suppressPackageStartupMessages(library(kableExtra))
+suppressPackageStartupMessages(library(tidyr))
+suppressPackageStartupMessages(library(dplyr))
+suppressPackageStartupMessages(library(reshape2))
+suppressPackageStartupMessages(library(gridExtra))
+options(knitr.table.format = "html")
+```
+
+User defined Function for formatting tables
+```{r}
+tableFormat<-function(table,title=""){
+  table %>%      
+    kable("html",caption=title, align=c(rep('c', 5))) %>%
+    kable_styling(bootstrap_options = 
+                    c("striped", "hover",  "responsive"),
+                  position="center",font_size=14)
+}
+
 ```
 
 ###General data reshaping and relationship to aggregation
