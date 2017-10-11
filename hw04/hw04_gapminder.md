@@ -5,7 +5,7 @@ hw04\_gapminder.Rmd
 
 #### Activity \#1
 
-The rendered markdown file of first activity can be found [here]().
+The rendered markdown file of first activity can be found [here](https://github.com/abishekarun/STAT545-hw-rajendran-arun/blob/master/hw04/Reshaping_activities/activity1.md).
 
 #### Activity \#2
 
@@ -742,17 +742,17 @@ Japan
 </table>
 #### Activity \#5
 
-The rendered markdown file of fifth activity can be found [here]().
+The rendered markdown file of fifth activity can be found [here](https://github.com/abishekarun/STAT545-hw-rajendran-arun/blob/master/hw04/Reshaping_activities/activity5.md).
 
 ### Join, merge, look up
 
 #### Activity \#1
 
-The rendered markdown file of first activity can be found [here]().
+The rendered markdown file of first activity can be found [here](https://github.com/abishekarun/STAT545-hw-rajendran-arun/blob/master/hw04/join_activities/activity1.md).
 
 #### Activity \#2
 
-The rendered markdown file of second activity can be found [here]().
+The rendered markdown file of second activity can be found [here](https://github.com/abishekarun/STAT545-hw-rajendran-arun/blob/master/hw04/join_activities/activity2.md).
 
 #### Activity \#3
 
