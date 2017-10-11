@@ -477,6 +477,8 @@ Oceania
 </tr>
 </tbody>
 </table>
+Plot of mean life expectancy for different continents
+
 ``` r
 a%>%
   ggplot(aes(year))+
@@ -488,7 +490,7 @@ a%>%
   ylab("Mean Life Expectancy")
 ```
 
-![](hw04_gapminder_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-5-1.png)
+![](hw04_gapminder_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-6-1.png)
 
 With this reshaping it is easier to plot and compare the mean life expectancy of different continents over the years than with the actual dataset and it can be seen in the above plot.
 

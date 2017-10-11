@@ -61,6 +61,10 @@ a<- gapminder%>%
           spread(continent,mean_lifeExp)
           #spread(year,mean_lifeExp)%>%
 tableFormat(a)
+```
+
+Plot of mean life expectancy for different continents 
+```{r}
 a%>%
   ggplot(aes(year))+
   geom_line(aes(y = Africa, colour = "Africa")) + 
@@ -69,8 +73,6 @@ a%>%
   geom_line(aes(y = Europe, colour = "Europe"))+ 
   geom_line(aes(y = Oceania, colour = "Oceania"))+
   ylab("Mean Life Expectancy")
-  
-  
 ```
 
 With this reshaping it is easier to plot and compare the mean life expectancy of different continents over the years than with the actual dataset and it can be seen in the above plot.
