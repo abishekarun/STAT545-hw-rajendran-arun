@@ -31,7 +31,7 @@ dat$z<-as.numeric(dat$z)
 dat$score<-as.numeric(dat$score)
 ```
 
-**Group**
+Group
 
 ``` r
 #group
@@ -133,7 +133,7 @@ N5
 </tr>
 </tbody>
 </table>
-**Split**
+Split
 
 ``` r
 #split
@@ -269,7 +269,7 @@ E
 </tr>
 </tbody>
 </table>
-**Stack**
+Stack
 
 ``` r
 #stack
@@ -572,7 +572,7 @@ N5
 </tr>
 </tbody>
 </table>
-**Join**
+Join
 
 ``` r
 #join with left_join
@@ -763,7 +763,7 @@ c
 </table>
 Although columns now come out sorted when used merge.
 
-**Subset**
+Subset
 
 ``` r
 #subset
@@ -812,7 +812,7 @@ b
 </tr>
 </tbody>
 </table>
-**Transpose**
+Transpose
 
 ``` r
 #Transpose
@@ -869,7 +869,7 @@ value
 </tr>
 </tbody>
 </table>
-**Sort**
+Sort
 
 ``` r
 #sort
@@ -908,10 +908,10 @@ score
 A
 </td>
 <td style="text-align:center;">
-1
+0
 </td>
 <td style="text-align:center;">
-1
+0
 </td>
 <td style="text-align:center;">
 0
@@ -948,10 +948,10 @@ N1
 B
 </td>
 <td style="text-align:center;">
-1
+0
 </td>
 <td style="text-align:center;">
-1
+0
 </td>
 <td style="text-align:center;">
 0
@@ -991,7 +991,7 @@ C
 1
 </td>
 <td style="text-align:center;">
-1
+0
 </td>
 <td style="text-align:center;">
 0
@@ -1028,13 +1028,13 @@ N3
 D
 </td>
 <td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
 1
 </td>
 <td style="text-align:center;">
 0
+</td>
+<td style="text-align:center;">
+1
 </td>
 <td style="text-align:center;">
 N4
@@ -1074,7 +1074,7 @@ E
 0
 </td>
 <td style="text-align:center;">
-1
+0
 </td>
 <td style="text-align:center;">
 N5
