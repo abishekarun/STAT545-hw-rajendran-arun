@@ -772,7 +772,7 @@ yr_founded<-c(1934,1939,1966)
 studios<-data.frame(company,yr_founded)
 ```
 
-Lets view the datasets movies and studios
+Lets view the datasets movies
 
 ``` r
 tableFormat(movies)
@@ -954,6 +954,8 @@ Star wars
 </tr>
 </tbody>
 </table>
+Next the dataset studios
+
 ``` r
 tableFormat(studios)
 ```
@@ -1001,6 +1003,8 @@ Star trek
 ##### Merge function
 
 > Merge two data frames by common columns or row names, or do other versions of database join operations.
+
+inner\_join using merge()
 
 ``` r
 tableFormat(merge(movies,studios,by="company")) #similar to inner_join 
@@ -1201,6 +1205,8 @@ Joss Whedon
 </tr>
 </tbody>
 </table>
+left\_join using merge()
+
 ``` r
 tableFormat(merge(movies,studios,by="company",all.x=TRUE)) #similar to left_join
 ```
@@ -1417,6 +1423,8 @@ NA
 </tr>
 </tbody>
 </table>
+right\_join using merge()
+
 ``` r
 tableFormat(merge(movies,studios,by="company",all.y=TRUE)) #similar to right_join
 ```
@@ -1633,6 +1641,8 @@ NA
 </tr>
 </tbody>
 </table>
+full\_join using merge()
+
 ``` r
 tableFormat(merge(movies,studios,all=TRUE)) #similar to full_join
 ```
@@ -2107,6 +2117,8 @@ DC
 </tr>
 </tbody>
 </table>
+anti\_join(movies,studios)
+
 ``` r
 #Next is anti_join(movies,studios)
 tableFormat(movies[which(is.na(match(movies$company,studios$company))),])
@@ -2153,6 +2165,8 @@ Star wars
 </tr>
 </tbody>
 </table>
+semi\_join(studios,movies)
+
 ``` r
 #semi_join(studios,movies)
 tableFormat(studios[which(!is.na(match(studios$company,movies$company))),])
@@ -2190,8 +2204,10 @@ DC
 </tr>
 </tbody>
 </table>
+anti\_join(studios,movies)
+
 ``` r
-#anit_join(studios,movies)
+#anti_join(studios,movies)
 tableFormat(studios[which(is.na(match(studios$company,movies$company))),])
 ```
 

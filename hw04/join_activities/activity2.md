@@ -19,7 +19,7 @@ yr_founded<-c(1934,1939,1966)
 studios<-data.frame(company,yr_founded)
 ```
 
-Lets view the datasets movies and studios
+Lets view the datasets movies
 
 ``` r
 tableFormat(movies)
@@ -201,6 +201,8 @@ Star wars
 </tr>
 </tbody>
 </table>
+Lets view the datasets studios
+
 ``` r
 tableFormat(studios)
 ```
@@ -245,6 +247,8 @@ Star trek
 </tr>
 </tbody>
 </table>
+Lets explore the different ways of joining these two dataframes.
+
 ### Different types of join
 
 ##### inner\_join(movies,studios)

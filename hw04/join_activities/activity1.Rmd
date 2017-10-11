@@ -34,21 +34,33 @@ my_gap<- gapminder%>%
 
 ```
 
-Lets view the two datasets
+Lets view the dataset data1
 
 ```{r}
 tableFormat(data1)
+```
+
+Lets view the other dataset my_gap
+
+```{r}
 tableFormat(my_gap)
 ```
 
+Lets explore the different ways of joining these two dataframes.
+
 ###Different types of join
 
-#####inner_join
+#####inner_join(data1,my_gap)
 ```{r}
 #inner_join
 suppressWarnings(suppressMessages(
   tableFormat(inner_join(data1,my_gap,by="continent"))
 ))
+```
+
+#####inner_join(my_Gap,data1)
+
+```{r}
 suppressWarnings(suppressMessages(
   tableFormat(inner_join(my_gap,data1,by="continent"))
 ))

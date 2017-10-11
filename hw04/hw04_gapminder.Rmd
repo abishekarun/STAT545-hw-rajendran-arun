@@ -125,9 +125,13 @@ yr_founded<-c(1934,1939,1966)
 studios<-data.frame(company,yr_founded)
 ```
 
-Lets view the datasets movies and studios
+Lets view the datasets movies
 ```{r}
 tableFormat(movies)
+```
+
+Next the dataset studios
+```{r}
 tableFormat(studios)
 ```
 
@@ -136,13 +140,23 @@ tableFormat(studios)
 
 > Merge two data frames by common columns or row names, or do other versions of database join operations.
 
+inner_join using merge()
 ```{r}
 tableFormat(merge(movies,studios,by="company")) #similar to inner_join 
+```
 
+left_join using merge()
+```{r}
 tableFormat(merge(movies,studios,by="company",all.x=TRUE)) #similar to left_join
+```
 
+right_join using merge()
+```{r}
 tableFormat(merge(movies,studios,by="company",all.y=TRUE)) #similar to right_join
+```
 
+full_join using merge()
+```{r}
 tableFormat(merge(movies,studios,all=TRUE)) #similar to full_join
 ```
 
@@ -165,14 +179,24 @@ It just returns the first match of company marvel in movies which is Iron Man mo
 #that is, it is semi_join(movies,studios)
 
 tableFormat(movies[which(!is.na(match(movies$company,studios$company))),])
+```
 
+anti_join(movies,studios)
+```{r}
 #Next is anti_join(movies,studios)
 tableFormat(movies[which(is.na(match(movies$company,studios$company))),])
+```
 
+semi_join(studios,movies)
+```{r}
 #semi_join(studios,movies)
 tableFormat(studios[which(!is.na(match(studios$company,movies$company))),])
+```
 
-#anit_join(studios,movies)
+anti_join(studios,movies)
+```{r}
+#anti_join(studios,movies)
 tableFormat(studios[which(is.na(match(studios$company,movies$company))),])
 ```
+
 The above shows that match can be used to perform the filtering joins but cannot perform the mutating joins. 

@@ -24,7 +24,7 @@ my_gap<- gapminder%>%
               summarize(mean_lifeExp=weighted.mean(lifeExp))
 ```
 
-Lets view the two datasets
+Lets view the dataset data1
 
 ``` r
 tableFormat(data1)
@@ -126,6 +126,8 @@ AN
 </tr>
 </tbody>
 </table>
+Lets view the other dataset my\_gap
+
 ``` r
 tableFormat(my_gap)
 ```
@@ -186,9 +188,11 @@ Oceania
 </tr>
 </tbody>
 </table>
+Lets explore the different ways of joining these two dataframes.
+
 ### Different types of join
 
-##### inner\_join
+##### inner\_join(data1,my\_gap)
 
 ``` r
 #inner_join
@@ -275,6 +279,8 @@ OC
 </tr>
 </tbody>
 </table>
+##### inner\_join(my\_Gap,data1)
+
 ``` r
 suppressWarnings(suppressMessages(
   tableFormat(inner_join(my_gap,data1,by="continent"))
