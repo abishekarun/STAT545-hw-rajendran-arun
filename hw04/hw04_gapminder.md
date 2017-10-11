@@ -503,11 +503,11 @@ final <- gapminder %>%
                 filter(min_rank(desc(lifeExp)) < 2 | min_rank(lifeExp) < 2) %>% 
                 arrange(year)%>%
                 mutate(variable=ifelse(!duplicated(year),"min","max"))%>%
-                unite(country_lifeExp,country,lifeExp,sep="_",remove = FALSE)%>%
+                unite(countryLifeExp,country,lifeExp,sep="_",remove = FALSE)%>%
                 select(-country,-lifeExp)%>%
-                spread(variable, value="country_lifeExp")%>%
-                separate(min, c("min_country", "min_lifeExp"), "_")%>%
-                separate(max, c("max_country", "max_lifeExp"), "_")
+                spread(variable, value="countryLifeExp")%>%
+                separate(min, c("minCountry", "minLifeExp"), "_")%>%
+                separate(max, c("maxCountry", "maxLifeExp"), "_")
 tableFormat(final)
 ```
 
@@ -520,16 +520,16 @@ tableFormat(final)
 year
 </th>
 <th style="text-align:center;">
-max\_country
+maxCountry
 </th>
 <th style="text-align:center;">
-max\_lifeExp
+maxLifeExp
 </th>
 <th style="text-align:center;">
-min\_country
+minCountry
 </th>
 <th style="text-align:center;">
-min\_lifeExp
+minLifeExp
 </th>
 </tr>
 </thead>
