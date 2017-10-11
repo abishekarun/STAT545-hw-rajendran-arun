@@ -50,24 +50,22 @@ tableFormat(dat,"Sample Data")
 ```
 
 
-**gather()**  
+gather()
 
 Lets explore the function gather().
 
 ```{r}
-dat%>%
-  gather(coordinate,values,-c(category,id))%>% #dont gether category and id
-  tableFormat()
+a<- dat%>%
+      gather(coordinate,values,-c(category,id)) #dont gether category and id
+tableFormat(a)
   
-dat%>%
-  gather(coordinate,values,-c(category,id,score))%>%
-  tableFormat()
+b<- dat%>%
+      gather(coordinate,values,-c(category,id,score))
+tableFormat(b)
 
-dat%>%
-  gather(coordinate,values,x:z,-y)%>%   #gathering only x&z
-  tableFormat()
-
-#gather(),separate(),spread(),extract()
+c<- dat%>%
+      gather(coordinate,values,x:z,-y)   #gathering only x&z
+tableFormat(c)
 ```
 
 
@@ -75,20 +73,20 @@ dat%>%
 This does the opposite of the function gather().
 
 ```{r}
-dat%>%
-  gather(coordinate,values,x,y)%>%
-  spread(coordinate,values)%>%
-  tableFormat()
+d<- dat%>%
+      gather(coordinate,values,x,y)%>%
+      spread(coordinate,values)
+tableFormat(d)
 
-dat%>%
-  gather(coordinate,values,-c(category,id,score))%>%
-  tableFormat()
+e<- dat%>%
+      gather(coordinate,values,-c(category,id,score))
+tableFormat(e)
 
-dat%>%
-  gather(coordinate,values,-c(category,id,score))%>%
-  spread(coordinate,values)%>%
-  spread(category,score,fill=0)%>%
-  tableFormat()
+f<- dat%>%
+      gather(coordinate,values,-c(category,id,score))%>%
+      spread(coordinate,values)%>%
+      spread(category,score,fill=0)
+tableFormat(f)
 ```
 
 Note the re ordering of columns after performing gathering and spreading operations simultaneously.
@@ -97,40 +95,38 @@ Now, lets look at **extract()**,**complete()**, **expand()** and **replace_na()*
 
 ```{r}
 #taking no. in category & get variable class
-dat%>%
-  extract(category,"class",regex="([0-9]+)")%>%
-  tableFormat()  
+g<- dat%>%
+      extract(category,"class",regex="([0-9]+)")
+tableFormat(g)  
 
 #Creates rows for each id for each score in the data.
-dat%>%
-  complete(category, nesting(id),score)%>%
-  tableFormat()  
+h<- dat%>%
+      complete(category, nesting(id),score)
+tableFormat(h)  
   
 # complete is for a common application of expand
-dat%>%
-  expand(category,nesting(id),score)%>%
-  tableFormat()  
+i<- dat%>%
+      expand(category,nesting(id),score)
+tableFormat(i)  
 
 #complete() - completing a data frame with missing combinations.
 #expand() - Expanding a data frame to include all combinations.
 
-dat%>%
-  complete(category, nesting(id,score))%>%
-  #Finds the combinations of id and score that occur in the data.
-  replace_na(list(x=-1,y=-1,z=-1))%>%
-  #Replaces the na values with -1 in x,y,z.
-  tableFormat()  
+j<- dat%>%
+      complete(category, nesting(id,score))%>% #Finds combinations of id & score
+      replace_na(list(x=-1,y=-1,z=-1))        #Replaces nas with -1 in x,y,z.
+tableFormat(j)  
 ```
 
 **separate()** and **unite()** functions
 Lets explore the functions separate() and unite().
 
 ```{r}
-dat%>%
-  unite(idAndCategory,id,category,sep=":",remove = FALSE)%>%
-  select(-id,-category)%>%
-  separate(idAndCategory, c("id", "category"), ":")%>%
-  tableFormat()  
+l<- dat%>%
+      unite(idAndCategory,id,category,sep=":",remove = FALSE)%>%
+      select(-id,-category)%>%
+      separate(idAndCategory, c("id", "category"), ":")
+tableFormat(l)  
 ```
 
 **unnest()** function
@@ -138,11 +134,10 @@ Now lets check the unnest() function.
 
 ```{r}
 #makes each element of list column its own row.
-dat%>%
-  unite(idAndCategory,id,category,sep=":",remove = FALSE)%>%
-  select(-id,-category)%>%
-  unnest(idAndCategory=strsplit(idAndCategory, ":"))%>%
-  tableFormat()   
-
+m<- dat%>%
+      unite(idAndCategory,id,category,sep=":",remove = FALSE)%>%
+      select(-id,-category)%>%
+      unnest(idAndCategory=strsplit(idAndCategory, ":"))
+tableFormat(m)   
 ```
 
