@@ -762,7 +762,6 @@ c
 </tbody>
 </table>
 Although columns now come out sorted when used merge.
-<br/>
 
 Subset
 
@@ -915,7 +914,7 @@ A
 1
 </td>
 <td style="text-align:center;">
-1
+0
 </td>
 <td style="text-align:center;">
 N1
@@ -952,7 +951,7 @@ B
 0
 </td>
 <td style="text-align:center;">
-1
+0
 </td>
 <td style="text-align:center;">
 1
@@ -989,10 +988,10 @@ N2
 C
 </td>
 <td style="text-align:center;">
-1
+0
 </td>
 <td style="text-align:center;">
-1
+0
 </td>
 <td style="text-align:center;">
 0
@@ -1032,10 +1031,10 @@ D
 1
 </td>
 <td style="text-align:center;">
-0
+1
 </td>
 <td style="text-align:center;">
-0
+1
 </td>
 <td style="text-align:center;">
 N4
@@ -1075,7 +1074,7 @@ E
 0
 </td>
 <td style="text-align:center;">
-0
+1
 </td>
 <td style="text-align:center;">
 N5

@@ -84,8 +84,8 @@ output_merge <- merge(second,first)
 tableFormat(output_merge)
 ```
 
-Although columns now come out sorted when used merge.  
-<br/>
+Although columns now come out sorted when used merge.    
+
 
 Subset  
 
