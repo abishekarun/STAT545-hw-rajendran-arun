@@ -80,7 +80,7 @@ score
 A
 </td>
 <td style="text-align:center;">
-1
+0
 </td>
 <td style="text-align:center;">
 0
@@ -100,13 +100,13 @@ N1
 B
 </td>
 <td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
 1
 </td>
 <td style="text-align:center;">
 0
+</td>
+<td style="text-align:center;">
+1
 </td>
 <td style="text-align:center;">
 N2
@@ -123,7 +123,7 @@ C
 0
 </td>
 <td style="text-align:center;">
-0
+1
 </td>
 <td style="text-align:center;">
 1
@@ -140,10 +140,10 @@ N3
 D
 </td>
 <td style="text-align:center;">
-0
+1
 </td>
 <td style="text-align:center;">
-1
+0
 </td>
 <td style="text-align:center;">
 1
@@ -160,10 +160,10 @@ N4
 E
 </td>
 <td style="text-align:center;">
-1
+0
 </td>
 <td style="text-align:center;">
-1
+0
 </td>
 <td style="text-align:center;">
 0
@@ -218,7 +218,7 @@ N1
 x
 </td>
 <td style="text-align:center;">
-1.00
+0.00
 </td>
 </tr>
 <tr>
@@ -232,7 +232,7 @@ N2
 x
 </td>
 <td style="text-align:center;">
-0.00
+1.00
 </td>
 </tr>
 <tr>
@@ -260,7 +260,7 @@ N4
 x
 </td>
 <td style="text-align:center;">
-0.00
+1.00
 </td>
 </tr>
 <tr>
@@ -274,7 +274,7 @@ N5
 x
 </td>
 <td style="text-align:center;">
-1.00
+0.00
 </td>
 </tr>
 <tr>
@@ -302,7 +302,7 @@ N2
 y
 </td>
 <td style="text-align:center;">
-1.00
+0.00
 </td>
 </tr>
 <tr>
@@ -316,7 +316,7 @@ N3
 y
 </td>
 <td style="text-align:center;">
-0.00
+1.00
 </td>
 </tr>
 <tr>
@@ -330,7 +330,7 @@ N4
 y
 </td>
 <td style="text-align:center;">
-1.00
+0.00
 </td>
 </tr>
 <tr>
@@ -344,7 +344,7 @@ N5
 y
 </td>
 <td style="text-align:center;">
-1.00
+0.00
 </td>
 </tr>
 <tr>
@@ -372,7 +372,7 @@ N2
 z
 </td>
 <td style="text-align:center;">
-0.00
+1.00
 </td>
 </tr>
 <tr>
@@ -489,6 +489,8 @@ score
 </tr>
 </tbody>
 </table>
+Second example
+
 ``` r
 b<- dat%>%
       gather(coordinate,values,-c(category,id,score))
@@ -532,7 +534,7 @@ N1
 x
 </td>
 <td style="text-align:center;">
-1
+0
 </td>
 </tr>
 <tr>
@@ -549,7 +551,7 @@ N2
 x
 </td>
 <td style="text-align:center;">
-0
+1
 </td>
 </tr>
 <tr>
@@ -583,7 +585,7 @@ N4
 x
 </td>
 <td style="text-align:center;">
-0
+1
 </td>
 </tr>
 <tr>
@@ -600,7 +602,7 @@ N5
 x
 </td>
 <td style="text-align:center;">
-1
+0
 </td>
 </tr>
 <tr>
@@ -634,7 +636,7 @@ N2
 y
 </td>
 <td style="text-align:center;">
-1
+0
 </td>
 </tr>
 <tr>
@@ -651,7 +653,7 @@ N3
 y
 </td>
 <td style="text-align:center;">
-0
+1
 </td>
 </tr>
 <tr>
@@ -668,7 +670,7 @@ N4
 y
 </td>
 <td style="text-align:center;">
-1
+0
 </td>
 </tr>
 <tr>
@@ -685,7 +687,7 @@ N5
 y
 </td>
 <td style="text-align:center;">
-1
+0
 </td>
 </tr>
 <tr>
@@ -719,7 +721,7 @@ N2
 z
 </td>
 <td style="text-align:center;">
-0
+1
 </td>
 </tr>
 <tr>
@@ -775,6 +777,8 @@ z
 </tr>
 </tbody>
 </table>
+Third example
+
 ``` r
 c<- dat%>%
       gather(coordinate,values,x:z,-y)   #gathering only x&z
@@ -824,7 +828,7 @@ N1
 x
 </td>
 <td style="text-align:center;">
-1
+0
 </td>
 </tr>
 <tr>
@@ -832,7 +836,7 @@ x
 B
 </td>
 <td style="text-align:center;">
-1
+0
 </td>
 <td style="text-align:center;">
 N2
@@ -844,7 +848,7 @@ N2
 x
 </td>
 <td style="text-align:center;">
-0
+1
 </td>
 </tr>
 <tr>
@@ -852,7 +856,7 @@ x
 C
 </td>
 <td style="text-align:center;">
-0
+1
 </td>
 <td style="text-align:center;">
 N3
@@ -872,7 +876,7 @@ x
 D
 </td>
 <td style="text-align:center;">
-1
+0
 </td>
 <td style="text-align:center;">
 N4
@@ -884,7 +888,7 @@ N4
 x
 </td>
 <td style="text-align:center;">
-0
+1
 </td>
 </tr>
 <tr>
@@ -892,7 +896,7 @@ x
 E
 </td>
 <td style="text-align:center;">
-1
+0
 </td>
 <td style="text-align:center;">
 N5
@@ -904,7 +908,7 @@ N5
 x
 </td>
 <td style="text-align:center;">
-1
+0
 </td>
 </tr>
 <tr>
@@ -932,7 +936,7 @@ z
 B
 </td>
 <td style="text-align:center;">
-1
+0
 </td>
 <td style="text-align:center;">
 N2
@@ -944,7 +948,7 @@ N2
 z
 </td>
 <td style="text-align:center;">
-0
+1
 </td>
 </tr>
 <tr>
@@ -952,7 +956,7 @@ z
 C
 </td>
 <td style="text-align:center;">
-0
+1
 </td>
 <td style="text-align:center;">
 N3
@@ -972,7 +976,7 @@ z
 D
 </td>
 <td style="text-align:center;">
-1
+0
 </td>
 <td style="text-align:center;">
 N4
@@ -992,7 +996,7 @@ z
 E
 </td>
 <td style="text-align:center;">
-1
+0
 </td>
 <td style="text-align:center;">
 N5
@@ -1009,7 +1013,7 @@ z
 </tr>
 </tbody>
 </table>
-**spread()** This does the opposite of the function gather().
+spread() This does the opposite of the function gather().
 
 ``` r
 d<- dat%>%
@@ -1058,7 +1062,7 @@ N1
 134.54
 </td>
 <td style="text-align:center;">
-1
+0
 </td>
 <td style="text-align:center;">
 0
@@ -1069,7 +1073,7 @@ N1
 B
 </td>
 <td style="text-align:center;">
-0
+1
 </td>
 <td style="text-align:center;">
 N2
@@ -1078,10 +1082,10 @@ N2
 123.23
 </td>
 <td style="text-align:center;">
-0
+1
 </td>
 <td style="text-align:center;">
-1
+0
 </td>
 </tr>
 <tr>
@@ -1101,7 +1105,7 @@ N3
 0
 </td>
 <td style="text-align:center;">
-0
+1
 </td>
 </tr>
 <tr>
@@ -1118,10 +1122,10 @@ N4
 129.50
 </td>
 <td style="text-align:center;">
-0
+1
 </td>
 <td style="text-align:center;">
-1
+0
 </td>
 </tr>
 <tr>
@@ -1138,14 +1142,16 @@ N5
 110.80
 </td>
 <td style="text-align:center;">
-1
+0
 </td>
 <td style="text-align:center;">
-1
+0
 </td>
 </tr>
 </tbody>
 </table>
+Second example
+
 ``` r
 e<- dat%>%
       gather(coordinate,values,-c(category,id,score))
@@ -1189,7 +1195,7 @@ N1
 x
 </td>
 <td style="text-align:center;">
-1
+0
 </td>
 </tr>
 <tr>
@@ -1206,7 +1212,7 @@ N2
 x
 </td>
 <td style="text-align:center;">
-0
+1
 </td>
 </tr>
 <tr>
@@ -1240,7 +1246,7 @@ N4
 x
 </td>
 <td style="text-align:center;">
-0
+1
 </td>
 </tr>
 <tr>
@@ -1257,7 +1263,7 @@ N5
 x
 </td>
 <td style="text-align:center;">
-1
+0
 </td>
 </tr>
 <tr>
@@ -1291,7 +1297,7 @@ N2
 y
 </td>
 <td style="text-align:center;">
-1
+0
 </td>
 </tr>
 <tr>
@@ -1308,7 +1314,7 @@ N3
 y
 </td>
 <td style="text-align:center;">
-0
+1
 </td>
 </tr>
 <tr>
@@ -1325,7 +1331,7 @@ N4
 y
 </td>
 <td style="text-align:center;">
-1
+0
 </td>
 </tr>
 <tr>
@@ -1342,7 +1348,7 @@ N5
 y
 </td>
 <td style="text-align:center;">
-1
+0
 </td>
 </tr>
 <tr>
@@ -1376,7 +1382,7 @@ N2
 z
 </td>
 <td style="text-align:center;">
-0
+1
 </td>
 </tr>
 <tr>
@@ -1432,6 +1438,8 @@ z
 </tr>
 </tbody>
 </table>
+Third example
+
 ``` r
 f<- dat%>%
       gather(coordinate,values,-c(category,id,score))%>%
@@ -1480,7 +1488,7 @@ N5
 A
 </td>
 <td style="text-align:center;">
-1
+0
 </td>
 <td style="text-align:center;">
 0
@@ -1509,13 +1517,13 @@ A
 B
 </td>
 <td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
 1
 </td>
 <td style="text-align:center;">
 0
+</td>
+<td style="text-align:center;">
+1
 </td>
 <td style="text-align:center;">
 0.00
@@ -1541,7 +1549,7 @@ C
 0
 </td>
 <td style="text-align:center;">
-0
+1
 </td>
 <td style="text-align:center;">
 1
@@ -1567,10 +1575,10 @@ C
 D
 </td>
 <td style="text-align:center;">
-0
+1
 </td>
 <td style="text-align:center;">
-1
+0
 </td>
 <td style="text-align:center;">
 1
@@ -1596,10 +1604,10 @@ D
 E
 </td>
 <td style="text-align:center;">
-1
+0
 </td>
 <td style="text-align:center;">
-1
+0
 </td>
 <td style="text-align:center;">
 0
@@ -1624,7 +1632,7 @@ E
 </table>
 Note the re ordering of columns after performing gathering and spreading operations simultaneously.
 
-Now, lets look at **extract()**,**complete()**, **expand()** and **replace\_na()**
+Now, lets look at extract(),complete(), expand() and replace\_na()
 
 ``` r
 #taking no. in category & get variable class
@@ -1664,7 +1672,7 @@ score
 A
 </td>
 <td style="text-align:center;">
-1
+0
 </td>
 <td style="text-align:center;">
 0
@@ -1684,13 +1692,13 @@ A
 B
 </td>
 <td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
 1
 </td>
 <td style="text-align:center;">
 0
+</td>
+<td style="text-align:center;">
+1
 </td>
 <td style="text-align:center;">
 2
@@ -1707,7 +1715,7 @@ C
 0
 </td>
 <td style="text-align:center;">
-0
+1
 </td>
 <td style="text-align:center;">
 1
@@ -1724,10 +1732,10 @@ C
 D
 </td>
 <td style="text-align:center;">
-0
+1
 </td>
 <td style="text-align:center;">
-1
+0
 </td>
 <td style="text-align:center;">
 1
@@ -1744,10 +1752,10 @@ D
 E
 </td>
 <td style="text-align:center;">
-1
+0
 </td>
 <td style="text-align:center;">
-1
+0
 </td>
 <td style="text-align:center;">
 0
@@ -1885,1147 +1893,567 @@ A
 134.54
 </td>
 <td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
 0
 </td>
 <td style="text-align:center;">
 0
 </td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N1
-</td>
-<td style="text-align:center;">
-B
-</td>
-<td style="text-align:center;">
-110.80
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N1
-</td>
-<td style="text-align:center;">
-B
-</td>
-<td style="text-align:center;">
-112.38
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N1
-</td>
-<td style="text-align:center;">
-B
-</td>
-<td style="text-align:center;">
-123.23
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N1
-</td>
-<td style="text-align:center;">
-B
-</td>
-<td style="text-align:center;">
-129.50
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N1
-</td>
-<td style="text-align:center;">
-B
-</td>
-<td style="text-align:center;">
-134.54
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N1
-</td>
-<td style="text-align:center;">
-C
-</td>
-<td style="text-align:center;">
-110.80
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N1
-</td>
-<td style="text-align:center;">
-C
-</td>
-<td style="text-align:center;">
-112.38
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N1
-</td>
-<td style="text-align:center;">
-C
-</td>
-<td style="text-align:center;">
-123.23
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N1
-</td>
-<td style="text-align:center;">
-C
-</td>
-<td style="text-align:center;">
-129.50
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N1
-</td>
-<td style="text-align:center;">
-C
-</td>
-<td style="text-align:center;">
-134.54
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N1
-</td>
-<td style="text-align:center;">
-D
-</td>
-<td style="text-align:center;">
-110.80
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N1
-</td>
-<td style="text-align:center;">
-D
-</td>
-<td style="text-align:center;">
-112.38
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N1
-</td>
-<td style="text-align:center;">
-D
-</td>
-<td style="text-align:center;">
-123.23
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N1
-</td>
-<td style="text-align:center;">
-D
-</td>
-<td style="text-align:center;">
-129.50
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N1
-</td>
-<td style="text-align:center;">
-D
-</td>
-<td style="text-align:center;">
-134.54
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N1
-</td>
-<td style="text-align:center;">
-E
-</td>
-<td style="text-align:center;">
-110.80
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N1
-</td>
-<td style="text-align:center;">
-E
-</td>
-<td style="text-align:center;">
-112.38
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N1
-</td>
-<td style="text-align:center;">
-E
-</td>
-<td style="text-align:center;">
-123.23
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N1
-</td>
-<td style="text-align:center;">
-E
-</td>
-<td style="text-align:center;">
-129.50
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N1
-</td>
-<td style="text-align:center;">
-E
-</td>
-<td style="text-align:center;">
-134.54
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N2
-</td>
-<td style="text-align:center;">
-A
-</td>
-<td style="text-align:center;">
-110.80
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N2
-</td>
-<td style="text-align:center;">
-A
-</td>
-<td style="text-align:center;">
-112.38
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N2
-</td>
-<td style="text-align:center;">
-A
-</td>
-<td style="text-align:center;">
-123.23
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N2
-</td>
-<td style="text-align:center;">
-A
-</td>
-<td style="text-align:center;">
-129.50
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N2
-</td>
-<td style="text-align:center;">
-A
-</td>
-<td style="text-align:center;">
-134.54
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N2
-</td>
-<td style="text-align:center;">
-B
-</td>
-<td style="text-align:center;">
-110.80
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N2
-</td>
-<td style="text-align:center;">
-B
-</td>
-<td style="text-align:center;">
-112.38
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N2
-</td>
-<td style="text-align:center;">
-B
-</td>
-<td style="text-align:center;">
-123.23
-</td>
 <td style="text-align:center;">
 0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N1
+</td>
+<td style="text-align:center;">
+B
+</td>
+<td style="text-align:center;">
+110.80
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N1
+</td>
+<td style="text-align:center;">
+B
+</td>
+<td style="text-align:center;">
+112.38
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N1
+</td>
+<td style="text-align:center;">
+B
+</td>
+<td style="text-align:center;">
+123.23
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N1
+</td>
+<td style="text-align:center;">
+B
+</td>
+<td style="text-align:center;">
+129.50
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N1
+</td>
+<td style="text-align:center;">
+B
+</td>
+<td style="text-align:center;">
+134.54
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N1
+</td>
+<td style="text-align:center;">
+C
+</td>
+<td style="text-align:center;">
+110.80
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N1
+</td>
+<td style="text-align:center;">
+C
+</td>
+<td style="text-align:center;">
+112.38
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N1
+</td>
+<td style="text-align:center;">
+C
+</td>
+<td style="text-align:center;">
+123.23
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N1
+</td>
+<td style="text-align:center;">
+C
+</td>
+<td style="text-align:center;">
+129.50
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N1
+</td>
+<td style="text-align:center;">
+C
+</td>
+<td style="text-align:center;">
+134.54
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N1
+</td>
+<td style="text-align:center;">
+D
+</td>
+<td style="text-align:center;">
+110.80
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N1
+</td>
+<td style="text-align:center;">
+D
+</td>
+<td style="text-align:center;">
+112.38
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N1
+</td>
+<td style="text-align:center;">
+D
+</td>
+<td style="text-align:center;">
+123.23
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N1
+</td>
+<td style="text-align:center;">
+D
+</td>
+<td style="text-align:center;">
+129.50
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N1
+</td>
+<td style="text-align:center;">
+D
+</td>
+<td style="text-align:center;">
+134.54
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N1
+</td>
+<td style="text-align:center;">
+E
+</td>
+<td style="text-align:center;">
+110.80
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N1
+</td>
+<td style="text-align:center;">
+E
+</td>
+<td style="text-align:center;">
+112.38
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N1
+</td>
+<td style="text-align:center;">
+E
+</td>
+<td style="text-align:center;">
+123.23
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N1
+</td>
+<td style="text-align:center;">
+E
+</td>
+<td style="text-align:center;">
+129.50
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N1
+</td>
+<td style="text-align:center;">
+E
+</td>
+<td style="text-align:center;">
+134.54
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N2
+</td>
+<td style="text-align:center;">
+A
+</td>
+<td style="text-align:center;">
+110.80
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N2
+</td>
+<td style="text-align:center;">
+A
+</td>
+<td style="text-align:center;">
+112.38
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N2
+</td>
+<td style="text-align:center;">
+A
+</td>
+<td style="text-align:center;">
+123.23
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N2
+</td>
+<td style="text-align:center;">
+A
+</td>
+<td style="text-align:center;">
+129.50
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N2
+</td>
+<td style="text-align:center;">
+A
+</td>
+<td style="text-align:center;">
+134.54
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N2
+</td>
+<td style="text-align:center;">
+B
+</td>
+<td style="text-align:center;">
+110.80
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N2
+</td>
+<td style="text-align:center;">
+B
+</td>
+<td style="text-align:center;">
+112.38
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N2
+</td>
+<td style="text-align:center;">
+B
+</td>
+<td style="text-align:center;">
+123.23
 </td>
 <td style="text-align:center;">
 1
-</td>
-<td style="text-align:center;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N2
-</td>
-<td style="text-align:center;">
-B
-</td>
-<td style="text-align:center;">
-129.50
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N2
-</td>
-<td style="text-align:center;">
-B
-</td>
-<td style="text-align:center;">
-134.54
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N2
-</td>
-<td style="text-align:center;">
-C
-</td>
-<td style="text-align:center;">
-110.80
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N2
-</td>
-<td style="text-align:center;">
-C
-</td>
-<td style="text-align:center;">
-112.38
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N2
-</td>
-<td style="text-align:center;">
-C
-</td>
-<td style="text-align:center;">
-123.23
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N2
-</td>
-<td style="text-align:center;">
-C
-</td>
-<td style="text-align:center;">
-129.50
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N2
-</td>
-<td style="text-align:center;">
-C
-</td>
-<td style="text-align:center;">
-134.54
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N2
-</td>
-<td style="text-align:center;">
-D
-</td>
-<td style="text-align:center;">
-110.80
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N2
-</td>
-<td style="text-align:center;">
-D
-</td>
-<td style="text-align:center;">
-112.38
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N2
-</td>
-<td style="text-align:center;">
-D
-</td>
-<td style="text-align:center;">
-123.23
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N2
-</td>
-<td style="text-align:center;">
-D
-</td>
-<td style="text-align:center;">
-129.50
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N2
-</td>
-<td style="text-align:center;">
-D
-</td>
-<td style="text-align:center;">
-134.54
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N2
-</td>
-<td style="text-align:center;">
-E
-</td>
-<td style="text-align:center;">
-110.80
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N2
-</td>
-<td style="text-align:center;">
-E
-</td>
-<td style="text-align:center;">
-112.38
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N2
-</td>
-<td style="text-align:center;">
-E
-</td>
-<td style="text-align:center;">
-123.23
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N2
-</td>
-<td style="text-align:center;">
-E
-</td>
-<td style="text-align:center;">
-129.50
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N2
-</td>
-<td style="text-align:center;">
-E
-</td>
-<td style="text-align:center;">
-134.54
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N3
-</td>
-<td style="text-align:center;">
-A
-</td>
-<td style="text-align:center;">
-110.80
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N3
-</td>
-<td style="text-align:center;">
-A
-</td>
-<td style="text-align:center;">
-112.38
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N3
-</td>
-<td style="text-align:center;">
-A
-</td>
-<td style="text-align:center;">
-123.23
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N3
-</td>
-<td style="text-align:center;">
-A
-</td>
-<td style="text-align:center;">
-129.50
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N3
-</td>
-<td style="text-align:center;">
-A
-</td>
-<td style="text-align:center;">
-134.54
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N3
-</td>
-<td style="text-align:center;">
-B
-</td>
-<td style="text-align:center;">
-110.80
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N3
-</td>
-<td style="text-align:center;">
-B
-</td>
-<td style="text-align:center;">
-112.38
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N3
-</td>
-<td style="text-align:center;">
-B
-</td>
-<td style="text-align:center;">
-123.23
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N3
-</td>
-<td style="text-align:center;">
-B
-</td>
-<td style="text-align:center;">
-129.50
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N3
-</td>
-<td style="text-align:center;">
-B
-</td>
-<td style="text-align:center;">
-134.54
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N3
-</td>
-<td style="text-align:center;">
-C
-</td>
-<td style="text-align:center;">
-110.80
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N3
-</td>
-<td style="text-align:center;">
-C
-</td>
-<td style="text-align:center;">
-112.38
-</td>
-<td style="text-align:center;">
-0
 </td>
 <td style="text-align:center;">
 0
@@ -3036,427 +2464,7 @@ C
 </tr>
 <tr>
 <td style="text-align:center;">
-N3
-</td>
-<td style="text-align:center;">
-C
-</td>
-<td style="text-align:center;">
-123.23
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N3
-</td>
-<td style="text-align:center;">
-C
-</td>
-<td style="text-align:center;">
-129.50
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N3
-</td>
-<td style="text-align:center;">
-C
-</td>
-<td style="text-align:center;">
-134.54
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N3
-</td>
-<td style="text-align:center;">
-D
-</td>
-<td style="text-align:center;">
-110.80
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N3
-</td>
-<td style="text-align:center;">
-D
-</td>
-<td style="text-align:center;">
-112.38
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N3
-</td>
-<td style="text-align:center;">
-D
-</td>
-<td style="text-align:center;">
-123.23
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N3
-</td>
-<td style="text-align:center;">
-D
-</td>
-<td style="text-align:center;">
-129.50
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N3
-</td>
-<td style="text-align:center;">
-D
-</td>
-<td style="text-align:center;">
-134.54
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N3
-</td>
-<td style="text-align:center;">
-E
-</td>
-<td style="text-align:center;">
-110.80
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N3
-</td>
-<td style="text-align:center;">
-E
-</td>
-<td style="text-align:center;">
-112.38
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N3
-</td>
-<td style="text-align:center;">
-E
-</td>
-<td style="text-align:center;">
-123.23
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N3
-</td>
-<td style="text-align:center;">
-E
-</td>
-<td style="text-align:center;">
-129.50
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N3
-</td>
-<td style="text-align:center;">
-E
-</td>
-<td style="text-align:center;">
-134.54
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N4
-</td>
-<td style="text-align:center;">
-A
-</td>
-<td style="text-align:center;">
-110.80
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N4
-</td>
-<td style="text-align:center;">
-A
-</td>
-<td style="text-align:center;">
-112.38
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N4
-</td>
-<td style="text-align:center;">
-A
-</td>
-<td style="text-align:center;">
-123.23
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N4
-</td>
-<td style="text-align:center;">
-A
-</td>
-<td style="text-align:center;">
-129.50
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N4
-</td>
-<td style="text-align:center;">
-A
-</td>
-<td style="text-align:center;">
-134.54
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N4
-</td>
-<td style="text-align:center;">
-B
-</td>
-<td style="text-align:center;">
-110.80
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N4
-</td>
-<td style="text-align:center;">
-B
-</td>
-<td style="text-align:center;">
-112.38
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N4
-</td>
-<td style="text-align:center;">
-B
-</td>
-<td style="text-align:center;">
-123.23
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N4
+N2
 </td>
 <td style="text-align:center;">
 B
@@ -3476,7 +2484,7 @@ NA
 </tr>
 <tr>
 <td style="text-align:center;">
-N4
+N2
 </td>
 <td style="text-align:center;">
 B
@@ -3496,7 +2504,7 @@ NA
 </tr>
 <tr>
 <td style="text-align:center;">
-N4
+N2
 </td>
 <td style="text-align:center;">
 C
@@ -3516,7 +2524,7 @@ NA
 </tr>
 <tr>
 <td style="text-align:center;">
-N4
+N2
 </td>
 <td style="text-align:center;">
 C
@@ -3536,7 +2544,7 @@ NA
 </tr>
 <tr>
 <td style="text-align:center;">
-N4
+N2
 </td>
 <td style="text-align:center;">
 C
@@ -3556,7 +2564,7 @@ NA
 </tr>
 <tr>
 <td style="text-align:center;">
-N4
+N2
 </td>
 <td style="text-align:center;">
 C
@@ -3576,7 +2584,7 @@ NA
 </tr>
 <tr>
 <td style="text-align:center;">
-N4
+N2
 </td>
 <td style="text-align:center;">
 C
@@ -3596,7 +2604,7 @@ NA
 </tr>
 <tr>
 <td style="text-align:center;">
-N4
+N2
 </td>
 <td style="text-align:center;">
 D
@@ -3616,7 +2624,7 @@ NA
 </tr>
 <tr>
 <td style="text-align:center;">
-N4
+N2
 </td>
 <td style="text-align:center;">
 D
@@ -3636,7 +2644,7 @@ NA
 </tr>
 <tr>
 <td style="text-align:center;">
-N4
+N2
 </td>
 <td style="text-align:center;">
 D
@@ -3656,13 +2664,373 @@ NA
 </tr>
 <tr>
 <td style="text-align:center;">
-N4
+N2
 </td>
 <td style="text-align:center;">
 D
 </td>
 <td style="text-align:center;">
 129.50
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N2
+</td>
+<td style="text-align:center;">
+D
+</td>
+<td style="text-align:center;">
+134.54
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N2
+</td>
+<td style="text-align:center;">
+E
+</td>
+<td style="text-align:center;">
+110.80
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N2
+</td>
+<td style="text-align:center;">
+E
+</td>
+<td style="text-align:center;">
+112.38
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N2
+</td>
+<td style="text-align:center;">
+E
+</td>
+<td style="text-align:center;">
+123.23
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N2
+</td>
+<td style="text-align:center;">
+E
+</td>
+<td style="text-align:center;">
+129.50
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N2
+</td>
+<td style="text-align:center;">
+E
+</td>
+<td style="text-align:center;">
+134.54
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N3
+</td>
+<td style="text-align:center;">
+A
+</td>
+<td style="text-align:center;">
+110.80
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N3
+</td>
+<td style="text-align:center;">
+A
+</td>
+<td style="text-align:center;">
+112.38
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N3
+</td>
+<td style="text-align:center;">
+A
+</td>
+<td style="text-align:center;">
+123.23
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N3
+</td>
+<td style="text-align:center;">
+A
+</td>
+<td style="text-align:center;">
+129.50
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N3
+</td>
+<td style="text-align:center;">
+A
+</td>
+<td style="text-align:center;">
+134.54
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N3
+</td>
+<td style="text-align:center;">
+B
+</td>
+<td style="text-align:center;">
+110.80
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N3
+</td>
+<td style="text-align:center;">
+B
+</td>
+<td style="text-align:center;">
+112.38
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N3
+</td>
+<td style="text-align:center;">
+B
+</td>
+<td style="text-align:center;">
+123.23
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N3
+</td>
+<td style="text-align:center;">
+B
+</td>
+<td style="text-align:center;">
+129.50
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N3
+</td>
+<td style="text-align:center;">
+B
+</td>
+<td style="text-align:center;">
+134.54
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N3
+</td>
+<td style="text-align:center;">
+C
+</td>
+<td style="text-align:center;">
+110.80
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N3
+</td>
+<td style="text-align:center;">
+C
+</td>
+<td style="text-align:center;">
+112.38
 </td>
 <td style="text-align:center;">
 0
@@ -3676,367 +3044,7 @@ D
 </tr>
 <tr>
 <td style="text-align:center;">
-N4
-</td>
-<td style="text-align:center;">
-D
-</td>
-<td style="text-align:center;">
-134.54
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N4
-</td>
-<td style="text-align:center;">
-E
-</td>
-<td style="text-align:center;">
-110.80
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N4
-</td>
-<td style="text-align:center;">
-E
-</td>
-<td style="text-align:center;">
-112.38
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N4
-</td>
-<td style="text-align:center;">
-E
-</td>
-<td style="text-align:center;">
-123.23
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N4
-</td>
-<td style="text-align:center;">
-E
-</td>
-<td style="text-align:center;">
-129.50
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N4
-</td>
-<td style="text-align:center;">
-E
-</td>
-<td style="text-align:center;">
-134.54
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N5
-</td>
-<td style="text-align:center;">
-A
-</td>
-<td style="text-align:center;">
-110.80
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N5
-</td>
-<td style="text-align:center;">
-A
-</td>
-<td style="text-align:center;">
-112.38
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N5
-</td>
-<td style="text-align:center;">
-A
-</td>
-<td style="text-align:center;">
-123.23
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N5
-</td>
-<td style="text-align:center;">
-A
-</td>
-<td style="text-align:center;">
-129.50
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N5
-</td>
-<td style="text-align:center;">
-A
-</td>
-<td style="text-align:center;">
-134.54
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N5
-</td>
-<td style="text-align:center;">
-B
-</td>
-<td style="text-align:center;">
-110.80
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N5
-</td>
-<td style="text-align:center;">
-B
-</td>
-<td style="text-align:center;">
-112.38
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N5
-</td>
-<td style="text-align:center;">
-B
-</td>
-<td style="text-align:center;">
-123.23
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N5
-</td>
-<td style="text-align:center;">
-B
-</td>
-<td style="text-align:center;">
-129.50
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N5
-</td>
-<td style="text-align:center;">
-B
-</td>
-<td style="text-align:center;">
-134.54
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N5
-</td>
-<td style="text-align:center;">
-C
-</td>
-<td style="text-align:center;">
-110.80
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N5
-</td>
-<td style="text-align:center;">
-C
-</td>
-<td style="text-align:center;">
-112.38
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-N5
+N3
 </td>
 <td style="text-align:center;">
 C
@@ -4056,7 +3064,7 @@ NA
 </tr>
 <tr>
 <td style="text-align:center;">
-N5
+N3
 </td>
 <td style="text-align:center;">
 C
@@ -4076,7 +3084,7 @@ NA
 </tr>
 <tr>
 <td style="text-align:center;">
-N5
+N3
 </td>
 <td style="text-align:center;">
 C
@@ -4096,7 +3104,7 @@ NA
 </tr>
 <tr>
 <td style="text-align:center;">
-N5
+N3
 </td>
 <td style="text-align:center;">
 D
@@ -4116,7 +3124,7 @@ NA
 </tr>
 <tr>
 <td style="text-align:center;">
-N5
+N3
 </td>
 <td style="text-align:center;">
 D
@@ -4136,7 +3144,7 @@ NA
 </tr>
 <tr>
 <td style="text-align:center;">
-N5
+N3
 </td>
 <td style="text-align:center;">
 D
@@ -4156,7 +3164,7 @@ NA
 </tr>
 <tr>
 <td style="text-align:center;">
-N5
+N3
 </td>
 <td style="text-align:center;">
 D
@@ -4176,7 +3184,7 @@ NA
 </tr>
 <tr>
 <td style="text-align:center;">
-N5
+N3
 </td>
 <td style="text-align:center;">
 D
@@ -4196,19 +3204,1019 @@ NA
 </tr>
 <tr>
 <td style="text-align:center;">
-N5
+N3
 </td>
 <td style="text-align:center;">
 E
 </td>
 <td style="text-align:center;">
 110.80
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N3
+</td>
+<td style="text-align:center;">
+E
+</td>
+<td style="text-align:center;">
+112.38
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N3
+</td>
+<td style="text-align:center;">
+E
+</td>
+<td style="text-align:center;">
+123.23
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N3
+</td>
+<td style="text-align:center;">
+E
+</td>
+<td style="text-align:center;">
+129.50
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N3
+</td>
+<td style="text-align:center;">
+E
+</td>
+<td style="text-align:center;">
+134.54
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N4
+</td>
+<td style="text-align:center;">
+A
+</td>
+<td style="text-align:center;">
+110.80
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N4
+</td>
+<td style="text-align:center;">
+A
+</td>
+<td style="text-align:center;">
+112.38
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N4
+</td>
+<td style="text-align:center;">
+A
+</td>
+<td style="text-align:center;">
+123.23
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N4
+</td>
+<td style="text-align:center;">
+A
+</td>
+<td style="text-align:center;">
+129.50
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N4
+</td>
+<td style="text-align:center;">
+A
+</td>
+<td style="text-align:center;">
+134.54
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N4
+</td>
+<td style="text-align:center;">
+B
+</td>
+<td style="text-align:center;">
+110.80
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N4
+</td>
+<td style="text-align:center;">
+B
+</td>
+<td style="text-align:center;">
+112.38
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N4
+</td>
+<td style="text-align:center;">
+B
+</td>
+<td style="text-align:center;">
+123.23
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N4
+</td>
+<td style="text-align:center;">
+B
+</td>
+<td style="text-align:center;">
+129.50
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N4
+</td>
+<td style="text-align:center;">
+B
+</td>
+<td style="text-align:center;">
+134.54
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N4
+</td>
+<td style="text-align:center;">
+C
+</td>
+<td style="text-align:center;">
+110.80
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N4
+</td>
+<td style="text-align:center;">
+C
+</td>
+<td style="text-align:center;">
+112.38
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N4
+</td>
+<td style="text-align:center;">
+C
+</td>
+<td style="text-align:center;">
+123.23
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N4
+</td>
+<td style="text-align:center;">
+C
+</td>
+<td style="text-align:center;">
+129.50
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N4
+</td>
+<td style="text-align:center;">
+C
+</td>
+<td style="text-align:center;">
+134.54
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N4
+</td>
+<td style="text-align:center;">
+D
+</td>
+<td style="text-align:center;">
+110.80
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N4
+</td>
+<td style="text-align:center;">
+D
+</td>
+<td style="text-align:center;">
+112.38
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N4
+</td>
+<td style="text-align:center;">
+D
+</td>
+<td style="text-align:center;">
+123.23
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N4
+</td>
+<td style="text-align:center;">
+D
+</td>
+<td style="text-align:center;">
+129.50
 </td>
 <td style="text-align:center;">
 1
 </td>
 <td style="text-align:center;">
+0
+</td>
+<td style="text-align:center;">
 1
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N4
+</td>
+<td style="text-align:center;">
+D
+</td>
+<td style="text-align:center;">
+134.54
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N4
+</td>
+<td style="text-align:center;">
+E
+</td>
+<td style="text-align:center;">
+110.80
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N4
+</td>
+<td style="text-align:center;">
+E
+</td>
+<td style="text-align:center;">
+112.38
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N4
+</td>
+<td style="text-align:center;">
+E
+</td>
+<td style="text-align:center;">
+123.23
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N4
+</td>
+<td style="text-align:center;">
+E
+</td>
+<td style="text-align:center;">
+129.50
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N4
+</td>
+<td style="text-align:center;">
+E
+</td>
+<td style="text-align:center;">
+134.54
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N5
+</td>
+<td style="text-align:center;">
+A
+</td>
+<td style="text-align:center;">
+110.80
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N5
+</td>
+<td style="text-align:center;">
+A
+</td>
+<td style="text-align:center;">
+112.38
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N5
+</td>
+<td style="text-align:center;">
+A
+</td>
+<td style="text-align:center;">
+123.23
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N5
+</td>
+<td style="text-align:center;">
+A
+</td>
+<td style="text-align:center;">
+129.50
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N5
+</td>
+<td style="text-align:center;">
+A
+</td>
+<td style="text-align:center;">
+134.54
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N5
+</td>
+<td style="text-align:center;">
+B
+</td>
+<td style="text-align:center;">
+110.80
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N5
+</td>
+<td style="text-align:center;">
+B
+</td>
+<td style="text-align:center;">
+112.38
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N5
+</td>
+<td style="text-align:center;">
+B
+</td>
+<td style="text-align:center;">
+123.23
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N5
+</td>
+<td style="text-align:center;">
+B
+</td>
+<td style="text-align:center;">
+129.50
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N5
+</td>
+<td style="text-align:center;">
+B
+</td>
+<td style="text-align:center;">
+134.54
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N5
+</td>
+<td style="text-align:center;">
+C
+</td>
+<td style="text-align:center;">
+110.80
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N5
+</td>
+<td style="text-align:center;">
+C
+</td>
+<td style="text-align:center;">
+112.38
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N5
+</td>
+<td style="text-align:center;">
+C
+</td>
+<td style="text-align:center;">
+123.23
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N5
+</td>
+<td style="text-align:center;">
+C
+</td>
+<td style="text-align:center;">
+129.50
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N5
+</td>
+<td style="text-align:center;">
+C
+</td>
+<td style="text-align:center;">
+134.54
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N5
+</td>
+<td style="text-align:center;">
+D
+</td>
+<td style="text-align:center;">
+110.80
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N5
+</td>
+<td style="text-align:center;">
+D
+</td>
+<td style="text-align:center;">
+112.38
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N5
+</td>
+<td style="text-align:center;">
+D
+</td>
+<td style="text-align:center;">
+123.23
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N5
+</td>
+<td style="text-align:center;">
+D
+</td>
+<td style="text-align:center;">
+129.50
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N5
+</td>
+<td style="text-align:center;">
+D
+</td>
+<td style="text-align:center;">
+134.54
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+N5
+</td>
+<td style="text-align:center;">
+E
+</td>
+<td style="text-align:center;">
+110.80
+</td>
+<td style="text-align:center;">
+0
+</td>
+<td style="text-align:center;">
+0
 </td>
 <td style="text-align:center;">
 0
@@ -5697,9 +5705,11 @@ E
 </tr>
 </tbody>
 </table>
-complete() &gt; completing a data frame with missing combinations.
+complete()
+&gt; completing a data frame with missing combinations.
 
-expand() &gt; Expanding a data frame to include all combinations.
+expand()
+&gt; Expanding a data frame to include all combinations.
 
 ``` r
 j<- dat%>%
@@ -5745,7 +5755,7 @@ A
 134.54
 </td>
 <td style="text-align:center;">
-1
+0
 </td>
 <td style="text-align:center;">
 0
@@ -5865,13 +5875,13 @@ B
 123.23
 </td>
 <td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
 1
 </td>
 <td style="text-align:center;">
 0
+</td>
+<td style="text-align:center;">
+1
 </td>
 </tr>
 <tr>
@@ -5988,7 +5998,7 @@ C
 0
 </td>
 <td style="text-align:center;">
-0
+1
 </td>
 <td style="text-align:center;">
 1
@@ -6105,10 +6115,10 @@ D
 129.50
 </td>
 <td style="text-align:center;">
-0
+1
 </td>
 <td style="text-align:center;">
-1
+0
 </td>
 <td style="text-align:center;">
 1
@@ -6225,10 +6235,10 @@ E
 110.80
 </td>
 <td style="text-align:center;">
-1
+0
 </td>
 <td style="text-align:center;">
-1
+0
 </td>
 <td style="text-align:center;">
 0
@@ -6236,7 +6246,7 @@ E
 </tr>
 </tbody>
 </table>
-**separate()** and **unite()** functions Lets explore the functions separate() and unite().
+separate() and unite() functions Lets explore the functions separate() and unite().
 
 ``` r
 l<- dat%>%
@@ -6280,7 +6290,7 @@ A
 N1
 </td>
 <td style="text-align:center;">
-1
+0
 </td>
 <td style="text-align:center;">
 0
@@ -6300,13 +6310,13 @@ B
 N2
 </td>
 <td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
 1
 </td>
 <td style="text-align:center;">
 0
+</td>
+<td style="text-align:center;">
+1
 </td>
 <td style="text-align:center;">
 123.23
@@ -6323,7 +6333,7 @@ N3
 0
 </td>
 <td style="text-align:center;">
-0
+1
 </td>
 <td style="text-align:center;">
 1
@@ -6340,10 +6350,10 @@ D
 N4
 </td>
 <td style="text-align:center;">
-0
+1
 </td>
 <td style="text-align:center;">
-1
+0
 </td>
 <td style="text-align:center;">
 1
@@ -6360,10 +6370,10 @@ E
 N5
 </td>
 <td style="text-align:center;">
-1
+0
 </td>
 <td style="text-align:center;">
-1
+0
 </td>
 <td style="text-align:center;">
 0
@@ -6374,7 +6384,9 @@ N5
 </tr>
 </tbody>
 </table>
-**unnest()** function Now lets check the unnest() function.
+unnest() function
+
+Now lets check the unnest() function.
 
 ``` r
 #makes each element of list column its own row.
@@ -6410,7 +6422,7 @@ idAndCategory
 <tbody>
 <tr>
 <td style="text-align:center;">
-1
+0
 </td>
 <td style="text-align:center;">
 0
@@ -6427,7 +6439,7 @@ A
 </tr>
 <tr>
 <td style="text-align:center;">
-1
+0
 </td>
 <td style="text-align:center;">
 0
@@ -6444,13 +6456,13 @@ N1
 </tr>
 <tr>
 <td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
 1
 </td>
 <td style="text-align:center;">
 0
+</td>
+<td style="text-align:center;">
+1
 </td>
 <td style="text-align:center;">
 123.23
@@ -6461,13 +6473,13 @@ B
 </tr>
 <tr>
 <td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
 1
 </td>
 <td style="text-align:center;">
 0
+</td>
+<td style="text-align:center;">
+1
 </td>
 <td style="text-align:center;">
 123.23
@@ -6481,7 +6493,7 @@ N2
 0
 </td>
 <td style="text-align:center;">
-0
+1
 </td>
 <td style="text-align:center;">
 1
@@ -6498,7 +6510,7 @@ C
 0
 </td>
 <td style="text-align:center;">
-0
+1
 </td>
 <td style="text-align:center;">
 1
@@ -6512,10 +6524,10 @@ N3
 </tr>
 <tr>
 <td style="text-align:center;">
-0
+1
 </td>
 <td style="text-align:center;">
-1
+0
 </td>
 <td style="text-align:center;">
 1
@@ -6529,10 +6541,10 @@ D
 </tr>
 <tr>
 <td style="text-align:center;">
-0
+1
 </td>
 <td style="text-align:center;">
-1
+0
 </td>
 <td style="text-align:center;">
 1
@@ -6546,10 +6558,10 @@ N4
 </tr>
 <tr>
 <td style="text-align:center;">
-1
+0
 </td>
 <td style="text-align:center;">
-1
+0
 </td>
 <td style="text-align:center;">
 0
@@ -6563,10 +6575,10 @@ E
 </tr>
 <tr>
 <td style="text-align:center;">
-1
+0
 </td>
 <td style="text-align:center;">
-1
+0
 </td>
 <td style="text-align:center;">
 0
