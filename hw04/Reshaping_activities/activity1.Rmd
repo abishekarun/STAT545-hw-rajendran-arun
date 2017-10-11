@@ -27,7 +27,10 @@ dat <- data.frame(
 tableFormat(dat,"Sample Data")
 ```
 
-**gather()**
+
+**gather()**  
+
+Lets explore the function gather().
 
 ```{r}
 dat%>%
@@ -98,6 +101,7 @@ dat%>%
 ```
 
 **separate()** and **unite()** functions
+Lets explore the functions separate() and unite().
 
 ```{r}
 dat%>%
@@ -108,6 +112,7 @@ dat%>%
 ```
 
 **unnest()** function
+Now lets check the unnest() function.
 
 ```{r}
 #makes each element of list column its own row.
