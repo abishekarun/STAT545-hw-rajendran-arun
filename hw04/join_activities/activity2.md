@@ -15,8 +15,8 @@ company<-c(rep("Marvel",5),rep("DC",5),"Star wars")
 movies<-data.frame(names,release_year,directors,company)
 
 company<-c("Marvel","DC","Star trek")
-yr_founded<-c(1934,1939,1966)
-studios<-data.frame(company,yr_founded)
+yrFounded<-c(1934,1939,1966)
+studios<-data.frame(company,yrFounded)
 ```
 
 Lets view the datasets movies
@@ -216,7 +216,7 @@ tableFormat(studios)
 company
 </th>
 <th style="text-align:center;">
-yr\_founded
+yrFounded
 </th>
 </tr>
 </thead>
@@ -280,7 +280,7 @@ directors
 company
 </th>
 <th style="text-align:center;">
-yr\_founded
+yrFounded
 </th>
 </tr>
 </thead>
@@ -457,7 +457,7 @@ DC
 </tr>
 </tbody>
 </table>
-We lose Force Awakens in the join because, although they appear in x = movies, their corrosponding company "Star wars" doesn't not appear in y = studios. The join result has all variables from x = movies plus yr\_founded, from y.
+We lose Force Awakens in the join because, although they appear in x = movies, their corrosponding company "Star wars" doesn't not appear in y = studios. The join result has all variables from x = movies plus yrFounded, from y.
 
 #### semi\_join(movies,studios)
 
@@ -663,7 +663,7 @@ directors
 company
 </th>
 <th style="text-align:center;">
-yr\_founded
+yrFounded
 </th>
 </tr>
 </thead>
@@ -857,7 +857,7 @@ NA
 </tr>
 </tbody>
 </table>
-We basically get x = movies back, but with the addition of variable yr\_founded, which is unique to y = studios. Force Awakens, whose company don't appear in y = studios, has an NA for company.
+We basically get x = movies back, but with the addition of variable yrFounded, which is unique to y = studios. Force Awakens, whose company don't appear in y = studios, has an NA for company.
 
 #### anti\_join(movies,studios)
 
@@ -928,7 +928,7 @@ suppressWarnings(suppressMessages(
 company
 </th>
 <th style="text-align:center;">
-yr\_founded
+yrFounded
 </th>
 <th style="text-align:center;">
 names
@@ -1136,7 +1136,7 @@ suppressWarnings(suppressMessages(
 company
 </th>
 <th style="text-align:center;">
-yr\_founded
+yrFounded
 </th>
 </tr>
 </thead>
@@ -1172,18 +1172,18 @@ suppressWarnings(suppressMessages(
 ))
 ```
 
-    ##      company yr_founded           names release_year        directors
-    ## 1     Marvel       1934        Iron Man         2008      Jon Favreau
-    ## 2     Marvel       1934            Thor         2008  Kenneth Branagh
-    ## 3     Marvel       1934    The Avengers         2011      Joss Whedon
-    ## 4     Marvel       1934         Ant Man         2015      Peyton Reed
-    ## 5     Marvel       1934  Doctor Strange         2016 Scott Derrickson
-    ## 6         DC       1939    Man of steel         2013      Zack Snyder
-    ## 7         DC       1939 Dawn of Justice         2016      Zack Snyder
-    ## 8         DC       1939   Suicide squad         2016       David Ayer
-    ## 9         DC       1939    Wonder woman         2017    Patty Jenkins
-    ## 10        DC       1939  Justice league         2017      Zack Snyder
-    ## 11 Star trek       1966            <NA>         <NA>             <NA>
+    ##      company yrFounded           names release_year        directors
+    ## 1     Marvel      1934        Iron Man         2008      Jon Favreau
+    ## 2     Marvel      1934            Thor         2008  Kenneth Branagh
+    ## 3     Marvel      1934    The Avengers         2011      Joss Whedon
+    ## 4     Marvel      1934         Ant Man         2015      Peyton Reed
+    ## 5     Marvel      1934  Doctor Strange         2016 Scott Derrickson
+    ## 6         DC      1939    Man of steel         2013      Zack Snyder
+    ## 7         DC      1939 Dawn of Justice         2016      Zack Snyder
+    ## 8         DC      1939   Suicide squad         2016       David Ayer
+    ## 9         DC      1939    Wonder woman         2017    Patty Jenkins
+    ## 10        DC      1939  Justice league         2017      Zack Snyder
+    ## 11 Star trek      1966            <NA>         <NA>             <NA>
 
 We get a similar result as with inner\_join() but the company star wars survives in the join, even though no moveis from star wars that appear in y = movies. As a result, star wars has NA in names,release\_year and directors.
 
@@ -1207,7 +1207,7 @@ suppressWarnings(suppressMessages(
 company
 </th>
 <th style="text-align:center;">
-yr\_founded
+yrFounded
 </th>
 </tr>
 </thead>
@@ -1253,7 +1253,7 @@ directors
 company
 </th>
 <th style="text-align:center;">
-yr\_founded
+yrFounded
 </th>
 </tr>
 </thead>

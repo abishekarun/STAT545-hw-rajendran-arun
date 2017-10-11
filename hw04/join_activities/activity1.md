@@ -599,7 +599,7 @@ OC
 </tr>
 </tbody>
 </table>
-right\_join does the same thing as left\_join but on the second dataset. Here the rows from second dataset are returned. Hence, americas has code and hemisphere value as NA since it is not found in data1 dataset.
+**right\_join** does the same thing as **left\_join** but on the second dataset. Here the rows from second dataset are returned. Hence, americas has code and hemisphere value as NA since it is not found in data1 dataset.
 
 #### full\_join
 

@@ -21,8 +21,8 @@ company<-c(rep("Marvel",5),rep("DC",5),"Star wars")
 movies<-data.frame(names,release_year,directors,company)
 
 company<-c("Marvel","DC","Star trek")
-yr_founded<-c(1934,1939,1966)
-studios<-data.frame(company,yr_founded)
+yrFounded<-c(1934,1939,1966)
+studios<-data.frame(company,yrFounded)
 ```
 
 Lets view the datasets movies 
@@ -50,7 +50,7 @@ suppressWarnings(suppressMessages(
   tableFormat(inner_join(movies,studios))
 ))
 ```
-We lose Force Awakens in the join because, although they appear in x = movies, their corrosponding company "Star wars" doesn't not appear in y = studios. The join result has all variables from x = movies plus yr_founded, from y.
+We lose Force Awakens in the join because, although they appear in x = movies, their corrosponding company "Star wars" doesn't not appear in y = studios. The join result has all variables from x = movies plus yrFounded, from y.
 
 ####semi_join(movies,studios)
 
@@ -75,7 +75,7 @@ suppressWarnings(suppressMessages(
 ))
 ```
 
-We basically get x = movies back, but with the addition of variable yr_founded, which is unique to  y = studios. Force Awakens, whose company don't appear in y = studios, has an NA for company.
+We basically get x = movies back, but with the addition of variable yrFounded, which is unique to  y = studios. Force Awakens, whose company don't appear in y = studios, has an NA for company.
 
 ####anti_join(movies,studios)
 
