@@ -85,7 +85,7 @@ tableFormat(output_merge)
 ```
 
 Although columns now come out sorted when used merge.  
-
+<br/>
 
 Subset  
 
