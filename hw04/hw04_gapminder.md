@@ -740,6 +740,8 @@ Japan
 </tr>
 </tbody>
 </table>
+From this table it is easier to find the max life exp and min life exp of all the years and the country that has them respectively.
+
 #### Activity \#5
 
 The rendered markdown file of fifth activity can be found [here](https://github.com/abishekarun/STAT545-hw-rajendran-arun/blob/master/hw04/Reshaping_activities/activity5.md).

@@ -94,6 +94,7 @@ final <- gapminder %>%
 tableFormat(final)
 ```
 
+From  this table it is easier to find the max life exp and min life exp of all the years and the country that has them respectively.
   
 ####Activity #5
 
