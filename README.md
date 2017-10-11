@@ -29,4 +29,6 @@ You can find the links for assignments on __gapminder data__ below.
 + [2nd assignemt markdown file](https://github.com/abishekarun/STAT545-hw-rajendran-arun/blob/master/hw02/hw02_gapminder.md)
 + [2nd assignemt RStudio markdown file](https://github.com/abishekarun/STAT545-hw-rajendran-arun/blob/master/hw02/hw02_gapminder.Rmd) 
 + [3rd assignemt rendered html file](http://htmlpreview.github.com/?https://github.com/abishekarun/STAT545-hw-rajendran-arun/blob/master/hw03/hw03_gapminder.html) 
++ [4th assignemt markdown file](https://github.com/abishekarun/STAT545-hw-rajendran-arun/blob/master/hw04/hw04_gapminder.md)
++ [4th assignemt RStudio markdown file](https://github.com/abishekarun/STAT545-hw-rajendran-arun/blob/master/hw04/hw04_gapminder.Rmd)
 
