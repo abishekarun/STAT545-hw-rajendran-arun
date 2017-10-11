@@ -1,0 +1,98 @@
+---
+title: "activity5.Rmd"
+output: github_document
+---
+
+```{r echo=FALSE, cache= F}
+#Source.R file has package installation and tableFormat function 
+source('source.R')
+```
+
+###General data reshaping and relationship to aggregation
+
+####Activity #5 
+
+Lets prepare the dataset for this activity
+```{r}
+#prepare the dataset
+
+dat <- data.frame(
+  id = LETTERS[1:5],
+   x = sample(0:1, 5, TRUE),
+   y = sample(0:1, 5, TRUE),
+   z = sample(0:1, 5, TRUE),
+   category = c("N1","N2","N3","N4","N5"),
+   score = c(134.54,123.23,112.38,129.5,110.8)
+)
+
+for(i in 1:5) 
+{
+      dat<- rbind(dat,c(LETTERS[i],1,0,0,
+                        gsub(" ", "",paste('N',as.character(i)), fixed = TRUE),
+                        180+i*2.3456))
+}
+dat$x<-as.numeric(dat$x)
+dat$y<-as.numeric(dat$y)
+dat$z<-as.numeric(dat$z)
+dat$score<-as.numeric(dat$score)
+
+
+```
+
+**Group**
+
+```{r}
+#group
+B<- dat%>%
+      group_by(id,category)%>%
+      summarize(Nrows=n(),value=sum(score))
+tableFormat(B)
+```
+
+**Split**
+
+```{r}
+C <- dcast(B,id~category,value.var="Nrows",fill=0)
+tableFormat(C)
+```
+
+**Stack**
+```{r}
+D <- melt(C,id="id") %>%
+  arrange(id)
+tableFormat(D)
+```
+
+**Join**
+
+```{r}
+#join with left_join
+first<-data.frame(category=c("A","B","C"), value=10:12)
+second<- data.frame(category=c("A","B","B","B","C","A"), 
+                    id=c("a","a","a","b","c","b"))
+output <- left_join(second,first,by="category")
+tableFormat(output)
+
+#join with merge function
+output_merge <- merge(second,first)
+tableFormat(output_merge)
+```
+Although columns now come out sorted when used merge.
+
+**Subset**
+```{r}
+sub_set <- filter(output,category=="A")
+tableFormat(sub_set)
+```
+
+**Transpose**
+```{r}
+sub_set_transpose <- data.frame(t(sub_set))
+kable(sub_set_transpose)
+```
+
+**Sort**
+```{r}
+dat_arranged <- arrange(dat,id,category,score,x,y,z)
+tableFormat(dat_arranged)
+```

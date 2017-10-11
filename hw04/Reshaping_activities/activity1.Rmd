@@ -1,0 +1,121 @@
+---
+title: "activity1.Rmd"
+output: github_document
+---
+
+```{r echo=FALSE, cache= F}
+#Source.R file has package installation and tableFormat function 
+source('source.R')
+```
+
+###General data reshaping and relationship to aggregation
+
+####Activity #1 
+
+Lets explore the important tidyr functions and how they are similar to the dplyr functions.
+
+Lets build a data for our purpose.. 
+```{r}
+dat <- data.frame(
+  id = LETTERS[1:5],
+   x = sample(0:1, 5, TRUE),
+   y = sample(0:1, 5, TRUE),
+   z = sample(0:1, 5, TRUE),
+   category = c("N1","N2","N3","N4","N5"),
+   score = c(134.54,123.23,112.38,129.5,110.8)
+)
+tableFormat(dat,"Sample Data")
+```
+
+**gather()**
+
+```{r}
+dat%>%
+  gather(coordinate,values,-c(category,id))%>% #dont gether category and id
+  tableFormat()
+  
+dat%>%
+  gather(coordinate,values,-c(category,id,score))%>%
+  tableFormat()
+
+dat%>%
+  gather(coordinate,values,x:z,-y)%>%   #gathering only x&z
+  tableFormat()
+
+#gather(),separate(),spread(),extract()
+```
+
+
+**spread()**
+This does the opposite of the function gather().
+
+```{r}
+dat%>%
+  gather(coordinate,values,x,y)%>%
+  spread(coordinate,values)%>%
+  tableFormat()
+
+dat%>%
+  gather(coordinate,values,-c(category,id,score))%>%
+  tableFormat()
+
+dat%>%
+  gather(coordinate,values,-c(category,id,score))%>%
+  spread(coordinate,values)%>%
+  spread(category,score,fill=0)%>%
+  tableFormat()
+```
+
+Note the re ordering of columns after performing gathering and spreading operations simultaneously.
+
+Now, lets look at **extract()**,**complete()**, **expand()** and **replace_na()**
+
+```{r}
+#taking no. in category & get variable class
+dat%>%
+  extract(category,"class",regex="([0-9]+)")%>%
+  tableFormat()  
+
+#Creates rows for each id for each score in the data.
+dat%>%
+  complete(category, nesting(id),score)%>%
+  tableFormat()  
+  
+# complete is for a common application of expand
+dat%>%
+  expand(category,nesting(id),score)%>%
+  tableFormat()  
+
+#complete() - completing a data frame with missing combinations.
+#expand() - Expanding a data frame to include all combinations.
+
+dat%>%
+  complete(category, nesting(id,score))%>%
+  #Finds the combinations of id and score that occur in the data.
+  replace_na(list(x=-1,y=-1,z=-1))%>%
+  #Replaces the na values with -1 in x,y,z.
+  tableFormat()  
+```
+
+**separate()** and **unite()** functions
+
+```{r}
+dat%>%
+  unite(idAndCategory,id,category,sep=":",remove = FALSE)%>%
+  select(-id,-category)%>%
+  separate(idAndCategory, c("id", "category"), ":")%>%
+  tableFormat()  
+```
+
+**unnest()** function
+
+```{r}
+#makes each element of list column its own row.
+dat%>%
+  unite(idAndCategory,id,category,sep=":",remove = FALSE)%>%
+  select(-id,-category)%>%
+  unnest(idAndCategory=strsplit(idAndCategory, ":"))%>%
+  tableFormat()   
+
+```
+

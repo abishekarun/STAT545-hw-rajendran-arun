@@ -1,0 +1,165 @@
+---
+title: "hw04_gapminder.Rmd"
+output: github_document
+---
+
+```{r echo=FALSE, cache= F}
+source('source.R')
+```
+
+###General data reshaping and relationship to aggregation
+
+####Activity #1 
+
+The rendered markdown file of first activity can be found [here]().
+
+####Activity #2
+
+```{r}
+reshaped_data <- gapminder%>%
+                      filter(country %in% c("India","Myanmar","China"))%>%
+                      select(country,lifeExp,year)%>%
+                      group_by(year)%>%
+                      spread(country,lifeExp)%>%
+                      ungroup(year)%>%
+                      select(-year)
+tableFormat(reshaped_data)
+
+plots <- function(data,x,y){
+  ggplot(data,aes_string(x,y))+
+                  geom_point()+
+                  geom_line(color="blue")+
+                  geom_abline(intercept = 0, slope = 1)+
+                  coord_fixed(ratio=1)
+}
+plot1 <- plots(reshaped_data,"China","Myanmar")
+plot2 <- plots(reshaped_data,"China","India")
+plot3 <- plots(reshaped_data,"India","Myanmar")
+
+grid.arrange(plot1,plot2,plot3,ncol=3,heights=c(5,1))
+```
+
+It clearly shows that lifeExp of china is higher than that of Myanmar almost all the years except only one year. Similarly, china has higher than India for all the years.
+Between India and Myanmar, Myanmar had higher values from 1957 to 1987 and India has had higher value since then.
+
+####Activity #3
+
+```{r}
+a<- gapminder%>%
+          complete(nesting(continent,year))%>%
+          group_by(continent,year)%>%
+          summarize(mean_lifeExp=mean(lifeExp))%>%
+          spread(continent,mean_lifeExp)
+          #spread(year,mean_lifeExp)%>%
+tableFormat(a)
+a%>%
+  ggplot(aes(year))+
+  geom_line(aes(y = Africa, colour = "Africa")) + 
+  geom_line(aes(y = Americas, colour = "Americas"))+ 
+  geom_line(aes(y = Asia, colour = "Asia"))+ 
+  geom_line(aes(y = Europe, colour = "Europe"))+ 
+  geom_line(aes(y = Oceania, colour = "Oceania"))+
+  ylab("Mean Life Expectancy")
+  
+  
+```
+
+With this reshaping it is easier to plot and compare the mean life expectancy of different continents over the years than with the actual dataset and it can be seen in the above plot.
+
+####Activity #4
+
+```{r}
+final <- gapminder %>%
+                select(year, country, lifeExp) %>%
+                group_by(year) %>%
+                filter(min_rank(desc(lifeExp)) < 2 | min_rank(lifeExp) < 2) %>% 
+                arrange(year)%>%
+                mutate(variable=ifelse(!duplicated(year),"min","max"))%>%
+                unite(country_lifeExp,country,lifeExp,sep="_",remove = FALSE)%>%
+                select(-country,-lifeExp)%>%
+                spread(variable, value="country_lifeExp")%>%
+                separate(min, c("min_country", "min_lifeExp"), "_")%>%
+                separate(max, c("max_country", "max_lifeExp"), "_")
+tableFormat(final)
+```
+
+####Activity #5
+
+The rendered markdown file of fifth activity can be found [here]().
+
+###Join, merge, look up
+
+####Activity #1
+
+The rendered markdown file of first activity can be found [here]().
+
+####Activity #2
+
+The rendered markdown file of second activity can be found [here]().
+
+####Activity #3
+
+Creating datasets (movies and studios) for explaining the joins
+```{r}
+names<-c("Iron Man","Thor","The Avengers","Ant Man","Doctor Strange","Man of steel","Dawn of Justice","Suicide squad","Wonder woman","Justice league","Force awakens")
+release_year<-c("2008","2008","2011","2015","2016","2013","2016","2016","2017","2017","2015")
+directors<-c("Jon Favreau","Kenneth Branagh","Joss Whedon","Peyton Reed","Scott Derrickson","Zack Snyder","Zack Snyder","David Ayer","Patty Jenkins","Zack Snyder","J.J. Abrams")
+company<-c(rep("Marvel",5),rep("DC",5),"Star wars")
+movies<-data.frame(names,release_year,directors,company)
+
+company<-c("Marvel","DC","Star trek")
+yr_founded<-c(1934,1939,1966)
+studios<-data.frame(company,yr_founded)
+```
+
+Lets view the datasets movies and studios
+```{r}
+movies
+studios
+```
+
+
+#####Merge function
+
+> Merge two data frames by common columns or row names, or do other versions of database join operations.
+
+```{r}
+merge(movies,studios,by="company") #similar to inner_join 
+
+merge(movies,studios,by="company",all.x=TRUE) #similar to left_join
+
+merge(movies,studios,by="company",all.y=TRUE) #similar to right_join
+
+merge(movies,studios,all=TRUE) #similar to full_join
+```
+
+_base R merge() and equivalent package-based merge functions, which always allocate a new table to return the merged result, and thus are not suitable for an in-place assignment-based solution. Filtering joins cannot be done using merge_
+
+#####Match function
+
+> match returns a vector of the positions of (first) matches of its first argument in its second.
+
+```{r}
+movies[match(studios$company,movies$company,nomatch = 0),]
+```
+
+It just returns the first match of company marvel in movies which is Iron Man movie and first match of company DC in movies which is Man of Steel movie.
+
+**Filtering joins with match**
+
+```{r}
+# this just finds the values in movies that are matching with studios$company
+#that is, it is semi_join(movies,studios)
+
+movies[which(!is.na(match(movies$company,studios$company))),]
+
+#Next is anti_join(movies,studios)
+movies[which(is.na(match(movies$company,studios$company))),]
+
+#semi_join(studios,movies)
+studios[which(!is.na(match(studios$company,movies$company))),]
+
+#anit_join(studios,movies)
+studios[which(is.na(match(studios$company,movies$company))),]
+```
+The above shows that match can be used to perform the filtering joins but cannot perform the mutating joins. 
