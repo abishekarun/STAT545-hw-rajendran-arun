@@ -171,6 +171,8 @@ Myanmar
 </tr>
 </tbody>
 </table>
+Plots function
+
 ``` r
 plots <- function(data,x,y){
   ggplot(data,aes_string(x,y))+
@@ -179,14 +181,19 @@ plots <- function(data,x,y){
                   geom_abline(intercept = 0, slope = 1)+
                   coord_fixed(ratio=1)
 }
+```
+
+Plots for comparison using grid.arrange()
+
+``` r
 plot1 <- plots(reshaped_data,"China","Myanmar")
 plot2 <- plots(reshaped_data,"China","India")
 plot3 <- plots(reshaped_data,"India","Myanmar")
 
-grid.arrange(plot1,plot2,plot3,ncol=3,heights=c(5,1))
+grid.arrange(plot1,plot2,plot3,ncol=3)
 ```
 
-![](hw04_gapminder_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-2-1.png)
+![](hw04_gapminder_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-4-1.png)
 
 It clearly shows that lifeExp of china is higher than that of Myanmar almost all the years except only one year. Similarly, china has higher than India for all the years. Between India and Myanmar, Myanmar had higher values from 1957 to 1987 and India has had higher value since then.
 
@@ -481,7 +488,7 @@ a%>%
   ylab("Mean Life Expectancy")
 ```
 
-![](hw04_gapminder_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-3-1.png)
+![](hw04_gapminder_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-5-1.png)
 
 With this reshaping it is easier to plot and compare the mean life expectancy of different continents over the years than with the actual dataset and it can be seen in the above plot.
 
