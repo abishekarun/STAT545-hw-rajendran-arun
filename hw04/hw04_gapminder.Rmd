@@ -132,7 +132,7 @@ Lets view the datasets movies
 tableFormat(movies)
 ```
 
-Next the dataset studios
+Next lets look at the dataset studios
 ```{r}
 tableFormat(studios)
 ```
@@ -148,24 +148,28 @@ inner_join using merge()
 ```{r}
 tableFormat(merge(movies,studios,by="company")) #similar to inner_join 
 ```
+  
 This returns similar to the inner_join
 
 left_join using merge()
 ```{r}
 tableFormat(merge(movies,studios,by="company",all.x=TRUE)) #similar to left_join
 ```
+  
 This returns similar to the left_join
 
 right_join using merge()
 ```{r}
 tableFormat(merge(movies,studios,by="company",all.y=TRUE)) #similar to right_join
 ```
+  
 This returns similar to the right_join
 
 full_join using merge()
 ```{r}
 tableFormat(merge(movies,studios,all=TRUE)) #similar to full_join
 ```
+  
 This returns similar to the full_join
 
 _base R merge() and equivalent package-based merge functions, which always allocate a new table to return the merged result, and thus are not suitable for an in-place assignment-based solution. Filtering joins cannot be done using merge_

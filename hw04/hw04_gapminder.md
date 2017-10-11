@@ -954,7 +954,7 @@ Star wars
 </tr>
 </tbody>
 </table>
-Next the dataset studios
+Next lets look at the dataset studios
 
 ``` r
 tableFormat(studios)
