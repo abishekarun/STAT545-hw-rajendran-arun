@@ -111,6 +111,7 @@ Note the re ordering of columns after performing gathering and spreading operati
 
 Now, lets look at extract(),complete(), expand() and replace_na()
 
+extract() example
 ```{r}
 #taking no. in category & get variable class
 g<- dat%>%
@@ -118,12 +119,16 @@ g<- dat%>%
 tableFormat(g)  
 ```
 
+complete() example
+
 ```{r}
 #Creates rows for each id for each score in the data.
 h<- dat%>%
       complete(category, nesting(id),score)
 tableFormat(h)  
 ```
+
+expand() example
 
 ```{r}
 # complete is for a common application of expand
