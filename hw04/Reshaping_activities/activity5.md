@@ -908,7 +908,7 @@ score
 A
 </td>
 <td style="text-align:center;">
-0
+1
 </td>
 <td style="text-align:center;">
 0
@@ -948,13 +948,13 @@ N1
 B
 </td>
 <td style="text-align:center;">
-0
+1
 </td>
 <td style="text-align:center;">
 0
 </td>
 <td style="text-align:center;">
-0
+1
 </td>
 <td style="text-align:center;">
 N2
@@ -994,7 +994,7 @@ C
 0
 </td>
 <td style="text-align:center;">
-0
+1
 </td>
 <td style="text-align:center;">
 N3
@@ -1028,13 +1028,13 @@ N3
 D
 </td>
 <td style="text-align:center;">
-1
+0
 </td>
 <td style="text-align:center;">
 0
 </td>
 <td style="text-align:center;">
-1
+0
 </td>
 <td style="text-align:center;">
 N4
@@ -1068,13 +1068,13 @@ N4
 E
 </td>
 <td style="text-align:center;">
+0
+</td>
+<td style="text-align:center;">
 1
 </td>
 <td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-0
+1
 </td>
 <td style="text-align:center;">
 N5
