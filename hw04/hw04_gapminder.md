@@ -1004,6 +1004,8 @@ Star trek
 
 > Merge two data frames by common columns or row names, or do other versions of database join operations.
 
+Lets explore the joins that can be done using the basic merge() function
+
 inner\_join using merge()
 
 ``` r
@@ -1205,6 +1207,8 @@ Joss Whedon
 </tr>
 </tbody>
 </table>
+This returns similar to the **inner\_join**
+
 left\_join using merge()
 
 ``` r
@@ -1423,6 +1427,8 @@ NA
 </tr>
 </tbody>
 </table>
+This returns similar to the **left\_join**
+
 right\_join using merge()
 
 ``` r
@@ -1641,6 +1647,8 @@ NA
 </tr>
 </tbody>
 </table>
+This returns similar to the **right\_join**
+
 full\_join using merge()
 
 ``` r
@@ -1876,6 +1884,8 @@ NA
 </tr>
 </tbody>
 </table>
+This returns similar to the **full\_join**
+
 *base R merge() and equivalent package-based merge functions, which always allocate a new table to return the merged result, and thus are not suitable for an in-place assignment-based solution. Filtering joins cannot be done using merge*
 
 ##### Match function
@@ -2117,6 +2127,8 @@ DC
 </tr>
 </tbody>
 </table>
+The values that are common are taken and corrosponding rows are returned from movies.
+
 **anti\_join(movies,studios)**
 
 ``` r
@@ -2165,6 +2177,8 @@ Star wars
 </tr>
 </tbody>
 </table>
+The values that are not common are taken from movies.
+
 **semi\_join(studios,movies)**
 
 ``` r
@@ -2204,6 +2218,8 @@ DC
 </tr>
 </tbody>
 </table>
+The values that are common are taken and corrosponding rows are returned from studios.
+
 **anti\_join(studios,movies)**
 
 ``` r
@@ -2240,4 +2256,6 @@ Star trek
 </tr>
 </tbody>
 </table>
+The values that are not common are taken from movies.
+
 The above shows that match can be used to perform the filtering joins but cannot perform the mutating joins.

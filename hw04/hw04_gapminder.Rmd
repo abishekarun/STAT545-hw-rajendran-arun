@@ -142,25 +142,31 @@ tableFormat(studios)
 
 > Merge two data frames by common columns or row names, or do other versions of database join operations.
 
+Lets explore the joins that can be done using the basic merge() function
+
 inner_join using merge()
 ```{r}
 tableFormat(merge(movies,studios,by="company")) #similar to inner_join 
 ```
+This returns similar to the **inner_join**
 
 left_join using merge()
 ```{r}
 tableFormat(merge(movies,studios,by="company",all.x=TRUE)) #similar to left_join
 ```
+This returns similar to the **left_join**
 
 right_join using merge()
 ```{r}
 tableFormat(merge(movies,studios,by="company",all.y=TRUE)) #similar to right_join
 ```
+This returns similar to the **right_join**
 
 full_join using merge()
 ```{r}
 tableFormat(merge(movies,studios,all=TRUE)) #similar to full_join
 ```
+This returns similar to the **full_join**
 
 _base R merge() and equivalent package-based merge functions, which always allocate a new table to return the merged result, and thus are not suitable for an in-place assignment-based solution. Filtering joins cannot be done using merge_
 
@@ -182,23 +188,27 @@ It just returns the first match of company marvel in movies which is Iron Man mo
 
 tableFormat(movies[which(!is.na(match(movies$company,studios$company))),])
 ```
+The values that are common are taken and corrosponding rows are returned from movies.
 
 **anti_join(movies,studios)**
 ```{r}
 #Next is anti_join(movies,studios)
 tableFormat(movies[which(is.na(match(movies$company,studios$company))),])
 ```
+The values that are not common are taken from movies.
 
 **semi_join(studios,movies)**
 ```{r}
 #semi_join(studios,movies)
 tableFormat(studios[which(!is.na(match(studios$company,movies$company))),])
 ```
+The values that are common are taken and corrosponding rows are returned from studios.
 
 **anti_join(studios,movies)**
 ```{r}
 #anti_join(studios,movies)
 tableFormat(studios[which(is.na(match(studios$company,movies$company))),])
 ```
+The values that are not common are taken from movies.
 
 The above shows that match can be used to perform the filtering joins but cannot perform the mutating joins. 
