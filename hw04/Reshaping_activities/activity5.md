@@ -31,7 +31,7 @@ dat$z<-as.numeric(dat$z)
 dat$score<-as.numeric(dat$score)
 ```
 
-##### Group
+*Group*
 
 ``` r
 #group
@@ -133,7 +133,7 @@ N5
 </tr>
 </tbody>
 </table>
-##### Split
+*Split*
 
 ``` r
 C <- dcast(B,id~category,value.var="Nrows",fill=0)
@@ -268,7 +268,7 @@ E
 </tr>
 </tbody>
 </table>
-##### Stack
+*Stack*
 
 ``` r
 D <- melt(C,id="id") %>%
@@ -761,7 +761,7 @@ c
 </table>
 Although columns now come out sorted when used merge.
 
-##### Subset
+*Subset*
 
 ``` r
 sub_set <- filter(output,category=="A")
@@ -809,7 +809,7 @@ b
 </tr>
 </tbody>
 </table>
-##### Transpose
+*Transpose*
 
 ``` r
 sub_set_transpose <- data.frame(t(sub_set))
@@ -865,7 +865,7 @@ value
 </tr>
 </tbody>
 </table>
-##### Sort
+*Sort*
 
 ``` r
 dat_arranged <- arrange(dat,id,category,score,x,y,z)
@@ -906,7 +906,7 @@ A
 0
 </td>
 <td style="text-align:center;">
-1
+0
 </td>
 <td style="text-align:center;">
 1
@@ -943,13 +943,13 @@ N1
 B
 </td>
 <td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
 1
+</td>
+<td style="text-align:center;">
+0
+</td>
+<td style="text-align:center;">
+0
 </td>
 <td style="text-align:center;">
 N2
@@ -989,7 +989,7 @@ C
 1
 </td>
 <td style="text-align:center;">
-0
+1
 </td>
 <td style="text-align:center;">
 N3
@@ -1029,7 +1029,7 @@ D
 1
 </td>
 <td style="text-align:center;">
-1
+0
 </td>
 <td style="text-align:center;">
 N4
@@ -1069,7 +1069,7 @@ E
 1
 </td>
 <td style="text-align:center;">
-0
+1
 </td>
 <td style="text-align:center;">
 N5
