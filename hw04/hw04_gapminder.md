@@ -1207,7 +1207,7 @@ Joss Whedon
 </tr>
 </tbody>
 </table>
-This returns similar to the inner\_join
+This returns return all rows from movies where there are matching values in studios, and all columns from both movies and studios.
 
 left\_join using merge()
 
@@ -1427,7 +1427,7 @@ NA
 </tr>
 </tbody>
 </table>
-This returns similar to the left\_join
+This returns return all rows from movies, and all columns from both movies and studios.
 
 right\_join using merge()
 
@@ -1647,7 +1647,7 @@ NA
 </tr>
 </tbody>
 </table>
-This returns similar to the right\_join
+This returns return all rows from studios, and all columns from both movies and studios.
 
 full\_join using merge()
 
@@ -1884,7 +1884,7 @@ NA
 </tr>
 </tbody>
 </table>
-This returns similar to the full\_join
+This returns return all rows and all columns from both movies and studios. Where there are not matching values, returns NA for the one missing.
 
 *base R merge() and equivalent package-based merge functions, which always allocate a new table to return the merged result, and thus are not suitable for an in-place assignment-based solution. Filtering joins cannot be done using merge*
 
