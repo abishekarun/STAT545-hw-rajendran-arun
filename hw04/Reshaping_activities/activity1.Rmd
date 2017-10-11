@@ -58,16 +58,19 @@ Lets explore the function gather().
 a<- dat%>%
       gather(coordinate,values,-c(category,id)) #dont gether category and id
 tableFormat(a)
-  
+```
+
+```{r}
 b<- dat%>%
       gather(coordinate,values,-c(category,id,score))
 tableFormat(b)
+```
 
+```{r}
 c<- dat%>%
       gather(coordinate,values,x:z,-y)   #gathering only x&z
 tableFormat(c)
 ```
-
 
 **spread()**
 This does the opposite of the function gather().
@@ -77,11 +80,15 @@ d<- dat%>%
       gather(coordinate,values,x,y)%>%
       spread(coordinate,values)
 tableFormat(d)
+```
 
+```{r}
 e<- dat%>%
       gather(coordinate,values,-c(category,id,score))
 tableFormat(e)
+```
 
+```{r}
 f<- dat%>%
       gather(coordinate,values,-c(category,id,score))%>%
       spread(coordinate,values)%>%
@@ -98,24 +105,34 @@ Now, lets look at **extract()**,**complete()**, **expand()** and **replace_na()*
 g<- dat%>%
       extract(category,"class",regex="([0-9]+)")
 tableFormat(g)  
+```
 
+```{r}
 #Creates rows for each id for each score in the data.
 h<- dat%>%
       complete(category, nesting(id),score)
 tableFormat(h)  
-  
+```
+
+```{r}
 # complete is for a common application of expand
 i<- dat%>%
       expand(category,nesting(id),score)
-tableFormat(i)  
+tableFormat(i) 
+```
 
-#complete() - completing a data frame with missing combinations.
-#expand() - Expanding a data frame to include all combinations.
+complete() 
+> completing a data frame with missing combinations.
+
+expand()
+> Expanding a data frame to include all combinations.
+
+```{r}
 
 j<- dat%>%
       complete(category, nesting(id,score))%>% #Finds combinations of id & score
       replace_na(list(x=-1,y=-1,z=-1))        #Replaces nas with -1 in x,y,z.
-tableFormat(j)  
+tableFormat(j) 
 ```
 
 **separate()** and **unite()** functions
