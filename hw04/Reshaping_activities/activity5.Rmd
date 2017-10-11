@@ -39,7 +39,7 @@ dat$score<-as.numeric(dat$score)
 
 ```
 
-_Group_
+**Group**
 
 ```{r}
 #group
@@ -49,21 +49,24 @@ B<- dat%>%
 tableFormat(B)
 ```
 
-_Split_
+**Split**  
 
 ```{r}
+#split
 C <- dcast(B,id~category,value.var="Nrows",fill=0)
 tableFormat(C)
 ```
 
-_Stack_
+**Stack**  
+
 ```{r}
+#stack
 D <- melt(C,id="id") %>%
   arrange(id)
 tableFormat(D)
 ```
 
-#####Join
+**Join**  
 
 ```{r}
 #join with left_join
@@ -83,20 +86,26 @@ tableFormat(output_merge)
 
 Although columns now come out sorted when used merge.
 
-_Subset_
+**Subset**  
+
 ```{r}
+#subset
 sub_set <- filter(output,category=="A")
 tableFormat(sub_set)
 ```
 
-_Transpose_
+**Transpose**  
+
 ```{r}
+#Transpose
 sub_set_transpose <- data.frame(t(sub_set))
 kable(sub_set_transpose)
 ```
 
-_Sort_
+**Sort**  
+
 ```{r}
+#sort
 dat_arranged <- arrange(dat,id,category,score,x,y,z)
 tableFormat(dat_arranged)
 ```
