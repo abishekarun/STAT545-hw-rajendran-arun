@@ -34,6 +34,13 @@ my_gap<- gapminder%>%
 
 ```
 
+Lets view the two datasets
+
+```{r}
+data1
+my_gap
+```
+
 ###Different types of join
 
 #####inner_join

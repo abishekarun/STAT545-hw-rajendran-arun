@@ -24,6 +24,34 @@ my_gap<- gapminder%>%
               summarize(mean_lifeExp=weighted.mean(lifeExp))
 ```
 
+Lets view the two datasets
+
+``` r
+data1
+```
+
+    ##       continent hemisphere codes
+    ## 1          Asia   Northern    AS
+    ## 2        Africa   Northern    AF
+    ## 3 North America   Southern   NOA
+    ## 4 South America         NS   SOA
+    ## 5        Europe   Northern    EU
+    ## 6       Oceania   Southern    OC
+    ## 7    Antarctica   Southern    AN
+
+``` r
+my_gap
+```
+
+    ## # A tibble: 5 × 2
+    ##   continent mean_lifeExp
+    ##      <fctr>        <dbl>
+    ## 1    Africa     48.86533
+    ## 2  Americas     64.65874
+    ## 3      Asia     60.06490
+    ## 4    Europe     71.90369
+    ## 5   Oceania     74.32621
+
 ### Different types of join
 
 ##### inner\_join
@@ -143,8 +171,8 @@ suppressWarnings(suppressMessages(
 ```
 
     ##       continent hemisphere codes
-    ## 1    Antarctica   Southern    AN
+    ## 1 North America   Southern   NOA
     ## 2 South America         NS   SOA
-    ## 3 North America   Southern   NOA
+    ## 3    Antarctica   Southern    AN
 
 Returns all rows from first dataset that are not matching with second dataset keeping only the columns of first dataset.Returns only the three rows in first dataset that are not there in second dataset.(similar to first dataset - second dataset)
