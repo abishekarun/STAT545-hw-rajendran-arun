@@ -498,16 +498,17 @@ With this reshaping it is easier to plot and compare the mean life expectancy of
 
 ``` r
 final <- gapminder %>%
-                select(year, country, lifeExp) %>%
-                group_by(year) %>%
-                filter(min_rank(desc(lifeExp)) < 2 | min_rank(lifeExp) < 2) %>% 
-                arrange(year)%>%
-                mutate(variable=ifelse(!duplicated(year),"min","max"))%>%
-                unite(countryLifeExp,country,lifeExp,sep="_",remove = FALSE)%>%
-                select(-country,-lifeExp)%>%
-                spread(variable, value="countryLifeExp")%>%
-                separate(min, c("minCountry", "minLifeExp"), "_")%>%
-                separate(max, c("maxCountry", "maxLifeExp"), "_")
+      select(year, country, lifeExp) %>%
+      group_by(year) %>%
+      filter(min_rank(desc(lifeExp)) < 2 | min_rank(lifeExp) < 2) %>% 
+      group_by(year)%>%
+      arrange(lifeExp)%>%
+      mutate(variable=ifelse(!duplicated(year),"min","max"))%>%
+      unite(countryLifeExp,country,lifeExp,sep="_",remove = FALSE)%>%
+      select(-country,-lifeExp)%>%
+      spread(variable, value="countryLifeExp")%>%
+      separate(min, c("minCountry", "minLifeExp"), "_")%>%
+      separate(max, c("maxCountry", "maxLifeExp"), "_")
 tableFormat(final)
 ```
 
@@ -641,16 +642,16 @@ Cambodia
 1982
 </td>
 <td style="text-align:center;">
-Sierra Leone
-</td>
-<td style="text-align:center;">
-38.445
-</td>
-<td style="text-align:center;">
 Japan
 </td>
 <td style="text-align:center;">
 77.11
+</td>
+<td style="text-align:center;">
+Sierra Leone
+</td>
+<td style="text-align:center;">
+38.445
 </td>
 </tr>
 <tr>
@@ -675,16 +676,16 @@ Angola
 1992
 </td>
 <td style="text-align:center;">
-Rwanda
-</td>
-<td style="text-align:center;">
-23.599
-</td>
-<td style="text-align:center;">
 Japan
 </td>
 <td style="text-align:center;">
 79.36
+</td>
+<td style="text-align:center;">
+Rwanda
+</td>
+<td style="text-align:center;">
+23.599
 </td>
 </tr>
 <tr>
@@ -692,16 +693,16 @@ Japan
 1997
 </td>
 <td style="text-align:center;">
-Rwanda
-</td>
-<td style="text-align:center;">
-36.087
-</td>
-<td style="text-align:center;">
 Japan
 </td>
 <td style="text-align:center;">
 80.69
+</td>
+<td style="text-align:center;">
+Rwanda
+</td>
+<td style="text-align:center;">
+36.087
 </td>
 </tr>
 <tr>
@@ -709,16 +710,16 @@ Japan
 2002
 </td>
 <td style="text-align:center;">
-Zambia
-</td>
-<td style="text-align:center;">
-39.193
-</td>
-<td style="text-align:center;">
 Japan
 </td>
 <td style="text-align:center;">
 82
+</td>
+<td style="text-align:center;">
+Zambia
+</td>
+<td style="text-align:center;">
+39.193
 </td>
 </tr>
 <tr>
@@ -726,16 +727,16 @@ Japan
 2007
 </td>
 <td style="text-align:center;">
-Swaziland
-</td>
-<td style="text-align:center;">
-39.613
-</td>
-<td style="text-align:center;">
 Japan
 </td>
 <td style="text-align:center;">
 82.603
+</td>
+<td style="text-align:center;">
+Swaziland
+</td>
+<td style="text-align:center;">
+39.613
 </td>
 </tr>
 </tbody>

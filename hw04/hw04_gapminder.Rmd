@@ -83,16 +83,17 @@ With this reshaping it is easier to plot and compare the mean life expectancy of
 
 ```{r}
 final <- gapminder %>%
-                select(year, country, lifeExp) %>%
-                group_by(year) %>%
-                filter(min_rank(desc(lifeExp)) < 2 | min_rank(lifeExp) < 2) %>% 
-                arrange(year)%>%
-                mutate(variable=ifelse(!duplicated(year),"min","max"))%>%
-                unite(countryLifeExp,country,lifeExp,sep="_",remove = FALSE)%>%
-                select(-country,-lifeExp)%>%
-                spread(variable, value="countryLifeExp")%>%
-                separate(min, c("minCountry", "minLifeExp"), "_")%>%
-                separate(max, c("maxCountry", "maxLifeExp"), "_")
+      select(year, country, lifeExp) %>%
+      group_by(year) %>%
+      filter(min_rank(desc(lifeExp)) < 2 | min_rank(lifeExp) < 2) %>% 
+      group_by(year)%>%
+      arrange(lifeExp)%>%
+      mutate(variable=ifelse(!duplicated(year),"min","max"))%>%
+      unite(countryLifeExp,country,lifeExp,sep="_",remove = FALSE)%>%
+      select(-country,-lifeExp)%>%
+      spread(variable, value="countryLifeExp")%>%
+      separate(min, c("minCountry", "minLifeExp"), "_")%>%
+      separate(max, c("maxCountry", "maxLifeExp"), "_")
 tableFormat(final)
 ```
 
