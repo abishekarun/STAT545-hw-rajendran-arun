@@ -24,11 +24,12 @@ The steps I performed to make changes to **Readme.md** file  are:
 5. Performed the pull request and then pushed the commit to the Github.
 
 You can find the links for assignments on __gapminder data__ below.
-+ [1st assignemt markdown file ](https://github.com/abishekarun/STAT545-hw-rajendran-arun/blob/master/hw01/hw01_gapminder.md) 
-+ [1st assignemt RStudio markdown file ](https://github.com/abishekarun/STAT545-hw-rajendran-arun/blob/master/hw01/hw01_gapminder.Rmd)
-+ [2nd assignemt markdown file](https://github.com/abishekarun/STAT545-hw-rajendran-arun/blob/master/hw02/hw02_gapminder.md)
-+ [2nd assignemt RStudio markdown file](https://github.com/abishekarun/STAT545-hw-rajendran-arun/blob/master/hw02/hw02_gapminder.Rmd) 
-+ [3rd assignemt rendered html file](http://htmlpreview.github.com/?https://github.com/abishekarun/STAT545-hw-rajendran-arun/blob/master/hw03/hw03_gapminder.html) 
-+ [4th assignemt markdown file](https://github.com/abishekarun/STAT545-hw-rajendran-arun/blob/master/hw04/hw04_gapminder.md)
-+ [4th assignemt RStudio markdown file](https://github.com/abishekarun/STAT545-hw-rajendran-arun/blob/master/hw04/hw04_gapminder.Rmd)
+**Table of Contents**
+
++[Homework 01 Folder](https://github.com/abishekarun/STAT545-hw-rajendran-arun/tree/master/hw01)
++[Homework 02 Folder](https://github.com/abishekarun/STAT545-hw-rajendran-arun/tree/master/hw02)
++[Homework 03 Folder](https://github.com/abishekarun/STAT545-hw-rajendran-arun/tree/master/hw03)
++[Homework 04 Folder](https://github.com/abishekarun/STAT545-hw-rajendran-arun/tree/master/hw04)
++[Homework 05 Folder](https://github.com/abishekarun/STAT545-hw-rajendran-arun/tree/master/hw05)
+
 
