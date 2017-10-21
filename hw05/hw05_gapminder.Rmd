@@ -119,9 +119,9 @@ gapminder[gapminder$continent!="Oceania",]%>%
 
 ```
 
-####Reordering levels of factor variables
+###Reordering levels of factor variables
 
-#####Continent Variable
+####Continent Variable
 
 **First, lets reorder levels of continent variable by frequency.**
 
@@ -164,7 +164,7 @@ fct_reorder(gapminder$country, gapminder$pop, mean) %>%
   head()
 ```
 
-####Importance of reordering with plots
+###Importance of reordering with plots
 
 Lets understand the importance of reordering the factor variables by plotting mean population of each country in Americas continent with and without reordering the factor variable.
 
@@ -179,7 +179,7 @@ tableFormat(h_gap,"Mean Population of Countries in America")
 
 ```
 
-#####Unordered Plot of Mean pop for Each Country
+###Unordered Plot of Mean pop for Each Country
 
 ```{r}
 ggplot(h_gap,aes(x=mean_pop,y=country))+
@@ -202,7 +202,7 @@ ggplot(h_gap,aes(x=mean_pop,y=country))+
 
 ```
 
-#####Ordered Plot of Mean pop for Each Country
+###Ordered Plot of Mean pop for Each Country
 
 ```{r}
 ggplot(h_gap,aes(x=mean_pop,y=fct_reorder(country,mean_pop,.desc = TRUE)))+
@@ -238,7 +238,7 @@ tableFormat(gg_gap,"Mean GDP Per Capita Over Years")
 
 ```
 
-#####Unordered Plot of Mean gdpPerCap vs Year for Each Continent
+###Unordered Plot of Mean gdpPerCap vs Year for Each Continent
 
 ```{r}
 ggplot(gg_gap,aes(year,mean_gdpPercap,color=continent))+
@@ -260,7 +260,7 @@ ggplot(gg_gap,aes(year,mean_gdpPercap,color=continent))+
 
 ```
 
-#####Ordered Plot of Mean gdpPerCap vs Year for Each Continent
+###Ordered Plot of Mean gdpPerCap vs Year for Each Continent
 
 ```{r}
 ggplot(gg_gap, aes(x = year, y = mean_gdpPercap,
@@ -281,7 +281,7 @@ ggplot(gg_gap, aes(x = year, y = mean_gdpPercap,
   ggtitle("Ordered Plot of Mean GDP Per Capita")
 ```
 
-####Factor Relevel
+###Factor Relevel
 
 In order to just hoist one or more levels manually, we can use fct_relevel() function.
 
@@ -291,7 +291,7 @@ gg_gap$continent %>% fct_relevel("Asia") %>% levels()
 gg_gap$continent %>% fct_relevel("Oceania","Americas") %>% levels()
 ```
 
-####Factor Recode
+###Factor Recode
 
 Change the names of the levels..
 ```{r}
@@ -306,7 +306,7 @@ fct_recode(gg_gap$continent,NULL="Americas")%>%
 ```
 
 
-**Effects of arrange**
+###Effects of arrange
 
 Now lets take the dataset of mean values of gdpPercap,lifeExp and population for each country in Africa continent.
 
@@ -322,7 +322,8 @@ gap_le%>%
   tableFormat("Mean Values for Countries in Africa")
 ```
 
-**Unordered Plot** 
+###Unordered Plot
+
 Lets plot mean gdpPercap of each country in Africa without ordering the factor variable country.
 ```{r}
 unordered_plot<- 
@@ -344,7 +345,8 @@ unordered_plot<-
 unordered_plot
 ```
 
-**Reordering with Base R function**<br\>
+###Reordering with Base R function
+<br\>
 Lets reorder the country variable based on decreasing value of mean_gdpPercap
 ```{r}
 #Base R function order()
@@ -370,7 +372,8 @@ baseR_plot<-
 baseR_plot
 ```
 
-**Reordering with Forcats**<br\>
+###Reordering with Forcats
+<br\>
 Lets reorder the country variable based on decreasing value of mean_gdpPercap using fct_reorder() from forcats package.
 ```{r}
 #forcats function fct_reorder()
@@ -429,7 +432,7 @@ gap_asia$country%>%
 ```
 
 
-####write.csv() and read.csv() 
+###write.csv() and read.csv() 
 Now lets write this dataset to a csv file and save it.
 ```{r}
 write.csv(gap_asia,"hw05_gapminder_files\\gap_asia.csv")
@@ -457,7 +460,7 @@ unlink("gap_asia.csv")
 The order of the factors is not same. This shows that the reordering doesnt survive the round trip of writing to csv and reading back.
 
 
-####write_csv() and read_csv() 
+###write_csv() and read_csv() 
 ```{r}
 write_csv(gap_asia,"hw05_gapminder_files\\gap_asia.csv")
 asia<-read_csv("hw05_gapminder_files\\gap_asia.csv")
@@ -466,7 +469,7 @@ rm(asia)
 ```
 This returns NULL for the levels because the class of continent is now character and not factor anymore. This happens because read_csv() doesnt convert strings to factors unlike read.csv(). Instead, it is guessing the column specification of each variable when reading which is printed as well.So in this case, the class of the variable is itself not factor let alone keep reordering intact.
 
-####saveRDS() and readRDS() 
+###saveRDS() and readRDS() 
 ```{r}
 saveRDS(gap_asia,"hw05_gapminder_files\\gap_asia.rds")
 asia<-readRDS("hw05_gapminder_files\\gap_asia.rds")
@@ -482,7 +485,7 @@ rm(asia)
 
 The order of the factor variable is retained. This shows that saving as .rds file and reading it back keeps the ordering of factor variable intact.
 
-####dput() and dget()
+###dput() and dget()
 
 ```{r}
 dput(gap_asia,"hw05_gapminder_files\\random_name")
@@ -500,9 +503,9 @@ This works and it saves the data as in a text file with a representation that re
 + [Delete files](https://stat.ethz.ch/R-manual/R-devel/library/base/html/unlink.html)
 + [readr](https://blog.rstudio.com/2016/08/05/readr-1-0-0/)
 
-###Task 3
+##Task 3
 
-####Visualization Design
+###Visualization Design
 
 Lets take the plot of lifeExp of countries over time facetted by continent. I had used this plot in the [third homework](http://htmlpreview.github.io/?https://github.com/abishekarun/STAT545-hw-rajendran-arun/blob/master/hw03/hw03_gapminder.html)
 
@@ -571,9 +574,9 @@ The changes made are
 + [ggplot2 Cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf)
 
 
-###Task 4
+##Task 4
 
-####Writing Figures to Files
+###Writing Figures to Files
 
 Earlier we had saved three plots to variables namely, unordered_plot, baseR_plot and forcats_plot. Now lets try saving these to figures to files.
 
@@ -644,9 +647,9 @@ ggsave('baseR_plot2.png',plot = baseR_plot,
 + [Write figure to file](https://www.stat.ubc.ca/~jenny/STAT545A/topic12_writeFigureToFile.html)
 + [High Resoultion graphics](https://thepoliticalmethodologist.com/2013/11/25/making-high-resolution-graphics-for-academic-publishing/)
 
-###Task 5
+##Task 5
 
-####Cleaning up the Repo
+###Cleaning up the Repo
 
 For cleaning the repositories following actions were taken
 
@@ -655,9 +658,9 @@ For cleaning the repositories following actions were taken
 3. Each homework folder has a hw0x_gapminder_files folder containing the extra files such as images,table files,csv files etc.
 4. The main readme file has the link to navigate to each of these homework folders.
 
-###Task 6
+##Task 6
 
-####But I want to do more
+###But I want to do more
 
 Lets create a filtered dataset for this activity
 
@@ -678,7 +681,7 @@ gap_six$language<-as.factor(gap_six$language)
 levels(gap_six$language)
 ```
 
-####Reordering levels of factor variables
+###Reordering levels of factor variables
 
 We order language by frequency, forwards and backwards.
 ```{r}
@@ -712,7 +715,7 @@ fct_reorder(gap_six$language , gap_six$lifeExp,.desc=TRUE) %>%
   levels()
 ```
 
-####Factor Relevel
+###Factor Relevel
 
 In order to just hoist one or more levels manually, we can use fct_relevel() function.
 
@@ -722,7 +725,7 @@ gap_six$language  %>% fct_relevel("German") %>% levels()
 gap_six$language %>% fct_relevel("Spanish","Portugese") %>% levels()
 ```
 
-####Factor Reverse
+###Factor Reverse
 
 If you just want to reverse the order, there’s the fct_rev function.
 
@@ -732,7 +735,7 @@ fct_rev(gap_six$language)%>%levels()
 ```
 
 
-####Factor Recode
+###Factor Recode
 
 Change the names of the levels..
 ```{r}
@@ -746,8 +749,7 @@ fct_recode(gap_six$language,NULL="English")%>%
   levels()
 ```
 
-
-####fct_unique()
+###fct_unique()
 
 Get the unique values of a factor 
 
@@ -756,7 +758,7 @@ unique(gap_six$language)     # in order of appearance
 fct_unique(gap_six$language) # in order of levels
 ```
 
-####fct_expand()
+###fct_expand()
 
 Add additional levels to a factor
 
@@ -764,7 +766,7 @@ Add additional levels to a factor
 fct_expand(gap_six$language,"Hindi") %>% levels()
 ```
 
-####fct_explicit_na()
+###fct_explicit_na()
 
 This gives missing value an explicit factor level, ensuring that they appear in summaries and on plots.
 ```{r}

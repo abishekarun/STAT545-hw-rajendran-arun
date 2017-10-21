@@ -200,10 +200,11 @@ gapminder[gapminder$continent!=&quot;Oceania&quot;,]$continent%&gt;%
 <pre><code>##   country continent      year   lifeExp       pop gdpPercap 
 ##       140         4         0         0         0         0</code></pre>
 </div>
-<div id="reordering-levels-of-factor-variables" class="section level4">
-<h4>Reordering levels of factor variables</h4>
-<div id="continent-variable" class="section level5">
-<h5>Continent Variable</h5>
+</div>
+<div id="reordering-levels-of-factor-variables" class="section level3">
+<h3>Reordering levels of factor variables</h3>
+<div id="continent-variable" class="section level4">
+<h4>Continent Variable</h4>
 <p><strong>First, lets reorder levels of continent variable by frequency.</strong></p>
 <p>We order continent by frequency, forwards and backwards.</p>
 <pre class="r"><code>fct_count(gapminder$continent)</code></pre>
@@ -247,8 +248,8 @@ fct_reorder(gapminder$continent, gapminder$lifeExp,.desc=TRUE) %&gt;%
 ## [4] &quot;Equatorial Guinea&quot;     &quot;Comoros&quot;               &quot;Bahrain&quot;</code></pre>
 </div>
 </div>
-<div id="importance-of-reordering-with-plots" class="section level4">
-<h4>Importance of reordering with plots</h4>
+<div id="importance-of-reordering-with-plots" class="section level3">
+<h3>Importance of reordering with plots</h3>
 <p>Lets understand the importance of reordering the factor variables by plotting mean population of each country in Americas continent with and without reordering the factor variable.</p>
 <pre class="r"><code>h_gap &lt;- gapminder%&gt;%
            filter(continent==&quot;Americas&quot;)%&gt;%
@@ -474,8 +475,9 @@ United States
 </tr>
 </tbody>
 </table>
-<div id="unordered-plot-of-mean-pop-for-each-country" class="section level5">
-<h5>Unordered Plot of Mean pop for Each Country</h5>
+</div>
+<div id="unordered-plot-of-mean-pop-for-each-country" class="section level3">
+<h3>Unordered Plot of Mean pop for Each Country</h3>
 <pre class="r"><code>ggplot(h_gap,aes(x=mean_pop,y=country))+
   geom_point(color=&quot;blue&quot;)+
   theme(
@@ -495,8 +497,8 @@ United States
   ggtitle(&quot;Unordered Plot of Mean Population&quot;)</code></pre>
 <p><img src="hw05_gapminder_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
 </div>
-<div id="ordered-plot-of-mean-pop-for-each-country" class="section level5">
-<h5>Ordered Plot of Mean pop for Each Country</h5>
+<div id="ordered-plot-of-mean-pop-for-each-country" class="section level3">
+<h3>Ordered Plot of Mean pop for Each Country</h3>
 <pre class="r"><code>ggplot(h_gap,aes(x=mean_pop,y=fct_reorder(country,mean_pop,.desc = TRUE)))+
   geom_point(color=&quot;blue&quot;)+
   theme(
@@ -1203,8 +1205,8 @@ Oceania
 </tbody>
 </table>
 </div>
-<div id="unordered-plot-of-mean-gdppercap-vs-year-for-each-continent" class="section level5">
-<h5>Unordered Plot of Mean gdpPerCap vs Year for Each Continent</h5>
+<div id="unordered-plot-of-mean-gdppercap-vs-year-for-each-continent" class="section level3">
+<h3>Unordered Plot of Mean gdpPerCap vs Year for Each Continent</h3>
 <pre class="r"><code>ggplot(gg_gap,aes(year,mean_gdpPercap,color=continent))+
   geom_line(size=1.25)+
   theme(
@@ -1223,8 +1225,8 @@ Oceania
   ggtitle(&quot;Unordered Plot of Mean GDP Per Capita&quot;)</code></pre>
 <p><img src="hw05_gapminder_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
 </div>
-<div id="ordered-plot-of-mean-gdppercap-vs-year-for-each-continent" class="section level5">
-<h5>Ordered Plot of Mean gdpPerCap vs Year for Each Continent</h5>
+<div id="ordered-plot-of-mean-gdppercap-vs-year-for-each-continent" class="section level3">
+<h3>Ordered Plot of Mean gdpPerCap vs Year for Each Continent</h3>
 <pre class="r"><code>ggplot(gg_gap, aes(x = year, y = mean_gdpPercap,
                   color = fct_reorder2(continent, year, mean_gdpPercap))) +
   geom_line(size=1.25)+
@@ -1243,9 +1245,8 @@ Oceania
   ggtitle(&quot;Ordered Plot of Mean GDP Per Capita&quot;)</code></pre>
 <p><img src="hw05_gapminder_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
 </div>
-</div>
-<div id="factor-relevel" class="section level4">
-<h4>Factor Relevel</h4>
+<div id="factor-relevel" class="section level3">
+<h3>Factor Relevel</h3>
 <p>In order to just hoist one or more levels manually, we can use fct_relevel() function.</p>
 <pre class="r"><code>gg_gap$continent %&gt;% levels()</code></pre>
 <pre><code>## [1] &quot;Africa&quot;   &quot;Americas&quot; &quot;Asia&quot;     &quot;Europe&quot;   &quot;Oceania&quot;</code></pre>
@@ -1254,8 +1255,8 @@ Oceania
 <pre class="r"><code>gg_gap$continent %&gt;% fct_relevel(&quot;Oceania&quot;,&quot;Americas&quot;) %&gt;% levels()</code></pre>
 <pre><code>## [1] &quot;Oceania&quot;  &quot;Americas&quot; &quot;Africa&quot;   &quot;Asia&quot;     &quot;Europe&quot;</code></pre>
 </div>
-<div id="factor-recode" class="section level4">
-<h4>Factor Recode</h4>
+<div id="factor-recode" class="section level3">
+<h3>Factor Recode</h3>
 <p>Change the names of the levels..</p>
 <pre class="r"><code>fct_recode(gg_gap$continent,North_America=&quot;Americas&quot;,Australia=&quot;Oceania&quot;)%&gt;%
   levels()</code></pre>
@@ -1265,7 +1266,9 @@ Oceania
 <pre class="r"><code>fct_recode(gg_gap$continent,NULL=&quot;Americas&quot;)%&gt;%
   levels()</code></pre>
 <pre><code>## [1] &quot;Africa&quot;  &quot;Asia&quot;    &quot;Europe&quot;  &quot;Oceania&quot;</code></pre>
-<p><strong>Effects of arrange</strong></p>
+</div>
+<div id="effects-of-arrange" class="section level3">
+<h3>Effects of arrange</h3>
 <p>Now lets take the dataset of mean values of gdpPercap,lifeExp and population for each country in Africa continent.</p>
 <pre class="r"><code>gap_le &lt;- gapminder%&gt;%
                 filter(continent==&quot;Africa&quot;)%&gt;%
@@ -2027,7 +2030,10 @@ Burundi
 </tr>
 </tbody>
 </table>
-<p><strong>Unordered Plot</strong> Lets plot mean gdpPercap of each country in Africa without ordering the factor variable country.</p>
+</div>
+<div id="unordered-plot" class="section level3">
+<h3>Unordered Plot</h3>
+<p>Lets plot mean gdpPercap of each country in Africa without ordering the factor variable country.</p>
 <pre class="r"><code>unordered_plot&lt;- 
   gap_le%&gt;%
     arrange(desc(mean_gdpPercap))%&gt;%
@@ -2046,7 +2052,10 @@ Burundi
       ggtitle(&quot;Unordered Plot of Mean gdpPerCapita in Africa&quot;)
 unordered_plot</code></pre>
 <p><img src="hw05_gapminder_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
-<p><strong>Reordering with Base R function</strong><br\> Lets reorder the country variable based on decreasing value of mean_gdpPercap</p>
+</div>
+<div id="reordering-with-base-r-function" class="section level3">
+<h3>Reordering with Base R function</h3>
+<p><br\> Lets reorder the country variable based on decreasing value of mean_gdpPercap</p>
 <pre class="r"><code>#Base R function order()
 gap_le$country&lt;-factor(gap_le$country,
                          levels = gap_le$country[order(gap_le$mean_gdpPercap,
@@ -2069,7 +2078,10 @@ baseR_plot&lt;-
 
 baseR_plot</code></pre>
 <p><img src="hw05_gapminder_files/figure-html/unnamed-chunk-27-1.png" width="672" /></p>
-<p><strong>Reordering with Forcats</strong><br\> Lets reorder the country variable based on decreasing value of mean_gdpPercap using fct_reorder() from forcats package.</p>
+</div>
+<div id="reordering-with-forcats" class="section level3">
+<h3>Reordering with Forcats</h3>
+<p><br\> Lets reorder the country variable based on decreasing value of mean_gdpPercap using fct_reorder() from forcats package.</p>
 <pre class="r"><code>#forcats function fct_reorder()
 forcats_plot &lt;-
   gap_le %&gt;%
@@ -2096,7 +2108,6 @@ forcats_plot</code></pre>
 <blockquote>
 <p>The above answer is supported by tables and plots above.</p>
 </blockquote>
-</div>
 <div id="resources" class="section level4">
 <h4>Resources</h4>
 <ul>
@@ -2123,8 +2134,9 @@ gap_asia$country%&gt;%
   head()</code></pre>
 <pre><code>## [1] &quot;Bahrain&quot;            &quot;Kuwait&quot;             &quot;Mongolia&quot;          
 ## [4] &quot;Oman&quot;               &quot;Lebanon&quot;            &quot;West Bank and Gaza&quot;</code></pre>
-<div id="write.csv-and-read.csv" class="section level4">
-<h4>write.csv() and read.csv()</h4>
+</div>
+<div id="write.csv-and-read.csv" class="section level3">
+<h3>write.csv() and read.csv()</h3>
 <p>Now lets write this dataset to a csv file and save it.</p>
 <pre class="r"><code>write.csv(gap_asia,&quot;hw05_gapminder_files\\gap_asia.csv&quot;)</code></pre>
 <p>Next up,Lets read this csv file into asia data frame</p>
@@ -2145,8 +2157,8 @@ gap_asia$country%&gt;%
 unlink(&quot;gap_asia.csv&quot;)</code></pre>
 <p>The order of the factors is not same. This shows that the reordering doesnt survive the round trip of writing to csv and reading back.</p>
 </div>
-<div id="write_csv-and-read_csv" class="section level4">
-<h4>write_csv() and read_csv()</h4>
+<div id="write_csv-and-read_csv" class="section level3">
+<h3>write_csv() and read_csv()</h3>
 <pre class="r"><code>write_csv(gap_asia,&quot;hw05_gapminder_files\\gap_asia.csv&quot;)
 asia&lt;-read_csv(&quot;hw05_gapminder_files\\gap_asia.csv&quot;)</code></pre>
 <pre><code>## Parsed with column specification:
@@ -2163,8 +2175,8 @@ asia&lt;-read_csv(&quot;hw05_gapminder_files\\gap_asia.csv&quot;)</code></pre>
 <pre class="r"><code>rm(asia)</code></pre>
 <p>This returns NULL for the levels because the class of continent is now character and not factor anymore. This happens because read_csv() doesnt convert strings to factors unlike read.csv(). Instead, it is guessing the column specification of each variable when reading which is printed as well.So in this case, the class of the variable is itself not factor let alone keep reordering intact.</p>
 </div>
-<div id="saverds-and-readrds" class="section level4">
-<h4>saveRDS() and readRDS()</h4>
+<div id="saverds-and-readrds" class="section level3">
+<h3>saveRDS() and readRDS()</h3>
 <pre class="r"><code>saveRDS(gap_asia,&quot;hw05_gapminder_files\\gap_asia.rds&quot;)
 asia&lt;-readRDS(&quot;hw05_gapminder_files\\gap_asia.rds&quot;)
 
@@ -2181,8 +2193,8 @@ asia$country%&gt;%
 <pre class="r"><code>rm(asia)</code></pre>
 <p>The order of the factor variable is retained. This shows that saving as .rds file and reading it back keeps the ordering of factor variable intact.</p>
 </div>
-<div id="dput-and-dget" class="section level4">
-<h4>dput() and dget()</h4>
+<div id="dput-and-dget" class="section level3">
+<h3>dput() and dget()</h3>
 <pre class="r"><code>dput(gap_asia,&quot;hw05_gapminder_files\\random_name&quot;)
 asia&lt;-dget(&quot;hw05_gapminder_files\\random_name&quot;)
 asia$country%&gt;%
@@ -2191,7 +2203,6 @@ asia$country%&gt;%
 <pre><code>## [1] &quot;Bahrain&quot;            &quot;Kuwait&quot;             &quot;Mongolia&quot;          
 ## [4] &quot;Oman&quot;               &quot;Lebanon&quot;            &quot;West Bank and Gaza&quot;</code></pre>
 <p>This works and it saves the data as in a text file with a representation that remembers the ordering of the factor levels.</p>
-</div>
 <div id="resources-1" class="section level4">
 <h4>Resources</h4>
 <ul>
@@ -2202,10 +2213,11 @@ asia$country%&gt;%
 </ul>
 </div>
 </div>
-<div id="task-3" class="section level3">
-<h3>Task 3</h3>
-<div id="visualization-design" class="section level4">
-<h4>Visualization Design</h4>
+</div>
+<div id="task-3" class="section level2">
+<h2>Task 3</h2>
+<div id="visualization-design" class="section level3">
+<h3>Visualization Design</h3>
 <p>Lets take the plot of lifeExp of countries over time facetted by continent. I had used this plot in the <a href="http://htmlpreview.github.io/?https://github.com/abishekarun/STAT545-hw-rajendran-arun/blob/master/hw03/hw03_gapminder.html">third homework</a></p>
 <pre class="r"><code>ggplot(gapminder,aes(year,lifeExp,group=country))+
   geom_line()+
@@ -2240,7 +2252,6 @@ gapminder %&gt;%
     expand_limits(x = c(1950,2010))</code></pre>
 <p><img src="hw05_gapminder_files/figure-html/unnamed-chunk-39-1.png" width="672" /></p>
 <p>The changes made are - Color each country lifeExp by the mean of lifeExp experienced by the country - The value of alpha(transparency) is set to 0.5 for better visualization. - The country grouping is embedded inside the geom_line aesthetic. - theme_bw is applied for better graphics. - The title is included using ggtitle and its theme is modified. - Similary, the theme of x and y axis title is modified - X axis labels are rotated by 90 and centered. - The legend is placed inside the graph at the right bottom using legend.position - The colorder contains the year values present in gapminder as a vector. - The labels of x axis are modified using scale_x_discrete function. - The expand_limits makes sure there is some space on either side of the graph. - The legend color palette is taken from RColorBrewer package.</p>
-</div>
 <div id="resources-2" class="section level4">
 <h4>Resources</h4>
 <ul>
@@ -2253,10 +2264,11 @@ gapminder %&gt;%
 </ul>
 </div>
 </div>
-<div id="task-4" class="section level3">
-<h3>Task 4</h3>
-<div id="writing-figures-to-files" class="section level4">
-<h4>Writing Figures to Files</h4>
+</div>
+<div id="task-4" class="section level2">
+<h2>Task 4</h2>
+<div id="writing-figures-to-files" class="section level3">
+<h3>Writing Figures to Files</h3>
 <p>Earlier we had saved three plots to variables namely, unordered_plot, baseR_plot and forcats_plot. Now lets try saving these to figures to files.</p>
 <p>When we use ggsave() function without mentioning the plot name, it saves the last plot.</p>
 <pre class="r"><code>ggsave(&#39;unordered.jpg&#39;,
@@ -2296,7 +2308,6 @@ ggsave(&#39;baseR_plot2.png&#39;,plot = baseR_plot,
        width=800/res, height=800/res,units = &#39;in&#39;, dpi = res)</code></pre>
 <p><img src="hw05_gapminder_files/raster_format_files/baseR_plot1.png"></p>
 <p><img src="hw05_gapminder_files/raster_format_files/baseR_plot2.png"></p>
-</div>
 <div id="resources-3" class="section level4">
 <h4>Resources</h4>
 <ul>
@@ -2306,10 +2317,11 @@ ggsave(&#39;baseR_plot2.png&#39;,plot = baseR_plot,
 </ul>
 </div>
 </div>
-<div id="task-5" class="section level3">
-<h3>Task 5</h3>
-<div id="cleaning-up-the-repo" class="section level4">
-<h4>Cleaning up the Repo</h4>
+</div>
+<div id="task-5" class="section level2">
+<h2>Task 5</h2>
+<div id="cleaning-up-the-repo" class="section level3">
+<h3>Cleaning up the Repo</h3>
 <p>For cleaning the repositories following actions were taken</p>
 <ol style="list-style-type: decimal">
 <li>All the homeworks were organized in a single repository and each one has its own folder.</li>
@@ -2319,10 +2331,10 @@ ggsave(&#39;baseR_plot2.png&#39;,plot = baseR_plot,
 </ol>
 </div>
 </div>
-<div id="task-6" class="section level3">
-<h3>Task 6</h3>
-<div id="but-i-want-to-do-more" class="section level4">
-<h4>But I want to do more</h4>
+<div id="task-6" class="section level2">
+<h2>Task 6</h2>
+<div id="but-i-want-to-do-more" class="section level3">
+<h3>But I want to do more</h3>
 <p>Lets create a filtered dataset for this activity</p>
 <pre class="r"><code># !diagnostics off
 country_list&lt;- c(&quot;Austria&quot;,&quot;Germany&quot;,&quot;Mexico&quot;,&quot;Argentina&quot;,&quot;Spain&quot;,&quot;Portugal&quot;
@@ -2340,8 +2352,8 @@ gap_six$language&lt;-as.factor(gap_six$language)
 levels(gap_six$language)</code></pre>
 <pre><code>## [1] &quot;English&quot;   &quot;German&quot;    &quot;Portugese&quot; &quot;Spanish&quot;</code></pre>
 </div>
-<div id="reordering-levels-of-factor-variables-1" class="section level4">
-<h4>Reordering levels of factor variables</h4>
+<div id="reordering-levels-of-factor-variables-1" class="section level3">
+<h3>Reordering levels of factor variables</h3>
 <p>We order language by frequency, forwards and backwards.</p>
 <pre class="r"><code>fct_count(gap_six$language)</code></pre>
 <pre><code>## # A tibble: 4 × 2
@@ -2376,8 +2388,8 @@ fct_reorder(gap_six$language , gap_six$lifeExp,.desc=TRUE) %&gt;%
   levels()</code></pre>
 <pre><code>## [1] &quot;English&quot;   &quot;German&quot;    &quot;Portugese&quot; &quot;Spanish&quot;</code></pre>
 </div>
-<div id="factor-relevel-1" class="section level4">
-<h4>Factor Relevel</h4>
+<div id="factor-relevel-1" class="section level3">
+<h3>Factor Relevel</h3>
 <p>In order to just hoist one or more levels manually, we can use fct_relevel() function.</p>
 <pre class="r"><code>gap_six$language  %&gt;% levels()</code></pre>
 <pre><code>## [1] &quot;English&quot;   &quot;German&quot;    &quot;Portugese&quot; &quot;Spanish&quot;</code></pre>
@@ -2386,16 +2398,16 @@ fct_reorder(gap_six$language , gap_six$lifeExp,.desc=TRUE) %&gt;%
 <pre class="r"><code>gap_six$language %&gt;% fct_relevel(&quot;Spanish&quot;,&quot;Portugese&quot;) %&gt;% levels()</code></pre>
 <pre><code>## [1] &quot;Spanish&quot;   &quot;Portugese&quot; &quot;English&quot;   &quot;German&quot;</code></pre>
 </div>
-<div id="factor-reverse" class="section level4">
-<h4>Factor Reverse</h4>
+<div id="factor-reverse" class="section level3">
+<h3>Factor Reverse</h3>
 <p>If you just want to reverse the order, there’s the fct_rev function.</p>
 <pre class="r"><code>levels(gap_six$language)</code></pre>
 <pre><code>## [1] &quot;English&quot;   &quot;German&quot;    &quot;Portugese&quot; &quot;Spanish&quot;</code></pre>
 <pre class="r"><code>fct_rev(gap_six$language)%&gt;%levels()</code></pre>
 <pre><code>## [1] &quot;Spanish&quot;   &quot;Portugese&quot; &quot;German&quot;    &quot;English&quot;</code></pre>
 </div>
-<div id="factor-recode-1" class="section level4">
-<h4>Factor Recode</h4>
+<div id="factor-recode-1" class="section level3">
+<h3>Factor Recode</h3>
 <p>Change the names of the levels..</p>
 <pre class="r"><code>fct_recode(gap_six$language,Eng=&quot;English&quot;,Spa=&quot;Spanish&quot;)%&gt;%
   levels()</code></pre>
@@ -2405,8 +2417,8 @@ fct_reorder(gap_six$language , gap_six$lifeExp,.desc=TRUE) %&gt;%
   levels()</code></pre>
 <pre><code>## [1] &quot;German&quot;    &quot;Portugese&quot; &quot;Spanish&quot;</code></pre>
 </div>
-<div id="fct_unique" class="section level4">
-<h4>fct_unique()</h4>
+<div id="fct_unique" class="section level3">
+<h3>fct_unique()</h3>
 <p>Get the unique values of a factor</p>
 <pre class="r"><code>unique(gap_six$language)     # in order of appearance</code></pre>
 <pre><code>## [1] Spanish   Portugese German    English  
@@ -2415,14 +2427,14 @@ fct_reorder(gap_six$language , gap_six$lifeExp,.desc=TRUE) %&gt;%
 <pre><code>## [1] English   German    Portugese Spanish  
 ## Levels: English German Portugese Spanish</code></pre>
 </div>
-<div id="fct_expand" class="section level4">
-<h4>fct_expand()</h4>
+<div id="fct_expand" class="section level3">
+<h3>fct_expand()</h3>
 <p>Add additional levels to a factor</p>
 <pre class="r"><code>fct_expand(gap_six$language,&quot;Hindi&quot;) %&gt;% levels()</code></pre>
 <pre><code>## [1] &quot;English&quot;   &quot;German&quot;    &quot;Portugese&quot; &quot;Spanish&quot;   &quot;Hindi&quot;</code></pre>
 </div>
-<div id="fct_explicit_na" class="section level4">
-<h4>fct_explicit_na()</h4>
+<div id="fct_explicit_na" class="section level3">
+<h3>fct_explicit_na()</h3>
 <p>This gives missing value an explicit factor level, ensuring that they appear in summaries and on plots.</p>
 <pre class="r"><code>f1 &lt;- factor(c(&quot;a&quot;, &quot;a&quot;, NA, NA, &quot;a&quot;, &quot;b&quot;, NA, &quot;c&quot;, &quot;a&quot;, &quot;c&quot;, &quot;b&quot;))
 f2&lt;- fct_explicit_na(f1, na_level = &quot; (Missing) &quot;)
@@ -2430,7 +2442,6 @@ table(f2)</code></pre>
 <pre><code>## f2
 ##           a           b           c  (Missing)  
 ##           4           2           2           3</code></pre>
-</div>
 <div id="resources-4" class="section level4">
 <h4>Resources</h4>
 <ul>
