@@ -5,7 +5,7 @@ This is the *readme file* for the fifth homework.
 **dput()** and **dget()** was explored for reading and writing tables. Also **ggplot** was extensively explored in this assignment with different theme options applied. Package **RColorBrewer** was used for palettes.**Knitr**,**kable** and **pander** package was used for making nice tables.
 
 You can find the [R markdown document](https://github.com/abishekarun/STAT545-hw-rajendran-arun/blob/master/hw05/hw05_gapminder.Rmd),the [markdown document](https://github.com/abishekarun/STAT545-hw-rajendran-arun/blob/master/hw05/hw05_gapminder.md)and 
-[Rendered hmtl file](http://htmlpreview.github.io/?https://github.com/abishekarun/STAT545-hw-rajendran-arun/blob/master/hw05/hw05_gapminder.html)
+[Rendered html file](http://htmlpreview.github.io/?https://github.com/abishekarun/STAT545-hw-rajendran-arun/blob/master/hw05/hw05_gapminder.html)
 for __gapminder data__.
 
 ### Report your process
