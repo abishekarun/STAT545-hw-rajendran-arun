@@ -91,7 +91,7 @@ length(levels(gap_dropped$continent))
 
 Thus the levels for factor variable continent in gap_dropped is changed.
 
-2. ***gdata package**
+2. **gdata package**
 Dropping of levels can be done for all the variables at once using drop.levels() function from gdata package.
 
 ```{r}
@@ -179,7 +179,7 @@ tableFormat(h_gap,"Mean Population of Countries in America")
 
 ```
 
-**Unordered Plot of Mean pop for Each Country**
+#####Unordered Plot of Mean pop for Each Country
 
 ```{r}
 ggplot(h_gap,aes(x=mean_pop,y=country))+
@@ -202,7 +202,7 @@ ggplot(h_gap,aes(x=mean_pop,y=country))+
 
 ```
 
-**Ordered Plot of Mean pop for Each Country**
+#####Ordered Plot of Mean pop for Each Country
 
 ```{r}
 ggplot(h_gap,aes(x=mean_pop,y=fct_reorder(country,mean_pop,.desc = TRUE)))+
@@ -238,7 +238,7 @@ tableFormat(gg_gap,"Mean GDP Per Capita Over Years")
 
 ```
 
-**Unordered Plot of Mean gdpPerCap vs Year for Each Continent**
+#####Unordered Plot of Mean gdpPerCap vs Year for Each Continent
 
 ```{r}
 ggplot(gg_gap,aes(year,mean_gdpPercap,color=continent))+
@@ -260,7 +260,7 @@ ggplot(gg_gap,aes(year,mean_gdpPercap,color=continent))+
 
 ```
 
-**Ordered Plot of Mean gdpPerCap vs Year for Each Continent**
+#####Ordered Plot of Mean gdpPerCap vs Year for Each Continent
 
 ```{r}
 ggplot(gg_gap, aes(x = year, y = mean_gdpPercap,

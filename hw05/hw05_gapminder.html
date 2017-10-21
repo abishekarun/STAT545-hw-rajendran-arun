@@ -176,7 +176,7 @@ length(levels(gap_dropped$continent))</code></pre>
 <pre><code>## [1] 4</code></pre>
 <p>Thus the levels for factor variable continent in gap_dropped is changed.</p>
 <ol start="2" style="list-style-type: decimal">
-<li>*<strong>gdata package</strong> Dropping of levels can be done for all the variables at once using drop.levels() function from gdata package.</li>
+<li><strong>gdata package</strong> Dropping of levels can be done for all the variables at once using drop.levels() function from gdata package.</li>
 </ol>
 <pre class="r"><code>suppressPackageStartupMessages(library(gdata))
 
@@ -474,7 +474,8 @@ United States
 </tr>
 </tbody>
 </table>
-<p><strong>Unordered Plot of Mean pop for Each Country</strong></p>
+<div id="unordered-plot-of-mean-pop-for-each-country" class="section level5">
+<h5>Unordered Plot of Mean pop for Each Country</h5>
 <pre class="r"><code>ggplot(h_gap,aes(x=mean_pop,y=country))+
   geom_point(color=&quot;blue&quot;)+
   theme(
@@ -493,7 +494,9 @@ United States
   ylab(&quot;Countries in America&quot;)+
   ggtitle(&quot;Unordered Plot of Mean Population&quot;)</code></pre>
 <p><img src="hw05_gapminder_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
-<p><strong>Ordered Plot of Mean pop for Each Country</strong></p>
+</div>
+<div id="ordered-plot-of-mean-pop-for-each-country" class="section level5">
+<h5>Ordered Plot of Mean pop for Each Country</h5>
 <pre class="r"><code>ggplot(h_gap,aes(x=mean_pop,y=fct_reorder(country,mean_pop,.desc = TRUE)))+
   geom_point(color=&quot;blue&quot;)+
   theme(
@@ -1199,7 +1202,9 @@ Oceania
 </tr>
 </tbody>
 </table>
-<p><strong>Unordered Plot of Mean gdpPerCap vs Year for Each Continent</strong></p>
+</div>
+<div id="unordered-plot-of-mean-gdppercap-vs-year-for-each-continent" class="section level5">
+<h5>Unordered Plot of Mean gdpPerCap vs Year for Each Continent</h5>
 <pre class="r"><code>ggplot(gg_gap,aes(year,mean_gdpPercap,color=continent))+
   geom_line(size=1.25)+
   theme(
@@ -1217,7 +1222,9 @@ Oceania
   ylab(&quot;Mean GDP Per Capita&quot;)+
   ggtitle(&quot;Unordered Plot of Mean GDP Per Capita&quot;)</code></pre>
 <p><img src="hw05_gapminder_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
-<p><strong>Ordered Plot of Mean gdpPerCap vs Year for Each Continent</strong></p>
+</div>
+<div id="ordered-plot-of-mean-gdppercap-vs-year-for-each-continent" class="section level5">
+<h5>Ordered Plot of Mean gdpPerCap vs Year for Each Continent</h5>
 <pre class="r"><code>ggplot(gg_gap, aes(x = year, y = mean_gdpPercap,
                   color = fct_reorder2(continent, year, mean_gdpPercap))) +
   geom_line(size=1.25)+
@@ -1235,6 +1242,7 @@ Oceania
   labs(x=&quot;Year&quot;,y=&quot;Mean GDP Per Capita&quot;,color = &quot;continent&quot;)+
   ggtitle(&quot;Ordered Plot of Mean GDP Per Capita&quot;)</code></pre>
 <p><img src="hw05_gapminder_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
+</div>
 </div>
 <div id="factor-relevel" class="section level4">
 <h4>Factor Relevel</h4>
