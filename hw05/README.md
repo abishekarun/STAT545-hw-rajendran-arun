@@ -16,7 +16,7 @@ Most of the work in markdown file was easier with the forcats functions and ggpl
 The resources that helped me are:
 
 + [ggplot cheat sheet](https://www.rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf) 
-+[forcats manual](https://cran.r-project.org/web/packages/forcats/forcats.pdf) 
-+[Write figure to file](https://www.stat.ubc.ca/~jenny/STAT545A/topic12_writeFigureToFile.html)
-+[Color Reference](http://sape.inf.usi.ch/quick-reference/ggplot2/colour)
-+[Forcats Blog](https://blog.rstudio.com/2016/08/31/forcats-0-1-0/)
++ [forcats manual](https://cran.r-project.org/web/packages/forcats/forcats.pdf) 
++ [Write figure to file](https://www.stat.ubc.ca/~jenny/STAT545A/topic12_writeFigureToFile.html)
++ [Color Reference](http://sape.inf.usi.ch/quick-reference/ggplot2/colour)
++ [Forcats Blog](https://blog.rstudio.com/2016/08/31/forcats-0-1-0/)
