@@ -165,7 +165,7 @@ options(knitr.table.format = &quot;html&quot;)</code></pre>
 <p>Thus two levels of country corrosponding to Australia and New Zealand are dropped in the gap_dropped.</p>
 <p><em>This can be done in a couple of other ways.</em></p>
 <ol style="list-style-type: decimal">
-<li><strong>Base R</strong> We can factorize the column after subsetting the data frame.</li>
+<li><strong>Base R</strong><br\> We can factorize the column after subsetting the data frame.</li>
 </ol>
 <pre class="r"><code>length(levels(gap_dropped$continent))</code></pre>
 <pre><code>## [1] 5</code></pre>
@@ -176,7 +176,7 @@ length(levels(gap_dropped$continent))</code></pre>
 <pre><code>## [1] 4</code></pre>
 <p>Thus the levels for factor variable continent in gap_dropped is changed.</p>
 <ol start="2" style="list-style-type: decimal">
-<li><strong>gdata package</strong> Dropping of levels can be done for all the variables at once using drop.levels() function from gdata package.</li>
+<li><strong>gdata package</strong><br\> Dropping of levels can be done for all the variables at once using drop.levels() function from gdata package.</li>
 </ol>
 <pre class="r"><code>suppressPackageStartupMessages(library(gdata))
 
@@ -186,7 +186,7 @@ gapminder[gapminder$continent!=&quot;Oceania&quot;,]%&gt;%
 <pre><code>##   country continent      year   lifeExp       pop gdpPercap 
 ##       140         4         0         0         0         0</code></pre>
 <ol start="3" style="list-style-type: decimal">
-<li><strong>forcats package</strong> Dropping of levels can be done using droplevels() function in forcats() package. &gt; The base function droplevels() operates on all the factors in a data frame or on a single factor. The function forcats::fct_drop() operates on a factor.</li>
+<li><strong>forcats package</strong><br\> Dropping of levels can be done using droplevels() function in forcats() package. &gt; The base function droplevels() operates on all the factors in a data frame or on a single factor. The function forcats::fct_drop() operates on a factor.</li>
 </ol>
 <pre class="r"><code>suppressPackageStartupMessages(library(forcats))
 
@@ -2046,7 +2046,7 @@ Burundi
       ggtitle(&quot;Unordered Plot of Mean gdpPerCapita in Africa&quot;)
 unordered_plot</code></pre>
 <p><img src="hw05_gapminder_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
-<p><strong>Reordering with Base R function</strong> Lets reorder the country variable based on decreasing value of mean_gdpPercap</p>
+<p><strong>Reordering with Base R function</strong><br\> Lets reorder the country variable based on decreasing value of mean_gdpPercap</p>
 <pre class="r"><code>#Base R function order()
 gap_le$country&lt;-factor(gap_le$country,
                          levels = gap_le$country[order(gap_le$mean_gdpPercap,
@@ -2069,7 +2069,7 @@ baseR_plot&lt;-
 
 baseR_plot</code></pre>
 <p><img src="hw05_gapminder_files/figure-html/unnamed-chunk-27-1.png" width="672" /></p>
-<p><strong>Reordering with Forcats</strong> Lets reorder the country variable based on decreasing value of mean_gdpPercap using fct_reorder() from forcats package.</p>
+<p><strong>Reordering with Forcats</strong><br\> Lets reorder the country variable based on decreasing value of mean_gdpPercap using fct_reorder() from forcats package.</p>
 <pre class="r"><code>#forcats function fct_reorder()
 forcats_plot &lt;-
   gap_le %&gt;%
@@ -2193,7 +2193,7 @@ asia$country%&gt;%
 <p>This works and it saves the data as in a text file with a representation that remembers the ordering of the factor levels.</p>
 </div>
 <div id="resources-1" class="section level4">
-<h4>Resources:</h4>
+<h4>Resources</h4>
 <ul>
 <li><a href="http://r.789695.n4.nabble.com/Retrieving-Factors-with-Levels-Ordered-td3169990.html">Retrieving ordered factors</a></li>
 <li><a href="http://www.fromthebottomoftheheap.net/2012/04/01/saving-and-loading-r-objects/">Saving &amp; Loading objects</a></li>
@@ -2242,7 +2242,7 @@ gapminder %&gt;%
 <p>The changes made are - Color each country lifeExp by the mean of lifeExp experienced by the country - The value of alpha(transparency) is set to 0.5 for better visualization. - The country grouping is embedded inside the geom_line aesthetic. - theme_bw is applied for better graphics. - The title is included using ggtitle and its theme is modified. - Similary, the theme of x and y axis title is modified - X axis labels are rotated by 90 and centered. - The legend is placed inside the graph at the right bottom using legend.position - The colorder contains the year values present in gapminder as a vector. - The labels of x axis are modified using scale_x_discrete function. - The expand_limits makes sure there is some space on either side of the graph. - The legend color palette is taken from RColorBrewer package.</p>
 </div>
 <div id="resources-2" class="section level4">
-<h4>Resources:</h4>
+<h4>Resources</h4>
 <ul>
 <li><a href="http://sape.inf.usi.ch/quick-reference/ggplot2/colour">Color Reference</a></li>
 <li><a href="http://ggplot2.tidyverse.org/reference/theme.html">Theme Components</a></li>
@@ -2262,7 +2262,7 @@ gapminder %&gt;%
 <pre class="r"><code>ggsave(&#39;unordered.jpg&#39;,
       path=&#39;hw05_gapminder_files\\&#39;)</code></pre>
 <pre><code>## Saving 7 x 5 in image</code></pre>
-<p>The saved file is <img src="" alt="forcats_plot" /></p>
+<p><img src="https://github.com/abishekarun/STAT545-hw-rajendran-arun/tree/master/hw05/hw05_gapminder_files/unordered.jpg"></p>
 <p>This clearly shows that it saves the last plot by default.Instead we can save the plots by mentioning their name as the next argument ‘plot’. Thus this argument is extremely useful if you are saving a plot by mentioning its name and it will work perfectly even if it is not the last plot.</p>
 <p>Vector Graphics Format(‘eps’ and ‘pdf’) &gt; Vector graphics formats, which store an image as a series of lines of specified shape, color, and size between relative points in a space. Thus the image is rendered by drawing each of those vectors from the instructions encoded in the file. Vector graphics look sharp at any size because the vectors are simply drawn larger or smaller, depending on the requested size of the image.</p>
 <pre class="r"><code>ggsave(&#39;unordered_plot.pdf&#39;,device=&#39;pdf&#39;,plot = unordered_plot,
@@ -2274,15 +2274,8 @@ gapminder %&gt;%
 <pre class="r"><code>ggsave(&#39;forcats_plot.pdf&#39;,plot = forcats_plot,
       path=&#39;hw05_gapminder_files\\vector_format_files\\&#39;)</code></pre>
 <pre><code>## Saving 7 x 5 in image</code></pre>
+<p>The files are <a href="https://github.com/abishekarun/STAT545-hw-rajendran-arun/tree/master/hw05/hw05_gapminder_files/vector_format_files/unordered_plot.pdf">unordered_plot.pdf</a>, <a href="https://github.com/abishekarun/STAT545-hw-rajendran-arun/tree/master/hw05/hw05_gapminder_files/vector_format_files/baseR_plot.pdf">baseR_plot.pdf</a> and <a href="https://github.com/abishekarun/STAT545-hw-rajendran-arun/tree/master/hw05/hw05_gapminder_files/vector_format_files/forcats_plot.pdf">forcats_plot.pdf</a></p>
 <p>Raster Graphics Format() &gt; Raster graphics, like TIFF, BMP, JPEG, and GIF. Unlike vector graphics, raster graphics are stored as a matrix of colored pixels.</p>
-<pre class="r"><code>ggsave(&#39;forcats_plot1.jpg&#39;,plot = forcats_plot,
-      path=&#39;hw05_gapminder_files\\raster_format_files\\&#39;,
-      scale=0.5)</code></pre>
-<pre><code>## Saving 3.5 x 2.5 in image</code></pre>
-<pre class="r"><code>ggsave(&#39;forcats_plot2.jpg&#39;,plot = forcats_plot,
-      path=&#39;hw05_gapminder_files\\raster_format_files\\&#39;,
-      scale=2)</code></pre>
-<pre><code>## Saving 14 x 10 in image</code></pre>
 <p>The tiff format is the best raster format as it helps keep the high end graphics of image intact to some extent.</p>
 <blockquote>
 <p>When a vector graphic format is not available or for some reason not accepted, graphics need to be saved as high-resolution TIFF files of an appropriate size in order to avoid the grainy or pixelated images sometimes found in journals.</p>
@@ -2290,6 +2283,7 @@ gapminder %&gt;%
 <pre class="r"><code>ggsave(&#39;unordered_plot.tiff&#39;,plot = unordered_plot,
       path=&#39;hw05_gapminder_files\\raster_format_files\\&#39;,
       dpi=600,height=5,width=10)</code></pre>
+<p><img src="https://github.com/abishekarun/STAT545-hw-rajendran-arun/tree/master/hw05/hw05_gapminder_files/raster_format_files/unordered_plot.tiff"></p>
 <p>The height and width of the image in terms of pixels is product of the parameters with dpi value. And the value of dpi directly affects the size of non plot elements such as text. The higher the resolution the better the text is.</p>
 <pre class="r"><code>res&lt;-60
 ggsave(&#39;baseR_plot1.png&#39;,plot = baseR_plot,
@@ -2300,7 +2294,16 @@ res&lt;-100
 ggsave(&#39;baseR_plot2.png&#39;,plot = baseR_plot,
       path=&#39;hw05_gapminder_files\\raster_format_files\\&#39;,
        width=800/res, height=800/res,units = &#39;in&#39;, dpi = res)</code></pre>
-<p><strong>Resources:</strong> + <a href="https://stackoverflow.com/questions/26551359/r-ggsave-save-thumbnail-size-200-x-200-scaled-image">Text Factor</a> + <a href="https://www.stat.ubc.ca/~jenny/STAT545A/topic12_writeFigureToFile.html">Write figure to file</a> + <a href="https://thepoliticalmethodologist.com/2013/11/25/making-high-resolution-graphics-for-academic-publishing/">High Resoultion graphics</a></p>
+<p><img src="https://github.com/abishekarun/STAT545-hw-rajendran-arun/blob/master/hw05/hw05_gapminder_files/raster_format_files/baseR_plot1.png"></p>
+<p><img src="https://github.com/abishekarun/STAT545-hw-rajendran-arun/blob/master/hw05/hw05_gapminder_files/raster_format_files/baseR_plot2.png"></p>
+</div>
+<div id="resources-3" class="section level4">
+<h4>Resources</h4>
+<ul>
+<li><a href="https://stackoverflow.com/questions/26551359/r-ggsave-save-thumbnail-size-200-x-200-scaled-image">Text Factor</a></li>
+<li><a href="https://www.stat.ubc.ca/~jenny/STAT545A/topic12_writeFigureToFile.html">Write figure to file</a></li>
+<li><a href="https://thepoliticalmethodologist.com/2013/11/25/making-high-resolution-graphics-for-academic-publishing/">High Resoultion graphics</a></li>
+</ul>
 </div>
 </div>
 <div id="task-5" class="section level3">
@@ -2427,7 +2430,14 @@ table(f2)</code></pre>
 <pre><code>## f2
 ##           a           b           c  (Missing)  
 ##           4           2           2           3</code></pre>
-<p>Resources: + <a href="https://cran.r-project.org/web/packages/forcats/forcats.pdf">forcats manual</a> + <a href="http://stat.ethz.ch/R-manual/R-devel/library/base/html/cbind.html">cbind</a> + <a href="https://www.infoplease.com/languages-spoken-each-country-world">language data</a></p>
+</div>
+<div id="resources-4" class="section level4">
+<h4>Resources</h4>
+<ul>
+<li><a href="https://cran.r-project.org/web/packages/forcats/forcats.pdf">forcats manual</a></li>
+<li><a href="http://stat.ethz.ch/R-manual/R-devel/library/base/html/cbind.html">cbind</a></li>
+<li><a href="https://www.infoplease.com/languages-spoken-each-country-world">language data</a></li>
+</ul>
 </div>
 </div>
 </div>

@@ -78,7 +78,7 @@ Thus two levels of country corrosponding to Australia and New Zealand are droppe
 
 _This can be done in a couple of other ways._
 
-1. **Base R**
+1. **Base R**<br\>
 We can factorize the column after subsetting the data frame.
 ```{r}
 length(levels(gap_dropped$continent))
@@ -91,7 +91,7 @@ length(levels(gap_dropped$continent))
 
 Thus the levels for factor variable continent in gap_dropped is changed.
 
-2. **gdata package**
+2. **gdata package**<br\>
 Dropping of levels can be done for all the variables at once using drop.levels() function from gdata package.
 
 ```{r}
@@ -102,7 +102,7 @@ gapminder[gapminder$continent!="Oceania",]%>%
   sapply(nlevels)
 ```
 
-3. **forcats package**
+3. **forcats package**<br\>
 Dropping of levels can be done using droplevels() function in forcats() package.
 > The base function droplevels() operates on all the factors in a data frame or on a single factor. The function forcats::fct_drop() operates on a factor.
 
@@ -344,7 +344,7 @@ unordered_plot<-
 unordered_plot
 ```
 
-**Reordering with Base R function**
+**Reordering with Base R function**<br\>
 Lets reorder the country variable based on decreasing value of mean_gdpPercap
 ```{r}
 #Base R function order()
@@ -370,7 +370,7 @@ baseR_plot<-
 baseR_plot
 ```
 
-**Reordering with Forcats**
+**Reordering with Forcats**<br\>
 Lets reorder the country variable based on decreasing value of mean_gdpPercap using fct_reorder() from forcats package.
 ```{r}
 #forcats function fct_reorder()
@@ -494,7 +494,7 @@ asia$country%>%
 
 This works and it saves the data as in a text file with a representation that remembers the ordering of the factor levels.
 
-####Resources:
+####Resources
 + [Retrieving ordered factors](http://r.789695.n4.nabble.com/Retrieving-Factors-with-Levels-Ordered-td3169990.html)
 + [Saving & Loading objects](http://www.fromthebottomoftheheap.net/2012/04/01/saving-and-loading-r-objects/)
 + [Delete files](https://stat.ethz.ch/R-manual/R-devel/library/base/html/unlink.html)
@@ -562,7 +562,7 @@ The changes made are
 - The expand_limits makes sure there is some space on either side of the graph.
 - The legend color palette is taken from RColorBrewer package.
 
-####Resources:
+####Resources
 + [Color Reference](http://sape.inf.usi.ch/quick-reference/ggplot2/colour)
 + [Theme Components](http://ggplot2.tidyverse.org/reference/theme.html)
 + [Axis scales & Transformations](http://www.sthda.com/english/wiki/ggplot2-axis-scales-and-transformations)
@@ -583,8 +583,7 @@ ggsave('unordered.jpg',
       path='hw05_gapminder_files\\')
 ```
 
-The saved file is
-![forcats_plot]()
+<img src="https://github.com/abishekarun/STAT545-hw-rajendran-arun/tree/master/hw05/hw05_gapminder_files/unordered.jpg">
 
 This clearly shows that it saves the last plot by default.Instead we can save the plots by mentioning their name as the next argument 'plot'. Thus this argument is extremely useful if you are saving a plot by mentioning its name and it will work perfectly even if it is not the last plot.
 
@@ -601,17 +600,14 @@ ggsave('forcats_plot.pdf',plot = forcats_plot,
       path='hw05_gapminder_files\\vector_format_files\\')
 ```
 
+The files are 
+[unordered_plot.pdf](https://github.com/abishekarun/STAT545-hw-rajendran-arun/tree/master/hw05/hw05_gapminder_files/vector_format_files/unordered_plot.pdf),
+[baseR_plot.pdf](https://github.com/abishekarun/STAT545-hw-rajendran-arun/tree/master/hw05/hw05_gapminder_files/vector_format_files/baseR_plot.pdf) and
+[forcats_plot.pdf](https://github.com/abishekarun/STAT545-hw-rajendran-arun/tree/master/hw05/hw05_gapminder_files/vector_format_files/forcats_plot.pdf)
+
+
 Raster Graphics Format()
 >  Raster graphics, like TIFF, BMP, JPEG, and GIF. Unlike vector graphics, raster graphics are stored as a matrix of colored pixels.
-
-```{r}
-ggsave('forcats_plot1.jpg',plot = forcats_plot,
-      path='hw05_gapminder_files\\raster_format_files\\',
-      scale=0.5)
-ggsave('forcats_plot2.jpg',plot = forcats_plot,
-      path='hw05_gapminder_files\\raster_format_files\\',
-      scale=2)
-```
 
 The tiff format is the best raster format as it helps keep the high end graphics of image intact to some extent.
 
@@ -622,6 +618,8 @@ ggsave('unordered_plot.tiff',plot = unordered_plot,
       path='hw05_gapminder_files\\raster_format_files\\',
       dpi=600,height=5,width=10)
 ```
+
+<img src="https://github.com/abishekarun/STAT545-hw-rajendran-arun/tree/master/hw05/hw05_gapminder_files/raster_format_files/unordered_plot.tiff">
 
 The height and width of the image in terms of pixels is product of the parameters with dpi value. And the value of dpi directly affects the size of non plot elements such as text. The higher the resolution the better the text is.
 
@@ -637,8 +635,11 @@ ggsave('baseR_plot2.png',plot = baseR_plot,
        width=800/res, height=800/res,units = 'in', dpi = res)
 ```
 
+<img src="https://github.com/abishekarun/STAT545-hw-rajendran-arun/blob/master/hw05/hw05_gapminder_files/raster_format_files/baseR_plot1.png">
 
-**Resources:**
+<img src="https://github.com/abishekarun/STAT545-hw-rajendran-arun/blob/master/hw05/hw05_gapminder_files/raster_format_files/baseR_plot2.png">
+
+####Resources
 + [Text Factor](https://stackoverflow.com/questions/26551359/r-ggsave-save-thumbnail-size-200-x-200-scaled-image)
 + [Write figure to file](https://www.stat.ubc.ca/~jenny/STAT545A/topic12_writeFigureToFile.html)
 + [High Resoultion graphics](https://thepoliticalmethodologist.com/2013/11/25/making-high-resolution-graphics-for-academic-publishing/)
@@ -772,7 +773,7 @@ f2<- fct_explicit_na(f1, na_level = " (Missing) ")
 table(f2)
 ```
 
-Resources:
+####Resources
 + [forcats manual](https://cran.r-project.org/web/packages/forcats/forcats.pdf) 
 + [cbind](http://stat.ethz.ch/R-manual/R-devel/library/base/html/cbind.html)
 + [language data](https://www.infoplease.com/languages-spoken-each-country-world)
