@@ -33,9 +33,9 @@ theme_update(plot.title = element_text(hjust = 0.5))
 
 ##Task 1
 
-###Factor Management
+###Factor Management 
 
-####Gapminder version
+###Gapminder version
 
 First lets load the gapminder dataset
 
@@ -78,7 +78,7 @@ Thus two levels of country corrosponding to Australia and New Zealand are droppe
 
 _This can be done in a couple of other ways._
 
-1. **Base R**<br\>
+1. **Base R** <br\>
 We can factorize the column after subsetting the data frame.
 ```{r}
 length(levels(gap_dropped$continent))
@@ -91,7 +91,7 @@ length(levels(gap_dropped$continent))
 
 Thus the levels for factor variable continent in gap_dropped is changed.
 
-2. **gdata package**<br\>
+2. **gdata package** <br\>
 Dropping of levels can be done for all the variables at once using drop.levels() function from gdata package.
 
 ```{r}

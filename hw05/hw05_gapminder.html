@@ -139,8 +139,9 @@ options(knitr.table.format = &quot;html&quot;)</code></pre>
 <h2>Task 1</h2>
 <div id="factor-management" class="section level3">
 <h3>Factor Management</h3>
-<div id="gapminder-version" class="section level4">
-<h4>Gapminder version</h4>
+</div>
+<div id="gapminder-version" class="section level3">
+<h3>Gapminder version</h3>
 <p>First lets load the gapminder dataset</p>
 <pre class="r"><code>suppressPackageStartupMessages(library(gapminder))</code></pre>
 <p>Now lets drop the continent oceania</p>
@@ -165,7 +166,7 @@ options(knitr.table.format = &quot;html&quot;)</code></pre>
 <p>Thus two levels of country corrosponding to Australia and New Zealand are dropped in the gap_dropped.</p>
 <p><em>This can be done in a couple of other ways.</em></p>
 <ol style="list-style-type: decimal">
-<li><strong>Base R</strong><br\> We can factorize the column after subsetting the data frame.</li>
+<li><strong>Base R</strong> <br\> We can factorize the column after subsetting the data frame.</li>
 </ol>
 <pre class="r"><code>length(levels(gap_dropped$continent))</code></pre>
 <pre><code>## [1] 5</code></pre>
@@ -176,7 +177,7 @@ length(levels(gap_dropped$continent))</code></pre>
 <pre><code>## [1] 4</code></pre>
 <p>Thus the levels for factor variable continent in gap_dropped is changed.</p>
 <ol start="2" style="list-style-type: decimal">
-<li><strong>gdata package</strong><br\> Dropping of levels can be done for all the variables at once using drop.levels() function from gdata package.</li>
+<li><strong>gdata package</strong> <br\> Dropping of levels can be done for all the variables at once using drop.levels() function from gdata package.</li>
 </ol>
 <pre class="r"><code>suppressPackageStartupMessages(library(gdata))
 
@@ -199,7 +200,6 @@ gapminder[gapminder$continent!=&quot;Oceania&quot;,]$continent%&gt;%
   sapply(nlevels)</code></pre>
 <pre><code>##   country continent      year   lifeExp       pop gdpPercap 
 ##       140         4         0         0         0         0</code></pre>
-</div>
 </div>
 <div id="reordering-levels-of-factor-variables" class="section level3">
 <h3>Reordering levels of factor variables</h3>
