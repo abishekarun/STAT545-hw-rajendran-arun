@@ -2262,7 +2262,7 @@ gapminder %&gt;%
 <pre class="r"><code>ggsave(&#39;unordered.jpg&#39;,
       path=&#39;hw05_gapminder_files\\&#39;)</code></pre>
 <pre><code>## Saving 7 x 5 in image</code></pre>
-<p><img src="https://github.com/abishekarun/STAT545-hw-rajendran-arun/tree/master/hw05/hw05_gapminder_files/unordered.jpg"></p>
+<p><img src="hw05_gapminder_files/unordered.jpg"></p>
 <p>This clearly shows that it saves the last plot by default.Instead we can save the plots by mentioning their name as the next argument ‘plot’. Thus this argument is extremely useful if you are saving a plot by mentioning its name and it will work perfectly even if it is not the last plot.</p>
 <p>Vector Graphics Format(‘eps’ and ‘pdf’) &gt; Vector graphics formats, which store an image as a series of lines of specified shape, color, and size between relative points in a space. Thus the image is rendered by drawing each of those vectors from the instructions encoded in the file. Vector graphics look sharp at any size because the vectors are simply drawn larger or smaller, depending on the requested size of the image.</p>
 <pre class="r"><code>ggsave(&#39;unordered_plot.pdf&#39;,device=&#39;pdf&#39;,plot = unordered_plot,
@@ -2274,7 +2274,7 @@ gapminder %&gt;%
 <pre class="r"><code>ggsave(&#39;forcats_plot.pdf&#39;,plot = forcats_plot,
       path=&#39;hw05_gapminder_files\\vector_format_files\\&#39;)</code></pre>
 <pre><code>## Saving 7 x 5 in image</code></pre>
-<p>The files are <a href="https://github.com/abishekarun/STAT545-hw-rajendran-arun/tree/master/hw05/hw05_gapminder_files/vector_format_files/unordered_plot.pdf">unordered_plot.pdf</a>, <a href="https://github.com/abishekarun/STAT545-hw-rajendran-arun/tree/master/hw05/hw05_gapminder_files/vector_format_files/baseR_plot.pdf">baseR_plot.pdf</a> and <a href="https://github.com/abishekarun/STAT545-hw-rajendran-arun/tree/master/hw05/hw05_gapminder_files/vector_format_files/forcats_plot.pdf">forcats_plot.pdf</a></p>
+<p>The files are <a href="https://github.com/abishekarun/STAT545-hw-rajendran-arun/tree/master/hw05/hw05_gapminder_files/vector_format_files/unordered_plot.pdf">unordered_plot.pdf</a>, <a href="https://github.com/abishekarun/STAT545-hw-rajendran-arun/tree/master/hw05/hw05_gapminder_files/vector_format_files/baseR_plot.eps">baseR_plot.eps</a> and <a href="https://github.com/abishekarun/STAT545-hw-rajendran-arun/tree/master/hw05/hw05_gapminder_files/vector_format_files/forcats_plot.pdf">forcats_plot.pdf</a></p>
 <p>Raster Graphics Format() &gt; Raster graphics, like TIFF, BMP, JPEG, and GIF. Unlike vector graphics, raster graphics are stored as a matrix of colored pixels.</p>
 <p>The tiff format is the best raster format as it helps keep the high end graphics of image intact to some extent.</p>
 <blockquote>
@@ -2283,7 +2283,7 @@ gapminder %&gt;%
 <pre class="r"><code>ggsave(&#39;unordered_plot.tiff&#39;,plot = unordered_plot,
       path=&#39;hw05_gapminder_files\\raster_format_files\\&#39;,
       dpi=600,height=5,width=10)</code></pre>
-<p><img src="https://github.com/abishekarun/STAT545-hw-rajendran-arun/tree/master/hw05/hw05_gapminder_files/raster_format_files/unordered_plot.tiff"></p>
+<p><img src="hw05_gapminder_files/raster_format_files/unordered_plot.tiff"></p>
 <p>The height and width of the image in terms of pixels is product of the parameters with dpi value. And the value of dpi directly affects the size of non plot elements such as text. The higher the resolution the better the text is.</p>
 <pre class="r"><code>res&lt;-60
 ggsave(&#39;baseR_plot1.png&#39;,plot = baseR_plot,
@@ -2294,8 +2294,8 @@ res&lt;-100
 ggsave(&#39;baseR_plot2.png&#39;,plot = baseR_plot,
       path=&#39;hw05_gapminder_files\\raster_format_files\\&#39;,
        width=800/res, height=800/res,units = &#39;in&#39;, dpi = res)</code></pre>
-<p><img src="https://github.com/abishekarun/STAT545-hw-rajendran-arun/blob/master/hw05/hw05_gapminder_files/raster_format_files/baseR_plot1.png"></p>
-<p><img src="https://github.com/abishekarun/STAT545-hw-rajendran-arun/blob/master/hw05/hw05_gapminder_files/raster_format_files/baseR_plot2.png"></p>
+<p><img src="hw05_gapminder_files/raster_format_files/baseR_plot1.png"></p>
+<p><img src="hw05_gapminder_files/raster_format_files/baseR_plot2.png"></p>
 </div>
 <div id="resources-3" class="section level4">
 <h4>Resources</h4>

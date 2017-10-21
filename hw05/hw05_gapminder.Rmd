@@ -583,7 +583,7 @@ ggsave('unordered.jpg',
       path='hw05_gapminder_files\\')
 ```
 
-<img src="https://github.com/abishekarun/STAT545-hw-rajendran-arun/tree/master/hw05/hw05_gapminder_files/unordered.jpg">
+<img src="hw05_gapminder_files/unordered.jpg">
 
 This clearly shows that it saves the last plot by default.Instead we can save the plots by mentioning their name as the next argument 'plot'. Thus this argument is extremely useful if you are saving a plot by mentioning its name and it will work perfectly even if it is not the last plot.
 
@@ -602,7 +602,7 @@ ggsave('forcats_plot.pdf',plot = forcats_plot,
 
 The files are 
 [unordered_plot.pdf](https://github.com/abishekarun/STAT545-hw-rajendran-arun/tree/master/hw05/hw05_gapminder_files/vector_format_files/unordered_plot.pdf),
-[baseR_plot.pdf](https://github.com/abishekarun/STAT545-hw-rajendran-arun/tree/master/hw05/hw05_gapminder_files/vector_format_files/baseR_plot.pdf) and
+[baseR_plot.eps](https://github.com/abishekarun/STAT545-hw-rajendran-arun/tree/master/hw05/hw05_gapminder_files/vector_format_files/baseR_plot.eps) and
 [forcats_plot.pdf](https://github.com/abishekarun/STAT545-hw-rajendran-arun/tree/master/hw05/hw05_gapminder_files/vector_format_files/forcats_plot.pdf)
 
 
@@ -619,7 +619,7 @@ ggsave('unordered_plot.tiff',plot = unordered_plot,
       dpi=600,height=5,width=10)
 ```
 
-<img src="https://github.com/abishekarun/STAT545-hw-rajendran-arun/tree/master/hw05/hw05_gapminder_files/raster_format_files/unordered_plot.tiff">
+<img src="hw05_gapminder_files/raster_format_files/unordered_plot.tiff">
 
 The height and width of the image in terms of pixels is product of the parameters with dpi value. And the value of dpi directly affects the size of non plot elements such as text. The higher the resolution the better the text is.
 
@@ -635,9 +635,9 @@ ggsave('baseR_plot2.png',plot = baseR_plot,
        width=800/res, height=800/res,units = 'in', dpi = res)
 ```
 
-<img src="https://github.com/abishekarun/STAT545-hw-rajendran-arun/blob/master/hw05/hw05_gapminder_files/raster_format_files/baseR_plot1.png">
+<img src="hw05_gapminder_files/raster_format_files/baseR_plot1.png">
 
-<img src="https://github.com/abishekarun/STAT545-hw-rajendran-arun/blob/master/hw05/hw05_gapminder_files/raster_format_files/baseR_plot2.png">
+<img src="hw05_gapminder_files/raster_format_files/baseR_plot2.png">
 
 ####Resources
 + [Text Factor](https://stackoverflow.com/questions/26551359/r-ggsave-save-thumbnail-size-200-x-200-scaled-image)
