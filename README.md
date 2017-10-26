@@ -26,10 +26,10 @@ The steps I performed to make changes to **Readme.md** file  are:
 You can find the links for assignments on __gapminder data__ below.
 **Table of Contents**
 
-+[Homework 01 Folder](https://github.com/abishekarun/STAT545-hw-rajendran-arun/tree/master/hw01)
-+[Homework 02 Folder](https://github.com/abishekarun/STAT545-hw-rajendran-arun/tree/master/hw02)
-+[Homework 03 Folder](https://github.com/abishekarun/STAT545-hw-rajendran-arun/tree/master/hw03)
-+[Homework 04 Folder](https://github.com/abishekarun/STAT545-hw-rajendran-arun/tree/master/hw04)
-+[Homework 05 Folder](https://github.com/abishekarun/STAT545-hw-rajendran-arun/tree/master/hw05)
++ [Homework 01 Folder](https://github.com/abishekarun/STAT545-hw-rajendran-arun/tree/master/hw01)
++ [Homework 02 Folder](https://github.com/abishekarun/STAT545-hw-rajendran-arun/tree/master/hw02)
++ [Homework 03 Folder](https://github.com/abishekarun/STAT545-hw-rajendran-arun/tree/master/hw03)
++ [Homework 04 Folder](https://github.com/abishekarun/STAT545-hw-rajendran-arun/tree/master/hw04)
++ [Homework 05 Folder](https://github.com/abishekarun/STAT545-hw-rajendran-arun/tree/master/hw05)
 
 
