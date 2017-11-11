@@ -63,26 +63,26 @@ Now, Lets create the nested data frame from gapminder dataset
 Lets view the first row of the data 
 
 ```r
-gap_nested[[1, "data"]]
+gap_nested[[1, "data"]]%>%
+   kable()
 ```
 
-```
-## # A tibble: 12 x 4
-##     year lifeExp      pop gdpPercap
-##    <int>   <dbl>    <int>     <dbl>
-##  1  1952  28.801  8425333  779.4453
-##  2  1957  30.332  9240934  820.8530
-##  3  1962  31.997 10267083  853.1007
-##  4  1967  34.020 11537966  836.1971
-##  5  1972  36.088 13079460  739.9811
-##  6  1977  38.438 14880372  786.1134
-##  7  1982  39.854 12881816  978.0114
-##  8  1987  40.822 13867957  852.3959
-##  9  1992  41.674 16317921  649.3414
-## 10  1997  41.763 22227415  635.3414
-## 11  2002  42.129 25268405  726.7341
-## 12  2007  43.828 31889923  974.5803
-```
+
+
+| year| lifeExp|      pop| gdpPercap|
+|----:|-------:|--------:|---------:|
+| 1952|  28.801|  8425333|  779.4453|
+| 1957|  30.332|  9240934|  820.8530|
+| 1962|  31.997| 10267083|  853.1007|
+| 1967|  34.020| 11537966|  836.1971|
+| 1972|  36.088| 13079460|  739.9811|
+| 1977|  38.438| 14880372|  786.1134|
+| 1982|  39.854| 12881816|  978.0114|
+| 1987|  40.822| 13867957|  852.3959|
+| 1992|  41.674| 16317921|  649.3414|
+| 1997|  41.763| 22227415|  635.3414|
+| 2002|  42.129| 25268405|  726.7341|
+| 2007|  43.828| 31889923|  974.5803|
 Each row of gap_nested data frame has a data frame nested in the data column.
 
 Lets apply the linear regression function we had defined earlier to the first entry of data in gap_nested data frame. 
@@ -202,27 +202,21 @@ Lets identify the ratio of residuals for the different countries to identify the
 ```r
 gap_coefs%>%
   mutate(res_ratio = meanResidual/max(meanResidual))%>%
-  filter(abs(res_ratio)>5) #threshold value
+  filter(abs(res_ratio)>5)%>%  #threshold value
+   kable()
 ```
 
-```
-##        country meanLifeExp meanStdError meanResidual meanResStdDev
-## 1     Bulgaria    69.74375    0.5170167   -0.5191047      2.676081
-## 2     Cambodia    47.90275    0.1664883   -1.8609248      5.958605
-## 3      Lesotho    50.00708    1.4764061   -1.1947864      6.362715
-## 4    Mauritius    64.95325    0.2303913   -0.4330294      1.888204
-## 5       Rwanda    41.48158    1.0375338   -1.7245348      6.924673
-## 6 South Africa    53.99317    0.9290181   -1.2788164      5.348421
-## 7    Swaziland    49.00242    1.7207919   -1.3519535      7.116450
-##    res_ratio
-## 1  -6.333087
-## 2 -22.703316
-## 3 -14.576415
-## 4  -5.282967
-## 5 -21.039355
-## 6 -15.601583
-## 7 -16.493856
-```
+
+
+|country      | meanLifeExp| meanStdError| meanResidual| meanResStdDev|  res_ratio|
+|:------------|-----------:|------------:|------------:|-------------:|----------:|
+|Bulgaria     |    69.74375|    0.5170167|   -0.5191047|      2.676081|  -6.333087|
+|Cambodia     |    47.90275|    0.1664883|   -1.8609248|      5.958605| -22.703316|
+|Lesotho      |    50.00708|    1.4764061|   -1.1947864|      6.362715| -14.576415|
+|Mauritius    |    64.95325|    0.2303913|   -0.4330294|      1.888204|  -5.282967|
+|Rwanda       |    41.48158|    1.0375338|   -1.7245348|      6.924673| -21.039355|
+|South Africa |    53.99317|    0.9290181|   -1.2788164|      5.348421| -15.601583|
+|Swaziland    |    49.00242|    1.7207919|   -1.3519535|      7.116450| -16.493856|
 
 This shows that these seven countries have larger residuals(absolute value) compared to other countries. Therefore our model doesnt fit these seven countries properly.
 
@@ -298,22 +292,21 @@ df<-left_join(gap_nested2,gap_nested3,by=c("country","continent"))
 df%>%
   mutate(dif_intercept=lm_intercept - rlm_intercept)%>%
   mutate(dif_slope= lm_slope - rlm_slope)%>%
-  filter(abs(dif_slope) > 0.05 | abs(dif_intercept) > 1 )
+  filter(abs(dif_slope) > 0.05 | abs(dif_intercept) > 1 )%>% #threshold value 
+  kable()
 ```
 
-```
-## # A tibble: 7 x 8
-##   continent      country lm_intercept    lm_slope rlm_intercept  rlm_slope
-##      <fctr>       <fctr>        <dbl>       <dbl>         <dbl>      <dbl>
-## 1    Africa      Lesotho     47.37903  0.09556573      45.66416 0.20137139
-## 2    Africa    Mauritius     55.37077  0.34845385      56.79888 0.31226901
-## 3    Africa       Rwanda     42.74195 -0.04583147      42.31571 0.03237851
-## 4    Africa South Africa     49.34128  0.16915944      47.52225 0.28180865
-## 5    Africa    Swaziland     46.38786  0.09507483      44.51766 0.21224388
-## 6      Asia     Cambodia     37.01542  0.39590280      39.54134 0.37172128
-## 7    Europe     Bulgaria     65.73731  0.14568881      67.57414 0.09777145
-## # ... with 2 more variables: dif_intercept <dbl>, dif_slope <dbl>
-```
+
+
+|continent |country      | lm_intercept|   lm_slope| rlm_intercept| rlm_slope| dif_intercept|  dif_slope|
+|:---------|:------------|------------:|----------:|-------------:|---------:|-------------:|----------:|
+|Africa    |Lesotho      |     47.37903|  0.0955657|      45.66416| 0.2013714|     1.7148692| -0.1058057|
+|Africa    |Mauritius    |     55.37077|  0.3484538|      56.79888| 0.3122690|    -1.4281125|  0.0361848|
+|Africa    |Rwanda       |     42.74195| -0.0458315|      42.31571| 0.0323785|     0.4262397| -0.0782100|
+|Africa    |South Africa |     49.34128|  0.1691594|      47.52225| 0.2818087|     1.8190369| -0.1126492|
+|Africa    |Swaziland    |     46.38786|  0.0950748|      44.51766| 0.2122439|     1.8701954| -0.1171691|
+|Asia      |Cambodia     |     37.01542|  0.3959028|      39.54134| 0.3717213|    -2.5259164|  0.0241815|
+|Europe    |Bulgaria     |     65.73731|  0.1456888|      67.57414| 0.0977715|    -1.8368321|  0.0479174|
 
 These seven countries are the interesting countries as the difference is predominant(above the threshold manually chosen by trial and error ) in these countries. These countries can be further investigated. 
 

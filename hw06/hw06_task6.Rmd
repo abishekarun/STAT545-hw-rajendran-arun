@@ -46,7 +46,8 @@ Now, Lets create the nested data frame from gapminder dataset
 
 Lets view the first row of the data 
 ```{r}
-gap_nested[[1, "data"]]
+gap_nested[[1, "data"]]%>%
+   kable()
 ```
 Each row of gap_nested data frame has a data frame nested in the data column.
 
@@ -96,7 +97,8 @@ Lets identify the ratio of residuals for the different countries to identify the
 ```{r}
 gap_coefs%>%
   mutate(res_ratio = meanResidual/max(meanResidual))%>%
-  filter(abs(res_ratio)>5) #threshold value
+  filter(abs(res_ratio)>5)%>%  #threshold value
+   kable()
 ```
 
 This shows that these seven countries have larger residuals(absolute value) compared to other countries. Therefore our model doesnt fit these seven countries properly.
@@ -154,7 +156,8 @@ df<-left_join(gap_nested2,gap_nested3,by=c("country","continent"))
 df%>%
   mutate(dif_intercept=lm_intercept - rlm_intercept)%>%
   mutate(dif_slope= lm_slope - rlm_slope)%>%
-  filter(abs(dif_slope) > 0.05 | abs(dif_intercept) > 1 )
+  filter(abs(dif_slope) > 0.05 | abs(dif_intercept) > 1 )%>% #threshold value 
+  kable()
 ```
 
 These seven countries are the interesting countries as the difference is predominant(above the threshold manually chosen by trial and error ) in these countries. These countries can be further investigated. 

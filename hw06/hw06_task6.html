@@ -161,22 +161,92 @@ le_rlm_fit &lt;- function(data,offset = 1952){
 ## 10    Europe     Belgium &lt;tibble [12 x 4]&gt;
 ## # ... with 132 more rows</code></pre>
 <p>Lets view the first row of the data</p>
-<pre class="r"><code>gap_nested[[1, &quot;data&quot;]]</code></pre>
-<pre><code>## # A tibble: 12 x 4
-##     year lifeExp      pop gdpPercap
-##    &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;
-##  1  1952  28.801  8425333  779.4453
-##  2  1957  30.332  9240934  820.8530
-##  3  1962  31.997 10267083  853.1007
-##  4  1967  34.020 11537966  836.1971
-##  5  1972  36.088 13079460  739.9811
-##  6  1977  38.438 14880372  786.1134
-##  7  1982  39.854 12881816  978.0114
-##  8  1987  40.822 13867957  852.3959
-##  9  1992  41.674 16317921  649.3414
-## 10  1997  41.763 22227415  635.3414
-## 11  2002  42.129 25268405  726.7341
-## 12  2007  43.828 31889923  974.5803</code></pre>
+<pre class="r"><code>gap_nested[[1, &quot;data&quot;]]%&gt;%
+   kable()</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="right">year</th>
+<th align="right">lifeExp</th>
+<th align="right">pop</th>
+<th align="right">gdpPercap</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1952</td>
+<td align="right">28.801</td>
+<td align="right">8425333</td>
+<td align="right">779.4453</td>
+</tr>
+<tr class="even">
+<td align="right">1957</td>
+<td align="right">30.332</td>
+<td align="right">9240934</td>
+<td align="right">820.8530</td>
+</tr>
+<tr class="odd">
+<td align="right">1962</td>
+<td align="right">31.997</td>
+<td align="right">10267083</td>
+<td align="right">853.1007</td>
+</tr>
+<tr class="even">
+<td align="right">1967</td>
+<td align="right">34.020</td>
+<td align="right">11537966</td>
+<td align="right">836.1971</td>
+</tr>
+<tr class="odd">
+<td align="right">1972</td>
+<td align="right">36.088</td>
+<td align="right">13079460</td>
+<td align="right">739.9811</td>
+</tr>
+<tr class="even">
+<td align="right">1977</td>
+<td align="right">38.438</td>
+<td align="right">14880372</td>
+<td align="right">786.1134</td>
+</tr>
+<tr class="odd">
+<td align="right">1982</td>
+<td align="right">39.854</td>
+<td align="right">12881816</td>
+<td align="right">978.0114</td>
+</tr>
+<tr class="even">
+<td align="right">1987</td>
+<td align="right">40.822</td>
+<td align="right">13867957</td>
+<td align="right">852.3959</td>
+</tr>
+<tr class="odd">
+<td align="right">1992</td>
+<td align="right">41.674</td>
+<td align="right">16317921</td>
+<td align="right">649.3414</td>
+</tr>
+<tr class="even">
+<td align="right">1997</td>
+<td align="right">41.763</td>
+<td align="right">22227415</td>
+<td align="right">635.3414</td>
+</tr>
+<tr class="odd">
+<td align="right">2002</td>
+<td align="right">42.129</td>
+<td align="right">25268405</td>
+<td align="right">726.7341</td>
+</tr>
+<tr class="even">
+<td align="right">2007</td>
+<td align="right">43.828</td>
+<td align="right">31889923</td>
+<td align="right">974.5803</td>
+</tr>
+</tbody>
+</table>
 <p>Each row of gap_nested data frame has a data frame nested in the data column.</p>
 <p>Lets apply the linear regression function we had defined earlier to the first entry of data in gap_nested data frame.</p>
 <pre class="r"><code>le_lin_fit(gap_nested[[1, &quot;data&quot;]])</code></pre>
@@ -259,23 +329,78 @@ le_rlm_fit &lt;- function(data,offset = 1952){
 <p>Lets identify the ratio of residuals for the different countries to identify the coutries with large residuals.</p>
 <pre class="r"><code>gap_coefs%&gt;%
   mutate(res_ratio = meanResidual/max(meanResidual))%&gt;%
-  filter(abs(res_ratio)&gt;5) #threshold value</code></pre>
-<pre><code>##        country meanLifeExp meanStdError meanResidual meanResStdDev
-## 1     Bulgaria    69.74375    0.5170167   -0.5191047      2.676081
-## 2     Cambodia    47.90275    0.1664883   -1.8609248      5.958605
-## 3      Lesotho    50.00708    1.4764061   -1.1947864      6.362715
-## 4    Mauritius    64.95325    0.2303913   -0.4330294      1.888204
-## 5       Rwanda    41.48158    1.0375338   -1.7245348      6.924673
-## 6 South Africa    53.99317    0.9290181   -1.2788164      5.348421
-## 7    Swaziland    49.00242    1.7207919   -1.3519535      7.116450
-##    res_ratio
-## 1  -6.333087
-## 2 -22.703316
-## 3 -14.576415
-## 4  -5.282967
-## 5 -21.039355
-## 6 -15.601583
-## 7 -16.493856</code></pre>
+  filter(abs(res_ratio)&gt;5)%&gt;%  #threshold value
+   kable()</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left">country</th>
+<th align="right">meanLifeExp</th>
+<th align="right">meanStdError</th>
+<th align="right">meanResidual</th>
+<th align="right">meanResStdDev</th>
+<th align="right">res_ratio</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Bulgaria</td>
+<td align="right">69.74375</td>
+<td align="right">0.5170167</td>
+<td align="right">-0.5191047</td>
+<td align="right">2.676081</td>
+<td align="right">-6.333087</td>
+</tr>
+<tr class="even">
+<td align="left">Cambodia</td>
+<td align="right">47.90275</td>
+<td align="right">0.1664883</td>
+<td align="right">-1.8609248</td>
+<td align="right">5.958605</td>
+<td align="right">-22.703316</td>
+</tr>
+<tr class="odd">
+<td align="left">Lesotho</td>
+<td align="right">50.00708</td>
+<td align="right">1.4764061</td>
+<td align="right">-1.1947864</td>
+<td align="right">6.362715</td>
+<td align="right">-14.576415</td>
+</tr>
+<tr class="even">
+<td align="left">Mauritius</td>
+<td align="right">64.95325</td>
+<td align="right">0.2303913</td>
+<td align="right">-0.4330294</td>
+<td align="right">1.888204</td>
+<td align="right">-5.282967</td>
+</tr>
+<tr class="odd">
+<td align="left">Rwanda</td>
+<td align="right">41.48158</td>
+<td align="right">1.0375338</td>
+<td align="right">-1.7245348</td>
+<td align="right">6.924673</td>
+<td align="right">-21.039355</td>
+</tr>
+<tr class="even">
+<td align="left">South Africa</td>
+<td align="right">53.99317</td>
+<td align="right">0.9290181</td>
+<td align="right">-1.2788164</td>
+<td align="right">5.348421</td>
+<td align="right">-15.601583</td>
+</tr>
+<tr class="odd">
+<td align="left">Swaziland</td>
+<td align="right">49.00242</td>
+<td align="right">1.7207919</td>
+<td align="right">-1.3519535</td>
+<td align="right">7.116450</td>
+<td align="right">-16.493856</td>
+</tr>
+</tbody>
+</table>
 <p>This shows that these seven countries have larger residuals(absolute value) compared to other countries. Therefore our model doesnt fit these seven countries properly.</p>
 <p>Lets get the number of countries with positive and negative residuals</p>
 <pre class="r"><code>gap_coefs%&gt;%
@@ -325,18 +450,104 @@ le_rlm_fit &lt;- function(data,offset = 1952){
 df%&gt;%
   mutate(dif_intercept=lm_intercept - rlm_intercept)%&gt;%
   mutate(dif_slope= lm_slope - rlm_slope)%&gt;%
-  filter(abs(dif_slope) &gt; 0.05 | abs(dif_intercept) &gt; 1 )</code></pre>
-<pre><code>## # A tibble: 7 x 8
-##   continent      country lm_intercept    lm_slope rlm_intercept  rlm_slope
-##      &lt;fctr&gt;       &lt;fctr&gt;        &lt;dbl&gt;       &lt;dbl&gt;         &lt;dbl&gt;      &lt;dbl&gt;
-## 1    Africa      Lesotho     47.37903  0.09556573      45.66416 0.20137139
-## 2    Africa    Mauritius     55.37077  0.34845385      56.79888 0.31226901
-## 3    Africa       Rwanda     42.74195 -0.04583147      42.31571 0.03237851
-## 4    Africa South Africa     49.34128  0.16915944      47.52225 0.28180865
-## 5    Africa    Swaziland     46.38786  0.09507483      44.51766 0.21224388
-## 6      Asia     Cambodia     37.01542  0.39590280      39.54134 0.37172128
-## 7    Europe     Bulgaria     65.73731  0.14568881      67.57414 0.09777145
-## # ... with 2 more variables: dif_intercept &lt;dbl&gt;, dif_slope &lt;dbl&gt;</code></pre>
+  filter(abs(dif_slope) &gt; 0.05 | abs(dif_intercept) &gt; 1 )%&gt;% #threshold value 
+  kable()</code></pre>
+<table>
+<colgroup>
+<col width="10%"></col>
+<col width="13%"></col>
+<col width="13%"></col>
+<col width="11%"></col>
+<col width="14%"></col>
+<col width="10%"></col>
+<col width="14%"></col>
+<col width="11%"></col>
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">continent</th>
+<th align="left">country</th>
+<th align="right">lm_intercept</th>
+<th align="right">lm_slope</th>
+<th align="right">rlm_intercept</th>
+<th align="right">rlm_slope</th>
+<th align="right">dif_intercept</th>
+<th align="right">dif_slope</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Africa</td>
+<td align="left">Lesotho</td>
+<td align="right">47.37903</td>
+<td align="right">0.0955657</td>
+<td align="right">45.66416</td>
+<td align="right">0.2013714</td>
+<td align="right">1.7148692</td>
+<td align="right">-0.1058057</td>
+</tr>
+<tr class="even">
+<td align="left">Africa</td>
+<td align="left">Mauritius</td>
+<td align="right">55.37077</td>
+<td align="right">0.3484538</td>
+<td align="right">56.79888</td>
+<td align="right">0.3122690</td>
+<td align="right">-1.4281125</td>
+<td align="right">0.0361848</td>
+</tr>
+<tr class="odd">
+<td align="left">Africa</td>
+<td align="left">Rwanda</td>
+<td align="right">42.74195</td>
+<td align="right">-0.0458315</td>
+<td align="right">42.31571</td>
+<td align="right">0.0323785</td>
+<td align="right">0.4262397</td>
+<td align="right">-0.0782100</td>
+</tr>
+<tr class="even">
+<td align="left">Africa</td>
+<td align="left">South Africa</td>
+<td align="right">49.34128</td>
+<td align="right">0.1691594</td>
+<td align="right">47.52225</td>
+<td align="right">0.2818087</td>
+<td align="right">1.8190369</td>
+<td align="right">-0.1126492</td>
+</tr>
+<tr class="odd">
+<td align="left">Africa</td>
+<td align="left">Swaziland</td>
+<td align="right">46.38786</td>
+<td align="right">0.0950748</td>
+<td align="right">44.51766</td>
+<td align="right">0.2122439</td>
+<td align="right">1.8701954</td>
+<td align="right">-0.1171691</td>
+</tr>
+<tr class="even">
+<td align="left">Asia</td>
+<td align="left">Cambodia</td>
+<td align="right">37.01542</td>
+<td align="right">0.3959028</td>
+<td align="right">39.54134</td>
+<td align="right">0.3717213</td>
+<td align="right">-2.5259164</td>
+<td align="right">0.0241815</td>
+</tr>
+<tr class="odd">
+<td align="left">Europe</td>
+<td align="left">Bulgaria</td>
+<td align="right">65.73731</td>
+<td align="right">0.1456888</td>
+<td align="right">67.57414</td>
+<td align="right">0.0977715</td>
+<td align="right">-1.8368321</td>
+<td align="right">0.0479174</td>
+</tr>
+</tbody>
+</table>
 <p>These seven countries are the interesting countries as the difference is predominant(above the threshold manually chosen by trial and error ) in these countries. These countries can be further investigated.</p>
 </div>
 <div id="linear-vs-quadratic-fit-comparison" class="section level4">
