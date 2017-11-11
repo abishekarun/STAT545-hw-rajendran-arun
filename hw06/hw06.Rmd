@@ -166,6 +166,7 @@ b%>%
   filter(city1 == locality)%>%
   count()
 ```
+
 This shows that 6 rows out of 20 are matching. More analysis can be done to improve this accuracy.
 
 
