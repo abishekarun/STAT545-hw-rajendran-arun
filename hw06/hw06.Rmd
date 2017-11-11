@@ -168,13 +168,6 @@ b%>%
 ```
 This shows that 6 rows out of 20 are matching. More analysis can be done to improve this accuracy.
 
-#### Plot
-Now, lets checkout the library leaflet for plotting. We can plot the locality using addCircles() function.
-```{r}
-leaflet()  %>%   
-  addTiles(urlTemplate = 'http://{s}.tile.opentopomap.org/{z}/{x}/{y}.png')  %>% 
-  addCircles(lng=b$longitude,lat=b$latitude,popup = b$locality)
-```
 
 #### Reference:
 + [Separate](http://tidyr.tidyverse.org/reference/separate.html)
