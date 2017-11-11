@@ -3,7 +3,6 @@ title: "hw06.Rmd"
 output: 
       html_document:
         keep_md: yes
-        self_contained: no
 ---
 
 ```{r}
@@ -12,27 +11,16 @@ suppressPackageStartupMessages(library(tidyr))
 suppressPackageStartupMessages(library(gapminder))
 suppressPackageStartupMessages(library(ggmap))
 suppressPackageStartupMessages(library(tibble))
+suppressPackageStartupMessages(library(leaflet))
 suppressPackageStartupMessages(library(purrr))
 suppressPackageStartupMessages(library(singer))
 suppressPackageStartupMessages(library(stringr))
 suppressPackageStartupMessages(library(robustbase))
 suppressPackageStartupMessages(library(ggplot2))
 suppressPackageStartupMessages(library(knitr))
-suppressPackageStartupMessages(library(kableExtra))
 suppressPackageStartupMessages(library(dplyr))
 suppressPackageStartupMessages(library(MASS))
 options(knitr.table.format = "markdown")
-```
-
-
-```{r}
-tableFormat<-function(table,title=""){
-  table %>%      
-    kable("html",caption=title, align=c(rep('c', 5))) %>%
-    kable_styling(bootstrap_options = 
-                    c("striped", "hover",  "responsive"),
-                  position="center",font_size=14)
-}
 ```
 
 Lets update the theme of ggplot to make title of all plots centered.
@@ -41,27 +29,33 @@ theme_update(plot.title = element_text(hjust = 0.5))
 ```
 
 
-###Task 2
-###Writing functions
+### Task 2 
+### Writing functions
 
-Lets define the functions for linear regression **le_lin_fit()** , quadratic regression **le_quad_fit()** and **le_robust_fit()**.
+Lets define the functions for simple linear regression **le_lin_fit()** and robust regression such as **le_rlm_fit()** and **le_lmrob_fit()**. Lets plot the fitted linear model to check the kind of plots generated for fitted regression models.
 ```{r}
 le_lin_fit <- function(data,offset = 1952){
 the_fit <- lm(gdpPercap ~ I(year - offset), data)
-  data.frame(t(coef(the_fit))) %>%
+  output <- data.frame(t(coef(the_fit))) %>%
   setNames(c("intercept", "slope"))
+  plot(the_fit)             #plot the fitted model
+  output
 }
 
-le_quad_fit <- function(data,offset = 1952){
-the_fit <- rlm(gdpPercap ~ I(year - offset), data,method="M")
-  data.frame(t(coef(the_fit))) %>%
-  setNames(c("intercept", "slope"))
+le_rlm_fit <- function(data,offset = 1952){
+  fit <- rlm(gdpPercap ~ I(year - offset), data,method="M")
+  #fitted(fit) # predicted values
+  #residuals(fit) # residuals
+  vcov(fit) # covariance matrix for model parameters 
+  influence(fit) # regression diagnostics
 }
 
-le_robust_fit <- function(data,offset = 1952){
-the_fit <- lmrob(gdpPercap ~ I(year - offset), data)
-data.frame(t(coef(the_fit))) %>%
-  setNames(c("intercept", "slope"))
+le_lmrob_fit <- function(data,offset = 1952){
+fit <- lmrob(gdpPercap ~ I(year - offset), data)
+  #fitted(fit) # predicted values
+  #residuals(fit) # residuals
+  #vcov(fit) # covariance matrix for model parameters 
+  #influence(fit) # regression diagnostics
 }
 ```
 
@@ -71,47 +65,124 @@ Lets check the function with some data for India.
 j_dat<-subset(gapminder,country=="India")
 ```
 
-Lets get the cofficients of different regression functions using inbuilt functions.
+Lets get the cofficients of simple regression function using inbuilt function le_lin_fit()
 ```{r}
 le_lin_fit(j_dat)
-le_quad_fit(j_dat)
 ```
 
-Let plot this data.
+* Upper left plot shows the residual errors plotted versus their fitted values. The residuals are randomly distributed around the horizontal line without any trends.
+* Lower left plot is a standard Q-Q plot, which suggests that the residual errors are normally distributed. 
+* Scale-location plot(upper right) shows the square root of the standardized residuals as a function of the fitted values with  no obvious trend in this plot.
+* Finally, the plot in the lower right shows each points leverage, which is a measure of its
+importance in determining the regression result. 
+* Superimposed on the final plot are contour lines for the Cook’s distance, which is another measure of the importance of each observation to the regression. 
+  + Smaller distances means that removing the observation has little affect on the regression results. 
+  + Distances larger than 1 are suspicious and suggest the presence of a possible outlier or a poor model. 
+
+Same thing cane be done with other two functions. Note that these two functions dont produce plot but if needed it can be obtained.
 ```{r}
-ggplot(j_dat, aes(x = year, y = lifeExp))+ 
+le_rlm_fit(j_dat)
+le_lmrob_fit(j_dat)
+```
+
+Note that we get lot of parameters such as covariance matrix for model parameters (cov() functino) and regression diagnostics (influence() function). We can also get residual values and predicted values using residuals() and fitted() functions respectively.
+
+Let plot this data with the trendline. 
+Note: lmrob method is not available in geom_smooth() package.
+```{r}
+ggplot(j_dat, aes(x = year, y = gdpPercap))+ 
   geom_point() + 
   geom_smooth(method = "lm", se = FALSE)
 
-ggplot(j_dat, aes(x = year, y = lifeExp))+ 
+ggplot(j_dat, aes(x = year, y = gdpPercap))+ 
   geom_point() + 
   geom_smooth(method = "rlm", se = FALSE)
 ```
 
+#### References
+- [Using R for Linear Regression](http://www.montefiore.ulg.ac.be/~kvansteen/GBIO0009-1/ac20092010/Class8/Using%20R%20for%20linear%20regression.pdf)
+- [Stat Notes](http://stat545.com/block012_function-regress-lifeexp-on-year.html)
+- [Multiple linear regression - Quick R](https://www.statmethods.net/stats/regression.html)
+- [Simple Linear Regression - R Bloggers](https://www.r-bloggers.com/simple-linear-regression-2/)
 
-For the function le_robust_fit, lets apply it to the entire gapminder and merge it to visualize the data.
+
+### Task 4
+
+### Working with Singer data
+
+Lets get the singer data first.
 ```{r}
-gapminder_mod<- gapminder%>%
-                  group_by(country,continent)%>%
-                  do(le_robust_fit(.))%>%
-                  full_join(gapminder,.,by=c("country", "continent"))
+singer_data<- singer::singer_locations
 ```
 
-
-Now lets plot the data to visualize the details
-```{r}
-gapminder_mod%>%
-    group_by(country) %>%
-      ggplot(aes(year,lifeExp, group=country)) + 
-      geom_point(color="blue") +
-      geom_smooth(method = "rlm", se=FALSE,color="red", size=.25)+
-      facet_wrap(~continent)
+Now lets define the possibly function to avoid the errors and produce NA when we get bad results from revgeocode().
+```{r warning=FALSE}
+poss_revgeocode <- 
+  possibly(
+    function(x,y) revgeocode(c(x, y), output = "more"), 
+    otherwise = NA_real_,
+    quiet = TRUE
+    )
 ```
-NOw we can analyze each continent to identify the continents that fit better and worse.
 
-###Task 5 Working with the list
+Now lets get the details for a sample 20 rows from singer data without na values in either latitude nor longitude and then get the address,locality, postal code details for each row from **revgeocode()** function. This is returned in a data frame which is then unnested to get in the actual table.
 
-####Trump Android Tweets
+```{r message=FALSE}
+new_singer_data <- singer_data %>%
+                      filter(!is.na(longitude))%>%
+                      filter(!is.na(longitude))%>%
+                      as.tibble()%>%
+                      sample_n(20) %>%
+                      mutate(mapdata=map2(longitude,latitude,
+                         ~ poss_revgeocode(.x,.y)))%>%
+                      unnest()
+```
+
+#### Results against singer city
+
+Lets view locality obtained from mapdata with city 
+```{r}
+new_singer_data %>%
+  dplyr::select(locality,city)%>%
+  head(20)%>%
+  kable()
+```
+
+This shows that the city has to be adjusted just to give the actual name of the city ( the first part before comma).
+
+```{r}
+b <- new_singer_data%>%
+                      separate(city, 
+                               into = c("city1", "city2(code)"), 
+                               sep = "\\,",
+                               extra = "merge",
+                               fill = "right")
+```
+
+Now lets compare the city1 with locality to obtain the number of rows matching
+```{r}
+b%>%
+  filter(city1 == locality)%>%
+  count()
+```
+This shows that 6 rows out of 20 are matching. More analysis can be done to improve this accuracy.
+
+#### Plot
+Now, lets checkout the library leaflet for plotting. We can plot the locality using addCircles() function.
+```{r}
+leaflet()  %>%   
+  addTiles() %>%  
+  addCircles(lng=b$longitude,lat=b$latitude,popup = b$locality)
+```
+
+#### Reference:
+- [Separate](http://tidyr.tidyverse.org/reference/separate.html)
+- [ggmap](https://cran.r-project.org/web/packages/ggmap/ggmap.pdf)
+- [Stack Overflow](https://stackoverflow.com/questions/22911642/applying-revgeocode-to-a-list-of-longitude-latitude-coordinates)
+
+### Task 5 Working with the list
+
+#### Trump Android Tweets
 
 Lets load the data from trump's official account
 ```{r}
@@ -137,7 +208,7 @@ tweets %>% strtrim(70)
 
 Tweets with 0, 1, 2, and 3 occurences of Trump Android words were preselected .
 
-####gregexpr()
+#### gregexpr()
 
 Use the base function gregexpr() to locate all the Trump Android words inside the tweets.
 ```{r}
@@ -179,18 +250,18 @@ attr(m, which = "match.length")
 
 For entire matches, it can be done in few ways
 
-1. Pre-defined custom function. ( Most verbose.)
+* Pre-defined custom function. ( Most verbose.)
 ```{r}
 ml <- function(x) attr(x, which = "match.length")
 map(matches, ml)
 ```
 
-2. Anonymous function. ( Very compact.)
+* Anonymous function. ( Very compact.)
 ```{r}
 map(matches, function(x) attr(x, which = "match.length"))
 ```
 
-3. Pre-existing function, additional arguments passed via ....
+* Pre-existing function, additional arguments passed via ....
 ```{r}
 (match_length <- map(matches, attr, which = "match.length"))
 ```
@@ -205,7 +276,7 @@ m <- matches[[7]]
 sum(m > 0)
 ```
 
-Only two of the above approaches work here 
+**Only two of the above approaches work here**
 
 ```{r}
 f <- function(x) sum(x > 0)
@@ -227,14 +298,14 @@ tibble(
 )
 ```
 
-####Strip the attributes from matches
+#### Strip the attributes from matches
 Lets remove the attributes from matches to create matches_first
 
 ```{r}
 (match_first <- map(matches, as.vector))
 ```
 
-####Assess progress in a small example
+#### Assess progress in a small example
 Lets extract trump words from single tweet. We will take tweets #1 and #7 as they represent extreme cases where matches are 0 and 3.
 
 The relevant R objects:
@@ -264,7 +335,7 @@ substring(tweet, t_first, t_last)
 
 It works correctly for both the extremes. 
 
-####Store where Trump words end
+#### Store where Trump words end
 
 Lets get where the matches end for all the tweets. We need to use map2 because we have to map over 2 lists in parallel namely, match_first and match_length .
 
@@ -272,7 +343,7 @@ Lets get where the matches end for all the tweets. We need to use map2 because w
 (match_last <- map2(match_first, match_length, ~ .x + .y - 1)) 
 ```
 
-####Extract the trump words
+#### Extract the trump words
 
 Now lets extract the trump words. Here we need to map over three lists simulataneously
 matches,matches_first and matches_last. So we use pmap to perform this.
@@ -280,7 +351,7 @@ matches,matches_first and matches_last. So we use pmap to perform this.
 pmap(list(text = tweets, first = match_first, last = match_last), substring)
 ```
 
-####March through the rows in a data frame
+#### March through the rows in a data frame
 
 Lets use a dataframe as input to pmap to get our desired result.
 ```{r}
@@ -309,3 +380,9 @@ regmatches(tweets, gregexpr(regex, tweets))
 
 We can check the base code of regmatches and find that it is similar to the way we have done this problem as it uses lot of calls to map(), attr() and substr() etc. But it has more error checking and consideration for encoding and locale. 
 
+```{r}
+regmatches
+```
+
+#### Reference:
+- [Purrr Tutorial](https://jennybc.github.io/purrr-tutorial/index.html)
