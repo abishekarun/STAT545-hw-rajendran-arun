@@ -20,7 +20,7 @@ suppressPackageStartupMessages(library(ggplot2))
 suppressPackageStartupMessages(library(knitr))
 suppressPackageStartupMessages(library(dplyr))
 suppressPackageStartupMessages(library(MASS))
-options(knitr.table.format = "markdown")
+options(knitr.table.format = "html")
 ```
 
 Lets update the theme of ggplot to make title of all plots centered.
