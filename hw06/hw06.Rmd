@@ -100,10 +100,10 @@ ggplot(j_dat, aes(x = year, y = gdpPercap))+
 ```
 
 #### References
-- [Using R for Linear Regression](http://www.montefiore.ulg.ac.be/~kvansteen/GBIO0009-1/ac20092010/Class8/Using%20R%20for%20linear%20regression.pdf)
-- [Stat Notes](http://stat545.com/block012_function-regress-lifeexp-on-year.html)
-- [Multiple linear regression - Quick R](https://www.statmethods.net/stats/regression.html)
-- [Simple Linear Regression - R Bloggers](https://www.r-bloggers.com/simple-linear-regression-2/)
++ [Using R for Linear Regression](http://www.montefiore.ulg.ac.be/~kvansteen/GBIO0009-1/ac20092010/Class8/Using%20R%20for%20linear%20regression.pdf)
++ [Stat Notes](http://stat545.com/block012_function-regress-lifeexp-on-year.html)
++ [Multiple linear regression - Quick R](https://www.statmethods.net/stats/regression.html)
++ [Simple Linear Regression - R Bloggers](https://www.r-bloggers.com/simple-linear-regression-2/)
 
 
 ### Task 4
@@ -176,9 +176,9 @@ leaflet()  %>%
 ```
 
 #### Reference:
-- [Separate](http://tidyr.tidyverse.org/reference/separate.html)
-- [ggmap](https://cran.r-project.org/web/packages/ggmap/ggmap.pdf)
-- [Stack Overflow](https://stackoverflow.com/questions/22911642/applying-revgeocode-to-a-list-of-longitude-latitude-coordinates)
++ [Separate](http://tidyr.tidyverse.org/reference/separate.html)
++ [ggmap](https://cran.r-project.org/web/packages/ggmap/ggmap.pdf)
++ [Stack Overflow](https://stackoverflow.com/questions/22911642/applying-revgeocode-to-a-list-of-longitude-latitude-coordinates)
 
 ### Task 5 Working with the list
 
@@ -385,4 +385,4 @@ regmatches
 ```
 
 #### Reference:
-- [Purrr Tutorial](https://jennybc.github.io/purrr-tutorial/index.html)
++ [Purrr Tutorial](https://jennybc.github.io/purrr-tutorial/index.html)
