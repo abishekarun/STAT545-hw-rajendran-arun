@@ -1,0 +1,178 @@
+---
+title: "hw06_task6.Rmd"
+output: 
+      html_document:
+        keep_md: yes
+---
+
+```{r}
+suppressPackageStartupMessages(library(tidyverse))
+suppressPackageStartupMessages(library(tidyr))
+suppressPackageStartupMessages(library(gapminder))
+suppressPackageStartupMessages(library(ggplot2))
+suppressPackageStartupMessages(library(broom))
+suppressPackageStartupMessages(library(knitr))
+suppressPackageStartupMessages(library(dplyr))
+suppressPackageStartupMessages(library(robustbase))
+suppressPackageStartupMessages(library(MASS))
+options(knitr.table.format = "markdown")
+```
+
+Lets update the theme of ggplot to make title of all plots centered.
+```{r}
+theme_update(plot.title = element_text(hjust = 0.5))
+```
+
+####Task 6 Work with a nested Data frame
+
+Lets define the functions for simple linear regression **le_lin_fit()** and robust regression such as **le_rlm_fit()**.
+```{r}
+le_lin_fit <- function(data,offset = 1952){
+    fit <- lm(lifeExp ~ I(year - offset), data)
+}
+
+le_rlm_fit <- function(data,offset = 1952){
+    fit <- rlm(lifeExp ~ I(year - offset), data,method="M",maxit=40)
+}
+```
+
+Now, Lets create the nested data frame from gapminder dataset
+
+```{r test-child}
+(gap_nested <- gapminder %>% 
+   group_by(continent, country) %>% 
+   nest())
+```
+
+Lets view the first row of the data 
+```{r}
+gap_nested[[1, "data"]]
+```
+Each row of gap_nested data frame has a data frame nested in the data column.
+
+Lets apply the linear regression function we had defined earlier to the first entry of data in gap_nested data frame. 
+```{r}
+le_lin_fit(gap_nested[[1, "data"]])
+```
+
+In order to get this for the entire column, we need to use map and mutate function
+```{r warning = FALSE}
+(gap_nested <- gap_nested %>% 
+   mutate(fit = map(data, le_rlm_fit)))
+```
+
+Lets use augment function from broom package on the data.
+```{r}
+augment(gap_nested$fit[[1]])
+```
+
+Now lets apply this to the full data frame
+```{r warning=FALSE}
+gap_nested <- gap_nested %>% 
+                mutate(augment = map(fit, augment))
+```
+
+Now lets simplify to the normal data frame by keeping necessary variables and using unnest().
+```{r}
+(gap_coefs <- 
+   gap_nested %>% 
+      dplyr::select(continent,country,augment) %>% 
+      unnest(augment))
+```
+
+Now lets obtain the mean of each column for all the countries.
+```{r}
+gap_coefs <- aggregate(gap_coefs[, 3:9], list(gap_coefs$country), mean)%>%
+              dplyr::select(Group.1,lifeExp,.se.fit,.resid,.sigma)%>%
+              rename(country=Group.1,
+                     meanLifeExp=lifeExp,
+                     meanResidual=.resid,
+                     meanResStdDev=.sigma,
+                     meanStdError=.se.fit)
+```
+
+Lets identify the ratio of residuals for the different countries to identify the coutries with large residuals.
+
+```{r}
+gap_coefs%>%
+  mutate(res_ratio = meanResidual/max(meanResidual))%>%
+  filter(abs(res_ratio)>5) #threshold value
+```
+
+This shows that these seven countries have larger residuals(absolute value) compared to other countries. Therefore our model doesnt fit these seven countries properly.
+
+Lets get the number of countries with positive and negative residuals
+```{r}
+gap_coefs%>%
+  filter(meanResidual>0)%>%
+  count()
+
+gap_coefs%>%
+  filter(meanResidual<0)%>%
+  count()
+
+```
+
+This shows that only 1 countries have mean residuals greater than zero. Remaining 122 countries have mean residual less than zero.
+
+#### Interesting countries
+
+
+Now lets fit the rlm model for lifExp vs year on gapminder dataset
+```{r}
+gap_nested2 <- gapminder %>% 
+                   group_by(continent, country) %>% 
+                   nest() %>% 
+                   mutate(fit1 = map(data, le_lin_fit))%>%
+                   mutate(tidy1 = map(fit1, tidy))%>%
+                   unnest(tidy1)%>%
+                   mutate(term = recode(term,
+                        `(Intercept)` = "lm_intercept",
+                        `I(year - offset)` = "lm_slope"))%>% 
+                   dplyr::select(continent:estimate) %>% 
+                   spread(key = term, value = estimate)
+```
+
+Now lets fit the lm model for lifExp vs year on gapminder dataset
+```{r}
+gap_nested3 <- gapminder %>% 
+                   group_by(continent, country) %>% 
+                   nest() %>% 
+                   mutate(fit2 = map(data, le_rlm_fit))%>%
+                   mutate(tidy2 = map(fit2,tidy))%>%
+                   unnest(tidy2)%>%
+                   mutate(term = recode(term,
+                        `(Intercept)` = "rlm_intercept",
+                        `I(year - offset)` = "rlm_slope"))%>% 
+                   dplyr::select(continent:estimate) %>% 
+                   spread(key = term, value = estimate)
+```
+
+Now, lets obtain the difference in parameters estimated by these models and find the interesting countries where the difference is large.
+```{r}
+df<-left_join(gap_nested2,gap_nested3,by=c("country","continent"))
+df%>%
+  mutate(dif_intercept=lm_intercept - rlm_intercept)%>%
+  mutate(dif_slope= lm_slope - rlm_slope)%>%
+  filter(abs(dif_slope) > 0.05 | abs(dif_intercept) > 1 )
+```
+
+These seven countries are the interesting countries as the difference is predominant(above the threshold manually chosen by trial and error ) in these countries. These countries can be further investigated. 
+
+#### Linear vs Quadratic fit comparison
+
+Lets use anova function to compare the two models, linear fit and quadratic fit for lifeExp against year of gapminder data.
+```{r}
+fit1 <- lm(lifeExp~year,gapminder)
+coef(fit1)
+fit2 <- lm(lifeExp~poly(year,2),gapminder)
+coef(fit2)
+
+anova(fit1,fit2,test="Chisq")
+```
+
+The very low p-value (0.001084) shows that the two models are widely different. The value of RSS (residual sum of squares) is minium for quadratic fit (model 2) and this shows that the quadratic fit is better in this case. 
+
+#### Reference:
++ [Stack Exchange](https://stats.stackexchange.com/questions/53312/comparing-two-models-using-anova-function-in-r)
++ [Fitting polynomial regression](https://www.r-bloggers.com/fitting-polynomial-regression-in-r/)
