@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>hw06.Rmd</title>
+
+<script src="hw06_files/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="hw06_files/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="hw06_files/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="hw06_files/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="hw06_files/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="hw06_files/navigation-1.1/tabsets.js"></script>
+<link href="hw06_files/highlightjs-1.1/default.css" rel="stylesheet" />
+<script src="hw06_files/highlightjs-1.1/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">hw06.Rmd</h1>
+
+</div>
+
+
+<pre class="r"><code>suppressPackageStartupMessages(library(tidyverse))
+suppressPackageStartupMessages(library(tidyr))
+suppressPackageStartupMessages(library(gapminder))
+suppressPackageStartupMessages(library(ggmap))
+suppressPackageStartupMessages(library(tibble))
+suppressPackageStartupMessages(library(purrr))
+suppressPackageStartupMessages(library(singer))
+suppressPackageStartupMessages(library(stringr))
+suppressPackageStartupMessages(library(robustbase))
+suppressPackageStartupMessages(library(ggplot2))
+suppressPackageStartupMessages(library(knitr))
+suppressPackageStartupMessages(library(kableExtra))
+suppressPackageStartupMessages(library(dplyr))
+suppressPackageStartupMessages(library(MASS))
+options(knitr.table.format = &quot;markdown&quot;)</code></pre>
+<pre class="r"><code>tableFormat&lt;-function(table,title=&quot;&quot;){
+  table %&gt;%      
+    kable(&quot;html&quot;,caption=title, align=c(rep(&#39;c&#39;, 5))) %&gt;%
+    kable_styling(bootstrap_options = 
+                    c(&quot;striped&quot;, &quot;hover&quot;,  &quot;responsive&quot;),
+                  position=&quot;center&quot;,font_size=14)
+}</code></pre>
+<p>Lets update the theme of ggplot to make title of all plots centered.</p>
+<pre class="r"><code>theme_update(plot.title = element_text(hjust = 0.5))</code></pre>
+<div id="task-2" class="section level3">
+<h3>Task 2</h3>
+</div>
+<div id="writing-functions" class="section level3">
+<h3>Writing functions</h3>
+<p>Lets define the functions for linear regression <strong>le_lin_fit()</strong> , quadratic regression <strong>le_quad_fit()</strong> and <strong>le_robust_fit()</strong>.</p>
+<pre class="r"><code>le_lin_fit &lt;- function(data,offset = 1952){
+the_fit &lt;- lm(gdpPercap ~ I(year - offset), data)
+  data.frame(t(coef(the_fit))) %&gt;%
+  setNames(c(&quot;intercept&quot;, &quot;slope&quot;))
+}
+
+le_quad_fit &lt;- function(data,offset = 1952){
+the_fit &lt;- rlm(gdpPercap ~ I(year - offset), data,method=&quot;M&quot;)
+  data.frame(t(coef(the_fit))) %&gt;%
+  setNames(c(&quot;intercept&quot;, &quot;slope&quot;))
+}
+
+le_robust_fit &lt;- function(data,offset = 1952){
+the_fit &lt;- lmrob(gdpPercap ~ I(year - offset), data)
+data.frame(t(coef(the_fit))) %&gt;%
+  setNames(c(&quot;intercept&quot;, &quot;slope&quot;))
+}</code></pre>
+<p>Lets check the function with some data for India.</p>
+<pre class="r"><code>j_dat&lt;-subset(gapminder,country==&quot;India&quot;)</code></pre>
+<p>Lets get the cofficients of different regression functions using inbuilt functions.</p>
+<pre class="r"><code>le_lin_fit(j_dat)</code></pre>
+<pre><code>##   intercept    slope
+## 1  286.2625 28.03759</code></pre>
+<pre class="r"><code>le_quad_fit(j_dat)</code></pre>
+<pre><code>##   intercept    slope
+## 1  343.9128 24.57857</code></pre>
+<p>Let plot this data.</p>
+<pre class="r"><code>ggplot(j_dat, aes(x = year, y = lifeExp))+ 
+  geom_point() + 
+  geom_smooth(method = &quot;lm&quot;, se = FALSE)</code></pre>
+<p><img src="hw06_files/figure-html/unnamed-chunk-7-1.png" /><!-- --></p>
+<pre class="r"><code>ggplot(j_dat, aes(x = year, y = lifeExp))+ 
+  geom_point() + 
+  geom_smooth(method = &quot;rlm&quot;, se = FALSE)</code></pre>
+<p><img src="hw06_files/figure-html/unnamed-chunk-7-2.png" /><!-- --></p>
+<p>For the function le_robust_fit, lets apply it to the entire gapminder and merge it to visualize the data.</p>
+<pre class="r"><code>gapminder_mod&lt;- gapminder%&gt;%
+                  group_by(country,continent)%&gt;%
+                  do(le_robust_fit(.))%&gt;%
+                  full_join(gapminder,.,by=c(&quot;country&quot;, &quot;continent&quot;))</code></pre>
+<pre><code>## Warning in lmrob.fit(x, y, control, init = init, mf = mf): M-step did NOT
+## converge. Returning unconverged SM-estimate</code></pre>
+<pre><code>## Warning in lmrob.S(x, y, control = control, mf = mf): find_scale() did not
+## converge in &#39;maxit.scale&#39; (= 200) iterations</code></pre>
+<pre><code>## Warning in lmrob.fit(x, y, control, init = init, mf = mf): M-step did NOT
+## converge. Returning unconverged SM-estimate</code></pre>
+<p>Now lets plot the data to visualize the details</p>
+<pre class="r"><code>gapminder_mod%&gt;%
+    group_by(country) %&gt;%
+      ggplot(aes(year,lifeExp, group=country)) + 
+      geom_point(color=&quot;blue&quot;) +
+      geom_smooth(method = &quot;rlm&quot;, se=FALSE,color=&quot;red&quot;, size=.25)+
+      facet_wrap(~continent)</code></pre>
+<pre><code>## Warning in rlm.default(x, y, weights, method = method, wt.method =
+## wt.method, : &#39;rlm&#39; failed to converge in 20 steps
+
+## Warning in rlm.default(x, y, weights, method = method, wt.method =
+## wt.method, : &#39;rlm&#39; failed to converge in 20 steps
+
+## Warning in rlm.default(x, y, weights, method = method, wt.method =
+## wt.method, : &#39;rlm&#39; failed to converge in 20 steps</code></pre>
+<p><img src="hw06_files/figure-html/unnamed-chunk-9-1.png" /><!-- --> NOw we can analyze each continent to identify the continents that fit better and worse.</p>
+</div>
+<div id="task-5-working-with-the-list" class="section level3">
+<h3>Task 5 Working with the list</h3>
+<div id="trump-android-tweets" class="section level4">
+<h4>Trump Android Tweets</h4>
+<p>Lets load the data from trump’s official account</p>
+<pre class="r"><code>load(url(&quot;http://varianceexplained.org/files/trump_tweets_df.rda&quot;))
+#load(&quot;trump_tweets_df.rda&quot;)
+glimpse(trump_tweets_df)</code></pre>
+<pre><code>## Observations: 1,512
+## Variables: 16
+## $ text          &lt;chr&gt; &quot;My economic policy speech will be carried live ...
+## $ favorited     &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE,...
+## $ favoriteCount &lt;dbl&gt; 9214, 6981, 15724, 19837, 34051, 29831, 19223, 1...
+## $ replyToSN     &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, ...
+## $ created       &lt;dttm&gt; 2016-08-08 15:20:44, 2016-08-08 13:28:20, 2016-...
+## $ truncated     &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE,...
+## $ replyToSID    &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, ...
+## $ id            &lt;chr&gt; &quot;762669882571980801&quot;, &quot;762641595439190016&quot;, &quot;762...
+## $ replyToUID    &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, ...
+## $ statusSource  &lt;chr&gt; &quot;&lt;a href=\&quot;http://twitter.com/download/android\&quot;...
+## $ screenName    &lt;chr&gt; &quot;realDonaldTrump&quot;, &quot;realDonaldTrump&quot;, &quot;realDonal...
+## $ retweetCount  &lt;dbl&gt; 3107, 2390, 6691, 6402, 11717, 9892, 5784, 7930,...
+## $ isRetweet     &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE,...
+## $ retweeted     &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE,...
+## $ longitude     &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, ...
+## $ latitude      &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, ...</code></pre>
+<pre class="r"><code>#Take just the text and store it in tweets
+tweets &lt;- trump_tweets_df$text
+tweets %&gt;% head() %&gt;% strtrim(70) #trim the length to be 70</code></pre>
+<pre><code>## [1] &quot;My economic policy speech will be carried live at 12:15 P.M. Enjoy!&quot;   
+## [2] &quot;Join me in Fayetteville, North Carolina tomorrow evening at 6pm. Ticke&quot;
+## [3] &quot;#ICYMI: \&quot;Will Media Apologize to Trump?\&quot; https://t.co/ia7rKBmioA&quot;    
+## [4] &quot;Michael Morell, the lightweight former Acting Director of C.I.A., and &quot;
+## [5] &quot;The media is going crazy. They totally distort so many things on purpo&quot;
+## [6] &quot;I see where Mayor Stephanie Rawlings-Blake of Baltimore is pushing Cro&quot;</code></pre>
+<p>Create a regular expression of words that were commonly found in trump’s tweets.</p>
+<pre class="r"><code>regex &lt;- &quot;badly|crazy|weak|spent|strong|dumb|joke|guns|funny|dead&quot;</code></pre>
+<p>Lets select preselect the rows that scale down the complexity of the problem.</p>
+<pre class="r"><code>tweets &lt;- tweets[c(1, 2, 5, 6, 198, 347, 919)]
+tweets %&gt;% strtrim(70)</code></pre>
+<pre><code>## [1] &quot;My economic policy speech will be carried live at 12:15 P.M. Enjoy!&quot;   
+## [2] &quot;Join me in Fayetteville, North Carolina tomorrow evening at 6pm. Ticke&quot;
+## [3] &quot;The media is going crazy. They totally distort so many things on purpo&quot;
+## [4] &quot;I see where Mayor Stephanie Rawlings-Blake of Baltimore is pushing Cro&quot;
+## [5] &quot;Bernie Sanders started off strong, but with the selection of Kaine for&quot;
+## [6] &quot;Crooked Hillary Clinton is unfit to serve as President of the U.S. Her&quot;
+## [7] &quot;The Cruz-Kasich pact is under great strain. This joke of a deal is fal&quot;</code></pre>
+<p>Tweets with 0, 1, 2, and 3 occurences of Trump Android words were preselected .</p>
+</div>
+<div id="gregexpr" class="section level4">
+<h4>gregexpr()</h4>
+<p>Use the base function gregexpr() to locate all the Trump Android words inside the tweets.</p>
+<pre class="r"><code>matches &lt;- gregexpr(regex, tweets)
+#str(matches)</code></pre>
+<p>Lets take a look at one element of matches</p>
+<pre class="r"><code>matches[[7]]</code></pre>
+<pre><code>## [1]  50 112 123
+## attr(,&quot;match.length&quot;)
+## [1] 4 4 4
+## attr(,&quot;useBytes&quot;)
+## [1] TRUE</code></pre>
+<p>Matches is A list. 1. One element per element of tweets. 2. Each element is an integer vector. - It’s -1 if no matches found. - Holds the position(s) of the first character of each match, otherwise. 3. Each element has two attributes. Consider match.length. Let us not speak of the other one. - It’s -1 if no matches found. - Holds the length(s) of each match, otherwise. We can clearly extract the matched words with this information. But its not easy from this information.</p>
+<p>Lets inspect matches to understand its nature</p>
+<pre class="r"><code>lengths(matches)                      # just happens to exist for length</code></pre>
+<pre><code>## [1] 1 1 1 1 2 2 3</code></pre>
+<pre class="r"><code>sapply(matches, length)               # NSFP = not safe for programming</code></pre>
+<pre><code>## [1] 1 1 1 1 2 2 3</code></pre>
+<pre class="r"><code>vapply(matches, length, integer(1))   # preferred base approach</code></pre>
+<pre><code>## [1] 1 1 1 1 2 2 3</code></pre>
+<pre class="r"><code>map_int(matches, length)</code></pre>
+<pre><code>## [1] 1 1 1 1 2 2 3</code></pre>
+<p><strong>Get the list of the match lengths</strong></p>
+<p>This is how it is got for the last element of matches</p>
+<pre class="r"><code>m &lt;- matches[[7]]
+attr(m, which = &quot;match.length&quot;)</code></pre>
+<pre><code>## [1] 4 4 4</code></pre>
+<p>For entire matches, it can be done in few ways</p>
+<ol style="list-style-type: decimal">
+<li>Pre-defined custom function. ( Most verbose.)</li>
+</ol>
+<pre class="r"><code>ml &lt;- function(x) attr(x, which = &quot;match.length&quot;)
+map(matches, ml)</code></pre>
+<pre><code>## [[1]]
+## [1] -1
+## 
+## [[2]]
+## [1] -1
+## 
+## [[3]]
+## [1] 5
+## 
+## [[4]]
+## [1] 4
+## 
+## [[5]]
+## [1] 6 4
+## 
+## [[6]]
+## [1] 4 6
+## 
+## [[7]]
+## [1] 4 4 4</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>Anonymous function. ( Very compact.)</li>
+</ol>
+<pre class="r"><code>map(matches, function(x) attr(x, which = &quot;match.length&quot;))</code></pre>
+<pre><code>## [[1]]
+## [1] -1
+## 
+## [[2]]
+## [1] -1
+## 
+## [[3]]
+## [1] 5
+## 
+## [[4]]
+## [1] 4
+## 
+## [[5]]
+## [1] 6 4
+## 
+## [[6]]
+## [1] 4 6
+## 
+## [[7]]
+## [1] 4 4 4</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li>Pre-existing function, additional arguments passed via ….</li>
+</ol>
+<pre class="r"><code>(match_length &lt;- map(matches, attr, which = &quot;match.length&quot;))</code></pre>
+<pre><code>## [[1]]
+## [1] -1
+## 
+## [[2]]
+## [1] -1
+## 
+## [[3]]
+## [1] 5
+## 
+## [[4]]
+## [1] 4
+## 
+## [[5]]
+## [1] 6 4
+## 
+## [[6]]
+## [1] 4 6
+## 
+## [[7]]
+## [1] 4 4 4</code></pre>
+<p><strong>Count the number of Trump Android words in each tweet.</strong></p>
+<p>Code that works for extreme examples 0 matches and 3 matches:</p>
+<pre class="r"><code>m &lt;- matches[[1]]
+sum(m &gt; 0)</code></pre>
+<pre><code>## [1] 0</code></pre>
+<pre class="r"><code>m &lt;- matches[[7]]
+sum(m &gt; 0)</code></pre>
+<pre><code>## [1] 3</code></pre>
+<p>Only two of the above approaches work here</p>
+<pre class="r"><code>f &lt;- function(x) sum(x &gt; 0)
+map(matches, f)</code></pre>
+<pre><code>## [[1]]
+## [1] 0
+## 
+## [[2]]
+## [1] 0
+## 
+## [[3]]
+## [1] 1
+## 
+## [[4]]
+## [1] 1
+## 
+## [[5]]
+## [1] 2
+## 
+## [[6]]
+## [1] 2
+## 
+## [[7]]
+## [1] 3</code></pre>
+<pre class="r"><code>map(matches, ~ sum(.x &gt; 0))</code></pre>
+<pre><code>## [[1]]
+## [1] 0
+## 
+## [[2]]
+## [1] 0
+## 
+## [[3]]
+## [1] 1
+## 
+## [[4]]
+## [1] 1
+## 
+## [[5]]
+## [1] 2
+## 
+## [[6]]
+## [1] 2
+## 
+## [[7]]
+## [1] 3</code></pre>
+<p>Simpler version is to use map_int which returns an integer vector, with length equal to the number of tweets.</p>
+<pre class="r"><code>map_int(matches, ~ sum(.x &gt; 0))</code></pre>
+<pre><code>## [1] 0 0 1 1 2 2 3</code></pre>
+<p>To confirm lets check it is indeed, different from just taking the lengths of the elements of matches:</p>
+<pre class="r"><code>tibble(
+  naive_length = lengths(matches),
+  n_words = map_int(matches, ~ sum(.x &gt; 0))
+)</code></pre>
+<pre><code>## # A tibble: 7 x 2
+##   naive_length n_words
+##          &lt;int&gt;   &lt;int&gt;
+## 1            1       0
+## 2            1       0
+## 3            1       1
+## 4            1       1
+## 5            2       2
+## 6            2       2
+## 7            3       3</code></pre>
+</div>
+<div id="strip-the-attributes-from-matches" class="section level4">
+<h4>Strip the attributes from matches</h4>
+<p>Lets remove the attributes from matches to create matches_first</p>
+<pre class="r"><code>(match_first &lt;- map(matches, as.vector))</code></pre>
+<pre><code>## [[1]]
+## [1] -1
+## 
+## [[2]]
+## [1] -1
+## 
+## [[3]]
+## [1] 20
+## 
+## [[4]]
+## [1] 134
+## 
+## [[5]]
+## [1] 28 95
+## 
+## [[6]]
+## [1]  87 114
+## 
+## [[7]]
+## [1]  50 112 123</code></pre>
+</div>
+<div id="assess-progress-in-a-small-example" class="section level4">
+<h4>Assess progress in a small example</h4>
+<p>Lets extract trump words from single tweet. We will take tweets #1 and #7 as they represent extreme cases where matches are 0 and 3.</p>
+<p>The relevant R objects:</p>
+<pre class="r"><code>tweets %&gt;% strtrim(70)</code></pre>
+<pre><code>## [1] &quot;My economic policy speech will be carried live at 12:15 P.M. Enjoy!&quot;   
+## [2] &quot;Join me in Fayetteville, North Carolina tomorrow evening at 6pm. Ticke&quot;
+## [3] &quot;The media is going crazy. They totally distort so many things on purpo&quot;
+## [4] &quot;I see where Mayor Stephanie Rawlings-Blake of Baltimore is pushing Cro&quot;
+## [5] &quot;Bernie Sanders started off strong, but with the selection of Kaine for&quot;
+## [6] &quot;Crooked Hillary Clinton is unfit to serve as President of the U.S. Her&quot;
+## [7] &quot;The Cruz-Kasich pact is under great strain. This joke of a deal is fal&quot;</code></pre>
+<pre class="r"><code>match_first</code></pre>
+<pre><code>## [[1]]
+## [1] -1
+## 
+## [[2]]
+## [1] -1
+## 
+## [[3]]
+## [1] 20
+## 
+## [[4]]
+## [1] 134
+## 
+## [[5]]
+## [1] 28 95
+## 
+## [[6]]
+## [1]  87 114
+## 
+## [[7]]
+## [1]  50 112 123</code></pre>
+<pre class="r"><code>match_length</code></pre>
+<pre><code>## [[1]]
+## [1] -1
+## 
+## [[2]]
+## [1] -1
+## 
+## [[3]]
+## [1] 5
+## 
+## [[4]]
+## [1] 4
+## 
+## [[5]]
+## [1] 6 4
+## 
+## [[6]]
+## [1] 4 6
+## 
+## [[7]]
+## [1] 4 4 4</code></pre>
+<p>Lets first work with tweet #7, the one with 3 matched Trump words.</p>
+<pre class="r"><code>(tweet &lt;- tweets[7])</code></pre>
+<pre><code>## [1] &quot;The Cruz-Kasich pact is under great strain. This joke of a deal is falling apart, not being honored and almost dead. Very dumb!&quot;</code></pre>
+<pre class="r"><code>(t_first &lt;- match_first[[7]])      #starting of the matched words</code></pre>
+<pre><code>## [1]  50 112 123</code></pre>
+<pre class="r"><code>(t_length &lt;- match_length[[7]])    #length of the matched words</code></pre>
+<pre><code>## [1] 4 4 4</code></pre>
+<pre class="r"><code>(t_last &lt;- t_first + t_length - 1) #ending of the matched words</code></pre>
+<pre><code>## [1]  53 115 126</code></pre>
+<pre class="r"><code>substring(tweet, t_first, t_last) #get the substrings to get the matched words</code></pre>
+<pre><code>## [1] &quot;joke&quot; &quot;dead&quot; &quot;dumb&quot;</code></pre>
+<p>Use this code for tweet #1 with 0 trump words</p>
+<pre class="r"><code>(tweet &lt;- tweets[1])</code></pre>
+<pre><code>## [1] &quot;My economic policy speech will be carried live at 12:15 P.M. Enjoy!&quot;</code></pre>
+<pre class="r"><code>(t_first &lt;- match_first[[1]])</code></pre>
+<pre><code>## [1] -1</code></pre>
+<pre class="r"><code>(t_length &lt;- match_length[[1]])</code></pre>
+<pre><code>## [1] -1</code></pre>
+<pre class="r"><code>(t_last &lt;- t_first + t_length - 1)</code></pre>
+<pre><code>## [1] -3</code></pre>
+<pre class="r"><code>substring(tweet, t_first, t_last)</code></pre>
+<pre><code>## [1] &quot;&quot;</code></pre>
+<p>It works correctly for both the extremes.</p>
+</div>
+<div id="store-where-trump-words-end" class="section level4">
+<h4>Store where Trump words end</h4>
+<p>Lets get where the matches end for all the tweets. We need to use map2 because we have to map over 2 lists in parallel namely, match_first and match_length .</p>
+<pre class="r"><code>(match_last &lt;- map2(match_first, match_length, ~ .x + .y - 1)) </code></pre>
+<pre><code>## [[1]]
+## [1] -3
+## 
+## [[2]]
+## [1] -3
+## 
+## [[3]]
+## [1] 24
+## 
+## [[4]]
+## [1] 137
+## 
+## [[5]]
+## [1] 33 98
+## 
+## [[6]]
+## [1]  90 119
+## 
+## [[7]]
+## [1]  53 115 126</code></pre>
+</div>
+<div id="extract-the-trump-words" class="section level4">
+<h4>Extract the trump words</h4>
+<p>Now lets extract the trump words. Here we need to map over three lists simulataneously matches,matches_first and matches_last. So we use pmap to perform this.</p>
+<pre class="r"><code>pmap(list(text = tweets, first = match_first, last = match_last), substring)</code></pre>
+<pre><code>## [[1]]
+## [1] &quot;&quot;
+## 
+## [[2]]
+## [1] &quot;&quot;
+## 
+## [[3]]
+## [1] &quot;crazy&quot;
+## 
+## [[4]]
+## [1] &quot;joke&quot;
+## 
+## [[5]]
+## [1] &quot;strong&quot; &quot;weak&quot;  
+## 
+## [[6]]
+## [1] &quot;weak&quot;   &quot;strong&quot;
+## 
+## [[7]]
+## [1] &quot;joke&quot; &quot;dead&quot; &quot;dumb&quot;</code></pre>
+</div>
+<div id="march-through-the-rows-in-a-data-frame" class="section level4">
+<h4>March through the rows in a data frame</h4>
+<p>Lets use a dataframe as input to pmap to get our desired result.</p>
+<pre class="r"><code>mdf &lt;- tibble(
+  text = tweets,
+  first = match_first,
+  last = match_last
+)
+pmap(mdf, substring)</code></pre>
+<pre><code>## [[1]]
+## [1] &quot;&quot;
+## 
+## [[2]]
+## [1] &quot;&quot;
+## 
+## [[3]]
+## [1] &quot;crazy&quot;
+## 
+## [[4]]
+## [1] &quot;joke&quot;
+## 
+## [[5]]
+## [1] &quot;strong&quot; &quot;weak&quot;  
+## 
+## [[6]]
+## [1] &quot;weak&quot;   &quot;strong&quot;
+## 
+## [[7]]
+## [1] &quot;joke&quot; &quot;dead&quot; &quot;dumb&quot;</code></pre>
+<p>Now lets see if we can reproduce everything using a data frame approach.</p>
+<pre class="r"><code>tibble(text = tweets,
+      first = gregexpr(regex, tweets)) %&gt;% 
+      mutate(match_length = map(first, ~ attr(.x, which = &quot;match.length&quot;)),
+      last = map2(first, match_length, ~ .x + .y - 1))%&gt;%
+      dplyr::select(-match_length)%&gt;% 
+      pmap(substring)</code></pre>
+<pre><code>## [[1]]
+## [1] &quot;&quot;
+## 
+## [[2]]
+## [1] &quot;&quot;
+## 
+## [[3]]
+## [1] &quot;crazy&quot;
+## 
+## [[4]]
+## [1] &quot;joke&quot;
+## 
+## [[5]]
+## [1] &quot;strong&quot; &quot;weak&quot;  
+## 
+## [[6]]
+## [1] &quot;weak&quot;   &quot;strong&quot;
+## 
+## [[7]]
+## [1] &quot;joke&quot; &quot;dead&quot; &quot;dumb&quot;</code></pre>
+<p>We can directly solve this problem by post-processing the output of gregexpr() with regmatches()</p>
+<pre class="r"><code>regmatches(tweets, gregexpr(regex, tweets))</code></pre>
+<pre><code>## [[1]]
+## character(0)
+## 
+## [[2]]
+## character(0)
+## 
+## [[3]]
+## [1] &quot;crazy&quot;
+## 
+## [[4]]
+## [1] &quot;joke&quot;
+## 
+## [[5]]
+## [1] &quot;strong&quot; &quot;weak&quot;  
+## 
+## [[6]]
+## [1] &quot;weak&quot;   &quot;strong&quot;
+## 
+## [[7]]
+## [1] &quot;joke&quot; &quot;dead&quot; &quot;dumb&quot;</code></pre>
+<p>We can check the base code of regmatches and find that it is similar to the way we have done this problem as it uses lot of calls to map(), attr() and substr() etc. But it has more error checking and consideration for encoding and locale.</p>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

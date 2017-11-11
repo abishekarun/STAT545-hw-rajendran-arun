@@ -1,0 +1,433 @@
+---
+title: "hw06_long.Rmd"
+output: 
+      html_document:
+        keep_md: yes
+        self_contained: no
+---
+
+```{r}
+suppressPackageStartupMessages(library(tidyverse))
+suppressPackageStartupMessages(library(tidyr))
+suppressPackageStartupMessages(library(gapminder))
+suppressPackageStartupMessages(library(ggmap))
+suppressPackageStartupMessages(library(tibble))
+suppressPackageStartupMessages(library(purrr))
+suppressPackageStartupMessages(library(singer))
+suppressPackageStartupMessages(library(stringr))
+suppressPackageStartupMessages(library(robustbase))
+suppressPackageStartupMessages(library(ggplot2))
+suppressPackageStartupMessages(library(knitr))
+suppressPackageStartupMessages(library(kableExtra))
+suppressPackageStartupMessages(library(dplyr))
+suppressPackageStartupMessages(library(MASS))
+options(knitr.table.format = "markdown")
+```
+
+
+```{r}
+tableFormat<-function(table,title=""){
+  table %>%      
+    kable("html",caption=title, align=c(rep('c', 5))) %>%
+    kable_styling(bootstrap_options = 
+                    c("striped", "hover",  "responsive"),
+                  position="center",font_size=14)
+}
+```
+
+Lets update the theme of ggplot to make title of all plots centered.
+```{r}
+theme_update(plot.title = element_text(hjust = 0.5))
+```
+
+
+##Task 1
+
+###String Exercises
+
+Exercise 14.2.5
+
+#### 1 Paste and Paste0 Difference
+
+```{r}
+paste("hw","no","1")
+paste0("hw","no","1")
+
+paste("R","Studio",sep = "")==paste0("R","Studio")
+```
+
+The examples clearly show that the difference between paste and paste0 is that the sep argument is by default without space in paste0 and it is with space in paste. So paste0 is shortcut for paste function with sep="".
+
+Note: paste0 is very useful when you want to concatenate strings without space as it is slightly faster in this case than paste function.
+
+These functions are similar to the stringr function string_c.  First, the default separator is an empty string, sep = "", as opposed to a space, so it's more like paste0().
+```{r}
+str_c("hw","no","1")
+str_c("hw","no","1",sep=",")
+```
+
+Handling NA's
+```{r}
+paste(c("a", NA, "b"), "-d")
+paste0(c("a", NA, "b"), "-d")
+
+```
+As it can be seen that paste and paste0 converts the NA's to strings by default and then handles them like other strings.
+
+```{r}
+# Missing inputs give missing outputs
+str_c(c("a", NA, "b"), "-d")
+# Use str_replace_NA to display literal NAs:
+str_c(str_replace_na(c("a", NA, "b")), "-d")
+```
+str_c omits the NA values and returns missing outputs. Only when u use str_replace_na the na's are converted to strings and then processed. 
+
+paste() and paste0() turn missing values into the string "NA".str_c() propagates missing values. That means combining any strings with a missing value will result in another missing value.
+
+#### 2
+ - sep is the String to insert between the two input vectors. 
+- When collapse is NULL, the function returns one output vector combining all the input strings. 
+- When collapse is not null,that string is inserted at the end of each row, and then the entire matrix collapsed to a single string.
+
+```{r}
+str_c("Letter", letters, sep = ": ")
+str_c("Letter", letters, sep = "=")
+
+str_c(letters, collapse = "")
+str_c(letters, collapse = ", ")
+```
+
+####3
+```{r}
+#For string with odd characters
+hw<-"Thisischeck"
+str_sub(hw,str_length(hw)/2+1,str_length(hw)/2+1)
+
+#For string with even characters
+hw<-"thisiseven"
+str_sub(hw,str_length(hw)/2,str_length(hw)/2+1) #returns the center two characeters
+```
+
+####4 str_wrap()
+This is just a wrapper which implements the Knuth-Plass paragraph wrapping algorithm.
+
+
+###Task 2
+###Writing functions
+
+Lets define the functions for linear regression **le_lin_fit()** , quadratic regression **le_quad_fit()** and **le_robust_fit()**.
+```{r}
+le_lin_fit <- function(data,offset = 1952){
+the_fit <- lm(gdpPercap ~ I(year - offset), data)
+  data.frame(t(coef(the_fit))) %>%
+  setNames(c("intercept", "slope"))
+}
+
+le_quad_fit <- function(data,offset = 1952){
+the_fit <- rlm(gdpPercap ~ I(year - offset), data,method="M")
+  data.frame(t(coef(the_fit))) %>%
+  setNames(c("intercept", "slope"))
+}
+
+le_robust_fit <- function(data,offset = 1952){
+the_fit <- lmrob(gdpPercap ~ I(year - offset), data)
+data.frame(t(coef(the_fit))) %>%
+  setNames(c("intercept", "slope"))
+}
+```
+
+Lets check the function with some data for India.
+
+```{r}
+j_dat<-subset(gapminder,country=="India")
+```
+
+Lets get the cofficients of different regression functions using inbuilt functions.
+```{r}
+le_lin_fit(j_dat)
+le_quad_fit(j_dat)
+```
+
+Let plot this data.
+```{r}
+ggplot(j_dat, aes(x = year, y = lifeExp))+ 
+  geom_point() + 
+  geom_smooth(method = "lm", se = FALSE)
+
+ggplot(j_dat, aes(x = year, y = lifeExp))+ 
+  geom_point() + 
+  geom_smooth(method = "rlm", se = FALSE)
+```
+
+
+For the function le_robust_fit, lets apply it to the entire gapminder and merge it to visualize the data.
+```{r}
+gapminder_mod<- gapminder%>%
+                  group_by(country,continent)%>%
+                  do(le_robust_fit(.))%>%
+                  full_join(gapminder,.,by=c("country", "continent"))
+```
+
+
+Now lets plot the data to visualize the details
+```{r}
+gapminder_mod%>%
+    group_by(country) %>%
+      ggplot(aes(year,lifeExp, group=country)) + 
+      geom_point(color="blue") +
+      geom_smooth(method = "rlm", se=FALSE,color="red", size=.25)+
+      facet_wrap(~continent)
+```
+NOw we can analyze each continent to identify the continents that fit better and worse.
+
+###Task 3
+
+
+
+###Task 4
+###Working with Singer data
+
+```{r}
+singer_data<- singer::singer_locations
+
+poss_revgeocode <-possibly(function(x,y) revgeocode(c(x, y), output = "more"), 
+                                otherwise = NA_real_)
+
+
+new_singer_data <- singer_data %>%
+                      filter(!is.na(longitude))%>%
+                      filter(!is.na(longitude))%>%
+                      as.tibble()%>%
+                      sample_n(10) %>%
+                      mutate(mapdata=map2(longitude,latitude,
+                         ~ poss_revgeocode(.x,.y)))%>%
+                      unnest()
+  
+```
+
+####Results against singer city
+
+Lets view locality obtained from mapdata with city 
+```{r}
+new_singer_data %>%
+  dplyr::select(locality,city)%>%
+  head()
+```
+
+This shows that the city has to be adjusted just to give the actual name of the city ( the first part).
+
+```{r}
+
+```
+
+###Task 5 Working with the list
+
+####Trump Android Tweets
+
+Lets load the data from trump's official account
+```{r}
+load(url("http://varianceexplained.org/files/trump_tweets_df.rda"))
+#load("trump_tweets_df.rda")
+glimpse(trump_tweets_df)
+
+#Take just the text and store it in tweets
+tweets <- trump_tweets_df$text
+tweets %>% head() %>% strtrim(70) #trim the length to be 70
+```
+
+Create a regular expression of words that were commonly found in trump's tweets.
+```{r}
+regex <- "badly|crazy|weak|spent|strong|dumb|joke|guns|funny|dead"
+```
+
+Lets select preselect the rows that scale down the complexity of the problem.
+```{r}
+tweets <- tweets[c(1, 2, 5, 6, 198, 347, 919)]
+tweets %>% strtrim(70)
+```
+
+Tweets with 0, 1, 2, and 3 occurences of Trump Android words were preselected .
+
+####gregexpr()
+
+Use the base function gregexpr() to locate all the Trump Android words inside the tweets.
+```{r}
+matches <- gregexpr(regex, tweets)
+#str(matches)
+```
+
+Lets take a look at one element of matches
+```{r}
+matches[[7]]
+```
+
+Matches is A list. 
+1. One element per element of tweets.
+2. Each element is an integer vector.
+   - It's -1 if no matches found.
+   - Holds the position(s) of the first character of each match, otherwise.
+3. Each element has two attributes. Consider match.length. Let us not speak of the other one.
+   - It's -1 if no matches found.
+   - Holds the length(s) of each match, otherwise.
+We can clearly extract the matched words with this information. But its not easy from this information.
+
+Lets inspect matches to understand its nature
+
+```{r}
+lengths(matches)                      # just happens to exist for length
+sapply(matches, length)               # NSFP = not safe for programming
+vapply(matches, length, integer(1))   # preferred base approach
+map_int(matches, length)
+```
+
+**Get the list of the match lengths**
+
+This is how it is got for the last element of matches
+```{r}
+m <- matches[[7]]
+attr(m, which = "match.length")
+```
+
+For entire matches, it can be done in few ways
+
+1. Pre-defined custom function. ( Most verbose.)
+```{r}
+ml <- function(x) attr(x, which = "match.length")
+map(matches, ml)
+```
+
+2. Anonymous function. ( Very compact.)
+```{r}
+map(matches, function(x) attr(x, which = "match.length"))
+```
+
+3. Pre-existing function, additional arguments passed via ....
+```{r}
+(match_length <- map(matches, attr, which = "match.length"))
+```
+
+**Count the number of Trump Android words in each tweet.**
+
+Code that works for extreme examples 0 matches and 3 matches:
+```{r}
+m <- matches[[1]]
+sum(m > 0)
+m <- matches[[7]]
+sum(m > 0)
+```
+
+Only two of the above approaches work here 
+
+```{r}
+f <- function(x) sum(x > 0)
+map(matches, f)
+
+map(matches, ~ sum(.x > 0))
+```
+
+Simpler version is to use map_int which returns an integer vector, with length equal to the number of tweets.
+```{r}
+map_int(matches, ~ sum(.x > 0))
+```
+
+To confirm lets check it is indeed, different from just taking the lengths of the elements of matches:
+```{r}
+tibble(
+  naive_length = lengths(matches),
+  n_words = map_int(matches, ~ sum(.x > 0))
+)
+```
+
+####Strip the attributes from matches
+Lets remove the attributes from matches to create matches_first
+
+```{r}
+(match_first <- map(matches, as.vector))
+```
+
+####Assess progress in a small example
+Lets extract trump words from single tweet. We will take tweets #1 and #7 as they represent extreme cases where matches are 0 and 3.
+
+The relevant R objects:
+```{r}
+tweets %>% strtrim(70)
+match_first
+match_length
+```
+
+Lets first work with tweet #7, the one with 3 matched Trump words.
+```{r}
+(tweet <- tweets[7])
+(t_first <- match_first[[7]])      #starting of the matched words
+(t_length <- match_length[[7]])    #length of the matched words
+(t_last <- t_first + t_length - 1) #ending of the matched words
+substring(tweet, t_first, t_last) #get the substrings to get the matched words
+```
+
+Use this code for tweet #1 with 0 trump words
+```{r}
+(tweet <- tweets[1])
+(t_first <- match_first[[1]])
+(t_length <- match_length[[1]])
+(t_last <- t_first + t_length - 1)
+substring(tweet, t_first, t_last)
+```
+
+It works correctly for both the extremes. 
+
+####Store where Trump words end
+
+Lets get where the matches end for all the tweets. We need to use map2 because we have to map over 2 lists in parallel namely, match_first and match_length .
+
+```{r}
+(match_last <- map2(match_first, match_length, ~ .x + .y - 1)) 
+```
+
+####Extract the trump words
+
+Now lets extract the trump words. Here we need to map over three lists simulataneously
+matches,matches_first and matches_last. So we use pmap to perform this.
+```{r}
+pmap(list(text = tweets, first = match_first, last = match_last), substring)
+```
+
+####March through the rows in a data frame
+
+Lets use a dataframe as input to pmap to get our desired result.
+```{r}
+mdf <- tibble(
+  text = tweets,
+  first = match_first,
+  last = match_last
+)
+pmap(mdf, substring)
+```
+
+Now lets see if we can reproduce everything using a  data frame approach.
+```{r}
+tibble(text = tweets,
+      first = gregexpr(regex, tweets)) %>% 
+      mutate(match_length = map(first, ~ attr(.x, which = "match.length")),
+      last = map2(first, match_length, ~ .x + .y - 1))%>%
+      dplyr::select(-match_length)%>% 
+      pmap(substring)
+```
+
+We can directly solve this problem by post-processing the output of gregexpr() with regmatches()
+```{r}
+regmatches(tweets, gregexpr(regex, tweets))
+```
+
+We can check the base code of regmatches and find that it is similar to the way we have done this problem as it uses lot of calls to map(), attr() and substr() etc. But it has more error checking and consideration for encoding and locale. 
+
+####Task 6 Work with a nested Data frame
+
+Lets create the nested data frame from gapminder dataset
+
+```{r}
+(gap_nested <- gapminder %>% 
+   group_by(continent, country) %>% 
+   nest())
+```
+
+
