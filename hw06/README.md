@@ -13,7 +13,8 @@ for __gapminder data__.
 
 Most of the work in markdown file was easier but was longer as compared to previous homworks. Difficulties that I experienced were
 1. I didnt know that only 2500 queries can be made on revgeocode. After facing lot of difficulty I came to know about this and then sampled the data to small number.
-2. Possibly doesnt show errors but still was showing the warning messages. It took some time for me to understand that they were not error messages and possibly was indeed working. 
+2. Possibly doesnt show errors but still was showing the warning messages. It took some time for me to understand that they were not error messages and possibly was indeed working.
+3. The leaflet plot was not rendering properly in github even though it looked good as html file in local computer. I didnt know how to handle this and eventually removed the plot.
 3. It was a great homework as it helped me understand how to work with lists and the importance of map functions. I also understood the different linear regression models and how they can be analyzed.
 
 The resources that helped me are:

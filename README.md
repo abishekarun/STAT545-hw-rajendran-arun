@@ -31,5 +31,5 @@ You can find the links for assignments on __gapminder data__ below.
 + [Homework 03 Folder](https://github.com/abishekarun/STAT545-hw-rajendran-arun/tree/master/hw03)
 + [Homework 04 Folder](https://github.com/abishekarun/STAT545-hw-rajendran-arun/tree/master/hw04)
 + [Homework 05 Folder](https://github.com/abishekarun/STAT545-hw-rajendran-arun/tree/master/hw05)
-
++ [Homework 06 Folder](https://github.com/abishekarun/STAT545-hw-rajendran-arun/tree/master/hw06)
 
