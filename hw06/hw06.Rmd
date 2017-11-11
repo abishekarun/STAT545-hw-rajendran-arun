@@ -6,7 +6,6 @@ output:
 ---
 
 ```{r}
-suppressPackageStartupMessages(library(tidyverse))
 suppressPackageStartupMessages(library(tidyr))
 suppressPackageStartupMessages(library(gapminder))
 suppressPackageStartupMessages(library(ggmap))
@@ -20,6 +19,7 @@ suppressPackageStartupMessages(library(ggplot2))
 suppressPackageStartupMessages(library(knitr))
 suppressPackageStartupMessages(library(dplyr))
 suppressPackageStartupMessages(library(MASS))
+suppressPackageStartupMessages(library(tidyverse))
 options(knitr.table.format = "html")
 ```
 
@@ -172,7 +172,7 @@ This shows that 6 rows out of 20 are matching. More analysis can be done to impr
 Now, lets checkout the library leaflet for plotting. We can plot the locality using addCircles() function.
 ```{r}
 leaflet()  %>%   
-  addTiles() %>%  
+  addTiles(urlTemplate = 'http://{s}.tile.opentopomap.org/{z}/{x}/{y}.png')  %>% 
   addCircles(lng=b$longitude,lat=b$latitude,popup = b$locality)
 ```
 
