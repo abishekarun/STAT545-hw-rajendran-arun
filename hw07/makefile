@@ -1,7 +1,6 @@
 ## one Makefile to make them all
 
 all: 03_report.html
-#		 $(MAKE) -Bnd | ./make2graph | dot	
 
 gapminder.tsv:
 	Rscript 00_download_data.R

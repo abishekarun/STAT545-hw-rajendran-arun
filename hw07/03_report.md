@@ -260,14 +260,6 @@ gap_clean_data %>%
 </tbody>
 </table>
 
-```r
-levels(x$country)
-```
-
-```
-## [1] "Cote dIvoire"
-```
-
 It looks the data is cleaned and the problem is solved. Now, lets look at the boxplot of lifeExp vs year.
 
 
