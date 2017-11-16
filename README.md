@@ -26,10 +26,12 @@ The steps I performed to make changes to **Readme.md** file  are:
 You can find the links for assignments on __gapminder data__ below.
 **Table of Contents**
 
-+ [Homework 01 Folder](https://github.com/abishekarun/STAT545-hw-rajendran-arun/tree/master/hw01)
-+ [Homework 02 Folder](https://github.com/abishekarun/STAT545-hw-rajendran-arun/tree/master/hw02)
-+ [Homework 03 Folder](https://github.com/abishekarun/STAT545-hw-rajendran-arun/tree/master/hw03)
-+ [Homework 04 Folder](https://github.com/abishekarun/STAT545-hw-rajendran-arun/tree/master/hw04)
-+ [Homework 05 Folder](https://github.com/abishekarun/STAT545-hw-rajendran-arun/tree/master/hw05)
-+ [Homework 06 Folder](https://github.com/abishekarun/STAT545-hw-rajendran-arun/tree/master/hw06)
-
+|    **Assignment**  | **READme** |  **Output file**  |
+|--------------------|------------|---------------------|
+| HW01 - gapminder intro | [1](https://github.com/abishekarun/STAT545-hw-rajendran-arun/blob/master/hw01/README.md) | [Markdown](https://github.com/abishekarun/STAT545-hw-rajendran-arun/blob/master/hw01/hw01_gapminder.md) |      
+| HW02 - gapminder exploration | [2](https://github.com/abishekarun/STAT545-hw-rajendran-arun/blob/master/hw02/README.md) | [Markdown](https://github.com/abishekarun/STAT545-hw-rajendran-arun/blob/master/hw02/hw02_gapminder.md) |
+| HW03 - gapminder plotting | [3](https://github.com/abishekarun/STAT545-hw-rajendran-arun/blob/master/hw03/README.md) | [HTML](http://htmlpreview.github.io/?https://github.com/abishekarun/STAT545-hw-rajendran-arun/blob/master/hw03/hw03_gapminder.html)|
+| HW04 - joining | [4](https://github.com/abishekarun/STAT545-hw-rajendran-arun/blob/master/hw04/README.md)| [Markdown](https://github.com/abishekarun/STAT545-hw-rajendran-arun/blob/master/hw04/hw04_gapminder.md) |
+| HW05 - factors     | [5](https://github.com/abishekarun/STAT545-hw-rajendran-arun/blob/master/hw05/README.md)| [Html](htmtlhttps://github.com/abishekarun/STAT545-hw-rajendran-arun/blob/master/hw05/hw05_gapminder.html)|
+| HW06 - lists, functions, stringr | [6](https://github.com/abishekarun/STAT545-hw-rajendran-arun/blob/master/hw06/README.md) | [Html](http://htmlpreview.github.io/?https://github.com/abishekarun/STAT545-hw-rajendran-arun/blob/master/hw06/hw06.html)|
+| HW07 - Automation | [7](https://github.com/abishekarun/STAT545-hw-rajendran-arun/blob/master/hw07/README.md) | [Html](http://htmlpreview.github.io/?https://github.com/abishekarun/STAT545-hw-rajendran-arun/blob/master/hw07/03_report.html) |
