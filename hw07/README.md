@@ -6,25 +6,25 @@ This is the *readme file* for the seventh homework. In this homework, the automa
 In this homework, Gapminder dataset was cleaned, aggregated,analyzed and results were rendered in R markdown file through makefile pipeline.
 
 The contents of this homework are:
-+ [00_download_data.R]: (**Download data**)
++ [00_download_data.R](https://github.com/abishekarun/STAT545-hw-rajendran-arun/blob/master/hw07/00_download_data.R): (**Download data**)
   - Downloads the gapminder dataset and saves it locally.
-+ [01_exploratory_analysis.R]: (**cleaning & exploratory analysis**)
++ [01_exploratory_analysis.R](https://github.com/abishekarun/STAT545-hw-rajendran-arun/blob/master/hw07/01_exploratory_analysis.R): (**cleaning & exploratory analysis**)
   - Reads the data and does cleaning tasks
   - Renders and saves basic plots such as histogram,density and frequency plot.
   - Continent factor variable is reordered and the data is saved in rds format to keep reordering intact.
-+ [02_statistical_analysis.R]: (**aggregating & statistical analysis**)
++ [02_statistical_analysis.R](https://github.com/abishekarun/STAT545-hw-rajendran-arun/blob/master/hw07/02_statistical_analysis.R): (**aggregating & statistical analysis**)
   - Reads in the rds data.
   - Fits a linear regression model for lifeExp vs year for each country
   - Reports Best and worst 5 countries based on R_squared and residual error std.
   - Saves lifeExp vs year figures for each country over different continents.
-+ [03_report.Rmd]: (**final report**)
++ [03_report.Rmd](https://github.com/abishekarun/STAT545-hw-rajendran-arun/blob/master/hw07/03_report.Rmd): (**final report**)
   - Presents the original data,cleaned data and the changes.
   - Shows the different plots and the reordered data.
   - Imports figures and also Presents the best and worst countries.
-+ [makefile]:
++ [makefile](https://github.com/abishekarun/STAT545-hw-rajendran-arun/blob/master/hw07/makefile):
   - It is the one stop location reponsible for running all files in sequence.
   - It renders the Rmarkdown to give the Html file.
-+ [makefile.R]: 
++ [makefile.R](https://github.com/abishekarun/STAT545-hw-rajendran-arun/blob/master/hw07/makefile.R): 
   - Extra R script file that functions similar to makefile.
   - It renders the Rmarkdown to give the pdf file.
   
