@@ -5,8 +5,8 @@ account: abishekarun
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 237766
-bundleId: 1089512
+bundleId: 1089608
 url: https://abishekarun.shinyapps.io/my_app/
-when: 1511322993.21923
+when: 1511326295.06761
 asMultiple: FALSE
 asStatic: FALSE

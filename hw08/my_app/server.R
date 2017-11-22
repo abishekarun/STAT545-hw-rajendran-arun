@@ -35,12 +35,17 @@ server <- function(input, output) {
     }
   })
   sweetness_data<-reactive({
-    if(input$sweetness == "Any" ||is.null(input$sweetness) || is.na(input$sweetness)){
-      price_data()
+    if('WINE' %in% input$typeIn){
+      if(input$sweetness == "Any" ||is.null(input$sweetness) || is.na(input$sweetness)){
+          price_data()
+      }
+      else{
+          price_data()%>%
+            filter(Sweetness == input$sweetness)
+      }
     }
     else{
-      price_data()%>%
-        filter(Sweetness == input$sweetness)
+      price_data()
     }
   })
   result_data<-reactive({
