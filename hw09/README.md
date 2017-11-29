@@ -17,6 +17,6 @@ This is the *readme file* for the nineth homework. In this homework, custom pack
 - [Write your own R package tutorial](http://stat545.com/packages06_foofactors-package.html)
 - [R package lecture notes](http://stat545.com/packages00_index.html)
 - [Jenny's R package tutorial](http://stat545.com/cm109-110-notes_and_exercises.html)
-- Code forked from the [powers](https://github.com/vincenzocoia/powers) package
-and modified
+- Code from the [powers](https://github.com/vincenzocoia/powers) package
+used as starting point
 - [nth root formula](http://r.789695.n4.nabble.com/nth-root-td885442.html)
