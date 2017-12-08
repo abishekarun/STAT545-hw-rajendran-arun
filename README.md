@@ -37,4 +37,4 @@ You can find the links for assignments on __gapminder data__ below.
 | HW07 - Automation | [7](https://github.com/abishekarun/STAT545-hw-rajendran-arun/blob/master/hw07/README.md) | [Html](http://htmlpreview.github.io/?https://github.com/abishekarun/STAT545-hw-rajendran-arun/blob/master/hw07/03_report.html) |
 | HW08 - BC Liquor Shiny App  | [8](https://github.com/abishekarun/STAT545-hw-rajendran-arun/blob/master/hw08/README.md) | [Website](https://abishekarun.shinyapps.io/my_app/) |
 | HW09 -  mathfunctions Package | [9](https://github.com/abishekarun/STAT545-hw-rajendran-arun/blob/master/hw09/README.md) | [Package](https://github.com/abishekarun/mathfunctions) |
-
+| HW10 -  Data from Web | [10](https://github.com/abishekarun/STAT545-hw-rajendran-arun/blob/master/hw10/README.md) | [Markdown file](https://github.com/abishekarun/STAT545-hw-rajendran-arun/blob/master/hw10/hw10.md)
