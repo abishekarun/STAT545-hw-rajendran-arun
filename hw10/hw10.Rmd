@@ -13,7 +13,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ### Make API queries “by hand” using httr
 
-_For the code to this part, check out [here]()._
+_For the code to this part, check out [here](https://github.com/abishekarun/STAT545-hw-rajendran-arun/blob/master/hw10/api_httr_prompts.R)._
 
 For this part, I have taken Open Movie Database API discussed in class and made query for my favourite list of movies(15 of them) and tried finding the movie with best Imdb rating, metacritic score and rotten tomatoes score.
 
@@ -38,7 +38,7 @@ Plot of rotten tomatoes rating of the movies
 
 ### Scrape the web
 
-_For the code to this part, check out [here]()._
+_For the code to this part, check out [here](https://github.com/abishekarun/STAT545-hw-rajendran-arun/blob/master/hw10/scrape_data_prompts.R)._
 
 For this part, I have taken few favorite bands(3 namely "Eminem","Katy Perry","Maroon 5") and tried to get the lyrics for most of their songs from musix match website. This is an extension to the work that was done in the class. 
 
@@ -61,7 +61,7 @@ The same can be seen in a plot as shown below.
 
 ### Use an R package that wraps an API
 
-_For the code to this part, check out [here]()._
+_For the code to this part, check out [here](https://github.com/abishekarun/STAT545-hw-rajendran-arun/blob/master/hw10/wrap_api_prompts.R)._
 
 ### Prompt 1
 

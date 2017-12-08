@@ -7,7 +7,7 @@ library(purrr)
 library(ggplot2)
 library(forcats)
 
-# key <-  api_key
+key <-  "yourapikey"
 get_movie_TY <- function(title,year){
   title<-gsub(" ", "+", title, fixed = TRUE)
   query_string <- 

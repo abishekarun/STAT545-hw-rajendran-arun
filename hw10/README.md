@@ -2,6 +2,8 @@
 
 This is the *readme file* for the tenth homework. In this homework, different techniques to get data from web are explored.
 
+Check the Markdown file for this homework [here](https://github.com/abishekarun/STAT545-hw-rajendran-arun/blob/master/hw10/hw10.md).
+
 ### Process and reflection
 
 - I found this homework a bit challenging, but now I have got better understanding of the different techniques to get data from web. 
