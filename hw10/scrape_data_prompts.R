@@ -62,6 +62,6 @@ table(output_mod$Band)
 saveRDS(output_mod,'data/musix_match_results.rds')
 
 ggplot(output_mod,aes(Band))+
-  geom_bar(stat="count",color="blue")
+  geom_bar(stat="count",fill="blue")
 ggsave("plots/musix_result.png")
 
