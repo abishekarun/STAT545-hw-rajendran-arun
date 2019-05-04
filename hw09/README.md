@@ -1,6 +1,6 @@
-## Repo for Nineth Homework - R Packages 
+## Repo for Ninth Homework - R Packages 
 
-This is the *readme file* for the nineth homework. In this homework, custom package 'mathfunctions' is developed with proper documentation.
+This is the *readme file* for the ninth homework. In this homework, custom package 'mathfunctions' is developed with proper documentation.
 
 #### [Click here for the package](https://github.com/abishekarun/mathfunctions)
 
